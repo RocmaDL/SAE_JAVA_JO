@@ -1,12 +1,12 @@
 public abstract class Epreuve {
-    /** La liste des athlètes participant à l'épreuve */
-    protected List<Athlete> lesParticipants;
+    /** Le nom du sport */
+    private Sport sport;
     /** Le nom de l'épreuve */
-    protected String nom;
+    private String nomEpreuve;
     /** Le score maximum de l'épreuve */
-    protected int scoreMax;
+    private int scoreMax;
     /** La catégorie de genre de l'épreuve */
-    protected String sexe;
+    private String sexe;
 
     /** Constructeur qui met à jour les attributs de la classe abstraite Epreuve */
     public Epreuve(String nom, int scoreMax, String sexe) {
@@ -17,20 +17,20 @@ public abstract class Epreuve {
 
     /** Récupère le nom de l'épreuve */
     public String getNomEpreuve() {
-        return "";
+        return this.nom;
     }
 
     /** Récupère la catégorie de genre de l'épreuve */
-    public int getSexe() {
-        return 0;
+    public String getSexe() {
+        return this.sexe;
     }
 
     /** Récupère le score maximum de l'épreuve */
-    public String sexe() {
-        return "";
+    public int getScoreMax() {
+        return this.scoreMax;
     }
 
-    /** Calucle le score */
+    /** Calcule le score */
     public int calculerScore() {
         return 0;
     }
