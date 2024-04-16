@@ -1,7 +1,7 @@
-public abstract class Epreuves {
-    protected String nom;
-    protected int scoreMax;
-    protected char sexe;
+public class Epreuves {
+    private String nom;
+    private int scoreMax;
+    private char sexe;
     
     public Epreuves(String nom, int scoreMax, char sexe) {
         this.nom = nom;
