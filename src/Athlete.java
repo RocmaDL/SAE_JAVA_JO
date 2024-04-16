@@ -1,11 +1,11 @@
-public class Athlete {
+public class Athlete implements Participer {
     private String nomAt;
     private String prenomAt;
     private char sexe;
     private double force;
     private double agilite;
     private double endurance;
-    
+
     public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance) {
         this.nomAt = nomAt;
         this.prenomAt = prenomAt;
@@ -62,6 +62,5 @@ public class Athlete {
     public void setEndurance(double endurance) {
         this.endurance = endurance;
     }
-    
 
 }

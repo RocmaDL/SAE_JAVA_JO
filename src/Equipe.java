@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Equipe {
+public class Equipe implements Participer{
     private String nomEq;
     private Pays lePays;
     private List<Athlete> lesAthletes;

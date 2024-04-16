@@ -1,4 +1,4 @@
-public class Epreuves implements Participer {
+public class Epreuves {
     private String nom;
     private int scoreMax;
     private char sexe;
