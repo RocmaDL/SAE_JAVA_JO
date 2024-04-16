@@ -46,9 +46,4 @@ public class Equipe {
         this.lesAthletes.remove(this.lesAthletes.indexOf(athlete));
     }
     
-
-
-
-
-
 }

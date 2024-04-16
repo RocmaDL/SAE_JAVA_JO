@@ -1,8 +1,8 @@
-public class Epreuves {
+public class Epreuves implements Participer {
     private String nom;
     private int scoreMax;
     private char sexe;
-    
+
     public Epreuves(String nom, int scoreMax, char sexe) {
         this.nom = nom;
         this.scoreMax = scoreMax;
@@ -32,5 +32,5 @@ public class Epreuves {
     public void setSexe(char sexe) {
         this.sexe = sexe;
     }
-    
+
 }
