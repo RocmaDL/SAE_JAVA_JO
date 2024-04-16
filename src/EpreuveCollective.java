@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class EpreuveCollective extends Epreuves{
     private List<Participer> equipes;
 
