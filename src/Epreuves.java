@@ -1,9 +1,9 @@
 public abstract class Epreuves {
     protected String nom;
     protected int scoreMax;
-    protected String sexe;
+    protected char sexe;
     
-    public Epreuves(String nom, int scoreMax, String sexe) {
+    public Epreuves(String nom, int scoreMax, char sexe) {
         this.nom = nom;
         this.scoreMax = scoreMax;
         this.sexe = sexe;
@@ -25,11 +25,11 @@ public abstract class Epreuves {
         this.scoreMax = scoreMax;
     }
 
-    public String getSexe() {
+    public char getSexe() {
         return sexe;
     }
 
-    public void setSexe(String sexe) {
+    public void setSexe(char sexe) {
         this.sexe = sexe;
     }
     
