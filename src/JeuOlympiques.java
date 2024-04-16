@@ -11,6 +11,7 @@ public class JeuOlympiques {
 
     public JeuOlympiques() {
         this.lesPays = new ArrayList<>();
+        this.lesSports = new ArrayList<>();
     }
 
     public void enregistrerEpreuve() {
