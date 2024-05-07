@@ -6,7 +6,7 @@ public class Epreuve {
     
 
     public Epreuve(String nom, int scoreMax, char sexe, Sport sport) {
-        this.nom = nom;
+        this.nomEpreuve = nom;
         this.scoreMax = scoreMax;
         this.sexe = sexe;
         this.sport = sport;
@@ -17,7 +17,7 @@ public class Epreuve {
     }
 
     public void setNomEpreuve(String nom) {
-        this.nomEpreuve = nomEpreuve;
+        this.nomEpreuve = nom;
     }
 
     public int getScoreMax() {
@@ -37,7 +37,7 @@ public class Epreuve {
     }
 
     public String getSport() {
-        return sport;
+        return this.sport.getNom();
     }
 
     public void setSport(Sport sport) {

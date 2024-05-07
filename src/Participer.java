@@ -1,5 +1,5 @@
 public interface Participer {
-    public void participer();
+    public int participer(Epreuve epreuve);
 
     public String obtenirNom();
 }
