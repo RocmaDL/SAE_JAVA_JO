@@ -1,5 +1,5 @@
 public class Epreuves {
-    private String nom;
+    private String nomEpreuve;
     private int scoreMax;
     private char sexe;
 
@@ -9,11 +9,11 @@ public class Epreuves {
         this.sexe = sexe;
     }
 
-    public String getNom() {
+    public String getNomEpreuve() {
         return nom;
     }
 
-    public void setNom(String nom) {
+    public void setNomEpreuve(String nom) {
         this.nom = nom;
     }
 
