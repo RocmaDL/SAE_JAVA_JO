@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sport {
-    private List<Epreuves> lesEpreuves;
+    private List<Epreuve> lesEpreuves;
     private String nom;
 
     public Sport(String nom) {
@@ -10,20 +10,20 @@ public class Sport {
         this.lesEpreuves = new ArrayList<>();
     }
 
-    public Sport(String nom, List<Epreuves> lesEpreuves) {
+    public Sport(String nom, List<Epreuve> lesEpreuves) {
         this.nom = nom;
         this.lesEpreuves = new ArrayList<>(lesEpreuves);
     }
 
-    public void enregistrerEpreuve(Epreuves Epreuves) {
-        this.lesEpreuves.add(Epreuves);
+    public void enregistrerEpreuve(Epreuve Epreuve) {
+        this.lesEpreuves.add(Epreuve);
     }
 
-    public void supprimerEpreuve(Epreuves Epreuves) {
-        this.lesEpreuves.remove(Epreuves);
+    public void supprimerEpreuve(Epreuve Epreuve) {
+        this.lesEpreuves.remove(Epreuve);
     }
 
-    public List<Epreuves> getLesEpreuves() {
+    public List<Epreuve> getlesEpreuves() {
         return lesEpreuves;
     }
 
