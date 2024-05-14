@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class Sport {
+public abstract class Sport {
     private List<Epreuve> lesEpreuves;
     private String nom;
+
 
     public Sport(String nom) {
         this.nom = nom;
@@ -34,4 +36,9 @@ public class Sport {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public abstract Map<Caracteristique , Double> coeffcient();
+
+    
+
 }
