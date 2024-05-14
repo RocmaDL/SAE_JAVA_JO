@@ -3,3 +3,4 @@ public interface Participer {
 
     public String obtenirNom();
 }
+    
