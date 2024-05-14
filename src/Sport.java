@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class Sport {
     private List<Epreuve> lesEpreuves;
     private String nom;
