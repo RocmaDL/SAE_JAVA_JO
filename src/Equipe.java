@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Equipe implements Participer{
     private String nomEq;
@@ -44,6 +46,24 @@ public class Equipe implements Participer{
 
     public void retirerMembre(Athlete athlete){
         this.lesAthletes.remove(this.lesAthletes.indexOf(athlete));
+    }
+
+    @Override
+
+        // changer type retour
+    public int participer(Epreuve epreuve) {
+        Set<Double> resultat = new HashSet<>();
+        for (Athlete athlete : this.lesAthletes) {
+            Double perf =  athlete.particper(epreuve);
+            // On calcule le pourcentage de performance de l'athlète en fonction de l'image du parfait athlète (100%)
+            // Produit en croix pour obtenir le pourcentage
+            // ...
+
+            // Ajout pourcentage au Set
+            // Moyenne pourcentage
+
+        
+        }
     }
     
 }
