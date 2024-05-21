@@ -3,10 +3,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+
 public class JeuOlympiques {
     private List<Pays> lesPays;
     private List<Sport> lesSports;
-    private Map<Epreuve, Set<Participer>> lesParticipations;
+    private Map<Epreuve, Set<Participer>> lesParticipations; //! Redefinir les equals et hashcode
 
     public JeuOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations) {
         this.lesPays = new ArrayList<>(lesPays);
@@ -34,33 +36,30 @@ public class JeuOlympiques {
 
     public void ajouterPays(String nom) {
         Pays tmp = new Pays(nom);
-        if(!(this.getLesPays().contains(tmp))){
+        if (!(this.getLesPays().contains(tmp))) {
             this.getLesPays().add(tmp);
         }
     }
 
-    /*
-     * Cette méthode est ambigue, est ce que je rajoute un sport lambda ou un enfant de sport
-     * 
-     */
-    public void ajouterSport() {
-        //TODO
+    public void ajouterSport(Sport s) {
+        this.getLesSports().add(s);
     }
 
-    public void enregistrerEpreuve() {
-        // TODO
+    public void enregistrerEpreuve(Epreuve e) {
+        this.lesParticipations.put(e, new HashSet<Participer>());
     }
 
-    public void lancerEpreuve() {
-        // TODO
+    public Map<Participer, Integer> lancerEpreuve(Epreuve e) {
+        Map<Participer, Integer> resultatEpreuve = new HashMap<>();
+        for (Participer p : this.getLesParticipations().get(e)) {
+            resultatEpreuve.put(p, p.participer(e));
+        }
+
+        return resultatEpreuve;
     }
 
-
-    /*
-     * Pour pouvoir utiliser un ensemble, il faut définir les méthodes hashcode() et equals() des participants et des epreuves 
-     */
     public void inscrire(Participer participants, Epreuve epreuve) {
-        // TODO
+        this.lesParticipations.get(epreuve).add(participants);
     }
 
 }
