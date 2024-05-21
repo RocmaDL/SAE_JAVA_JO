@@ -37,7 +37,7 @@ public class Epreuve {
     }
 
     public String getSport() {
-        return this.sport.getNom();
+        return this.sport;
     }
 
     public void setSport(Sport sport) {
