@@ -1,7 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 public class Sport {
     private List<Epreuve> lesEpreuves;
@@ -49,7 +49,7 @@ public class Sport {
         this.nom = nom;
     }
 
-    public Map<Caracteristique,Double> coeffcient(){     
+    public Map<Caracteristique,Double> getCoefficient(){     
         return this.LesCoefficients;
     }
 

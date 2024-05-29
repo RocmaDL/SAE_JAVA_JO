@@ -1,5 +1,4 @@
 import java.util.Map;
-import java.util.Random;
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
  * Elle implémente l'interface Participer.
@@ -39,8 +38,8 @@ public class Athlete implements Participer {
     public double participer(Epreuve epreuve){  
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
         return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() + 
-        lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random()+ 
-        lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance())  * Math.random() / (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE) + lesCoeffs.get(Caracteristique.ENDURANCE);
+        lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random() + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random() ) / 
+        (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE) + lesCoeffs.get(Caracteristique.ENDURANCE));
         
     }
 

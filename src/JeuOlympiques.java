@@ -49,8 +49,8 @@ public class JeuOlympiques {
         this.lesParticipations.put(e, new HashSet<Participer>());
     }
 
-    public Map<Participer, Integer> lancerEpreuve(Epreuve e) {
-        Map<Participer, Integer> resultatEpreuve = new HashMap<>();
+    public Map<Participer, Double> lancerEpreuve(Epreuve e) {
+        Map<Participer, Double> resultatEpreuve = new HashMap<>();
         for (Participer p : this.getLesParticipations().get(e)) {
             resultatEpreuve.put(p, p.participer(e));
         }
