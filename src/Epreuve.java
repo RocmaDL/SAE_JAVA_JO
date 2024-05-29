@@ -36,7 +36,7 @@ public class Epreuve {
         this.sexe = sexe;
     }
 
-    public String getSport() {
+    public Sport getSport() {
         return this.sport;
     }
 

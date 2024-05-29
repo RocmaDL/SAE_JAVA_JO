@@ -1,4 +1,4 @@
 public interface Participer {
-    public int participer(Epreuve epreuve);
+    public double participer(Epreuve epreuve);
 }
     
