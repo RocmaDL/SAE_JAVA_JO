@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-public abstract class Sport {
+public class Sport {
     private List<Epreuve> lesEpreuves;
     private String nom;
     private Map<Caracteristique , Double> LesCoefficients;
