@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+import test.java.Athlete;
 
-public class Pays {
+public class PaysTest {
 
     private String nom;
     private List<EquipeTest> lesEquipes;
@@ -11,7 +12,7 @@ public class Pays {
     /** Constructeur qui met à jour les attributs de la classe Pays
      * @param nom
      */
-    public Pays(String nom) {
+    public PaysTest(String nom) {
         this.nom = nom;
         this.lesEquipes = new ArrayList<>();
         this.lesAthletes = new ArrayList<>();

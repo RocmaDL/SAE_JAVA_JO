@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Sport {
-    private List<Epreuve> lesEpreuves;
+    private List<EpreuveTest> lesEpreuves;
     private String nom;
     private Map<Caracteristique , Double> LesCoefficients;
     private String unite;
@@ -25,20 +25,20 @@ public class Sport {
         this.unite = unite;
     }
 
-    public Sport(String nom, List<Epreuve> lesEpreuves) {
+    public Sport(String nom, List<EpreuveTest> lesEpreuves) {
         this.nom = nom;
         this.lesEpreuves = new ArrayList<>(lesEpreuves);
     }
 
-    public void enregistrerEpreuve(Epreuve Epreuve) {
+    public void enregistrerEpreuve(EpreuveTest Epreuve) {
         this.lesEpreuves.add(Epreuve);
     }
 
-    public void supprimerEpreuve(Epreuve Epreuve) {
+    public void supprimerEpreuve(EpreuveTest Epreuve) {
         this.lesEpreuves.remove(Epreuve);
     }
 
-    public List<Epreuve> getlesEpreuves() {
+    public List<EpreuveTest> getlesEpreuves() {
         return lesEpreuves;
     }
 

@@ -1,4 +1,7 @@
+package test.java;
 import java.util.Map;
+
+import Participer;
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
  * Elle implémente l'interface Participer.
@@ -36,10 +39,10 @@ public class Athlete implements Participer {
      */
     @Override
     public double participer(EpreuveTest epreuve){  
-        Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
-        return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() + 
-        lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random() + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random() ) / 
-        (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE) + lesCoeffs.get(Caracteristique.ENDURANCE));
+        Map<CaracteristiqueTest, Double> lesCoeffs = epreuve.getSport().getCoefficient();
+        return (lesCoeffs.get(CaracteristiqueTest.FORCE) * getForce() * Math.random() + 
+        lesCoeffs.get(CaracteristiqueTest.AGILITE) * getAgilite() * Math.random() + lesCoeffs.get(CaracteristiqueTest.ENDURANCE) * getEndurance() * Math.random() ) / 
+        (lesCoeffs.get(CaracteristiqueTest.FORCE) + lesCoeffs.get(CaracteristiqueTest.AGILITE) + lesCoeffs.get(CaracteristiqueTest.ENDURANCE));
         
     }
 

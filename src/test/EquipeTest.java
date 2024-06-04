@@ -1,9 +1,8 @@
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
+import test.java.Athlete;
 
-public class Equipe implements Participer{
+public class EquipeTest implements Participer{
     private String nomEq;
     private PaysTest lePays;
     private List<Athlete> lesAthletes;
@@ -13,7 +12,7 @@ public class Equipe implements Participer{
      * @param lePays
      * @param lesAthletes
      */
-    public Equipe(String nomEq, PaysTest lePays , List<Athlete> lesAthletes) {
+    public EquipeTest(String nomEq, PaysTest lePays , List<Athlete> lesAthletes) {
         this.nomEq = nomEq;
         this.lePays = lePays;
         this.lesAthletes = lesAthletes;
@@ -24,7 +23,7 @@ public class Equipe implements Participer{
      * @param nomEq
      * @param lePays
      */
-    public Equipe(String nomEq, PaysTest lePays) {
+    public EquipeTest(String nomEq, PaysTest lePays) {
         this.nomEq = nomEq;
         this.lePays = lePays;
         this.lesAthletes = new ArrayList<>();
