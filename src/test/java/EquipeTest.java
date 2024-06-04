@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import test.java.Athlete;
+import test.java.EpreuveTest;
 
 public class EquipeTest implements Participer{
     private String nomEq;

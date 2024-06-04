@@ -1,3 +1,4 @@
+package test.java;
 public class EpreuveTest {
     private String nomEpreuve;
     private int scoreMax;
