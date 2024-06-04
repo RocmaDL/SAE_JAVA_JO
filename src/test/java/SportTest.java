@@ -1,11 +1,10 @@
-package test.java;
+import main.java.*;
 import java.util.List;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import main.java;
 
 public class SportTest {
     private Sport sport;
