@@ -9,7 +9,7 @@ public enum Unite {
     /**
      * Unité de mesure pour le temps.
      */
-    TEMPS("temps"),
+    TEMPS("s"),
 
     /**
      * Unité de mesure pour les buts.
