@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class Equipe implements Participer{
     private String nomEq;
-    private PaysTest lePays;
+    private Pays lePays;
     private List<Athlete> lesAthletes;
 
     /** Constructeur qui met à jour les attributs de la classe Equipe
@@ -15,7 +15,7 @@ public class Equipe implements Participer{
      * @param lePays
      * @param lesAthletes
      */
-    public Equipe(String nomEq, PaysTest lePays , List<Athlete> lesAthletes) {
+    public Equipe(String nomEq, Pays lePays , List<Athlete> lesAthletes) {
         this.nomEq = nomEq;
         this.lePays = lePays;
         this.lesAthletes = lesAthletes;
@@ -26,7 +26,7 @@ public class Equipe implements Participer{
      * @param nomEq
      * @param lePays
      */
-    public Equipe(String nomEq, PaysTest lePays) {
+    public Equipe(String nomEq, Pays lePays) {
         this.nomEq = nomEq;
         this.lePays = lePays;
         this.lesAthletes = new ArrayList<>();
@@ -53,7 +53,7 @@ public class Equipe implements Participer{
     /** Récupère la nationalité de l'équipe
      * @return la nationalité de l'équipe
      */
-    public PaysTest getLePays() {
+    public Pays getLePays() {
         return lePays;
     }
 
@@ -61,7 +61,7 @@ public class Equipe implements Participer{
     /** Fixe le pays de l'équipe
      * @param lePays
      */
-    public void setLePays(PaysTest lePays) {
+    public void setLePays(Pays lePays) {
         this.lePays = lePays;
     }
 
@@ -99,8 +99,7 @@ public class Equipe implements Participer{
 
     
     @Override
-
-    public double participer(EpreuveTest epreuve) {
+    public double participer(Epreuve epreuve) {
         int cpt = 0;
         Double res = 0.0;
         for (Athlete athlete : this.lesAthletes) {

@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class JeuOlympiques {
-    private List<PaysTest> lesPays;
+    private List<Pays> lesPays;
     private List<Sport> lesSports;
-    private Map<EpreuveTest, Set<Participer>> lesParticipations; //! Redefinir les equals et hashcode
+    private Map<Epreuve, Set<Participer>> lesParticipations; //! Redefinir les equals et hashcode
 
-    public JeuOlympiques(List<PaysTest> lesPays, List<Sport> lesSports, Map<EpreuveTest, Set<Participer>> lesParticipations) {
+    public JeuOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations) {
         this.lesPays = new ArrayList<>(lesPays);
         this.lesSports = new ArrayList<>(lesSports);
         this.lesParticipations = new HashMap<>(lesParticipations);
@@ -25,7 +25,7 @@ public class JeuOlympiques {
         this.lesParticipations = new HashMap<>();
     }
 
-    public List<PaysTest> getLesPays() {
+    public List<Pays> getLesPays() {
         return lesPays;
     }
 
@@ -33,12 +33,12 @@ public class JeuOlympiques {
         return lesSports;
     }
 
-    public Map<EpreuveTest, Set<Participer>> getLesParticipations() {
+    public Map<Epreuve, Set<Participer>> getLesParticipations() {
         return lesParticipations;
     }
 
     public void ajouterPays(String nom) {
-        PaysTest tmp = new PaysTest(nom);
+        Pays tmp = new Pays(nom);
         if (!(this.getLesPays().contains(tmp))) {
             this.getLesPays().add(tmp);
         }
@@ -48,11 +48,11 @@ public class JeuOlympiques {
         this.getLesSports().add(s);
     }
 
-    public void enregistrerEpreuve(EpreuveTest e) {
+    public void enregistrerEpreuve(Epreuve e) {
         this.lesParticipations.put(e, new HashSet<Participer>());
     }
 
-    public Map<Participer, Double> lancerEpreuve(EpreuveTest e) {
+    public Map<Participer, Double> lancerEpreuve(Epreuve e) {
         Map<Participer, Double> resultatEpreuve = new HashMap<>();
         for (Participer p : this.getLesParticipations().get(e)) {
             resultatEpreuve.put(p, p.participer(e));
@@ -61,7 +61,7 @@ public class JeuOlympiques {
         return resultatEpreuve;
     }
 
-    public void inscrire(Participer participants, EpreuveTest epreuve) {
+    public void inscrire(Participer participants, Epreuve epreuve) {
         this.lesParticipations.get(epreuve).add(participants);
     }
 

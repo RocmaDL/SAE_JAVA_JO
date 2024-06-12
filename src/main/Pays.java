@@ -7,7 +7,7 @@ import java.util.List;
 public class Pays {
 
     private String nom;
-    private List<EquipeTest> lesEquipes;
+    private List<Equipe> lesEquipes;
     private List<Athlete> lesAthletes;
 
     
@@ -24,7 +24,7 @@ public class Pays {
     /** Ajoute une équipe d'athlètes dans la liste des équipes du pays
      * @param equipe
      */
-    public void enregistrerEquipe(EquipeTest equipe) {
+    public void enregistrerEquipe(Equipe equipe) {
         this.lesEquipes.add(equipe);
     }
 
@@ -40,7 +40,7 @@ public class Pays {
     /** Supprime une équipe de la liste des équipes du pays
      * @param equipe
      */
-    public void supprimerEquipe(EquipeTest equipe) {
+    public void supprimerEquipe(Equipe equipe) {
         this.lesEquipes.remove(equipe);
     }
 
@@ -56,7 +56,7 @@ public class Pays {
     /** Récupère la liste des équipes d'un pays
      * @return la liste des équipes
      */
-    public List<EquipeTest> getLesEquipes() {
+    public List<Equipe> getLesEquipes() {
         return lesEquipes;
     }
 

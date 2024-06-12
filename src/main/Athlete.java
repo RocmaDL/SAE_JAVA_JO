@@ -37,7 +37,7 @@ public class Athlete implements Participer {
      * @return Le résultat de la participation de l'athlète à l'épreuve
      */
     @Override
-    public double participer(EpreuveTest epreuve){  
+    public double participer(Epreuve epreuve){  
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
         return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() + 
         lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random() + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random() ) / 
