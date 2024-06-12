@@ -1,3 +1,5 @@
+package main;
+
 public enum Caracteristique {
     FORCE("force") ,
     AGILITE("agilite") , 

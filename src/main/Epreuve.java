@@ -1,3 +1,5 @@
+package main;
+
 public class Epreuve {
     private String nomEpreuve;
     private int scoreMax;

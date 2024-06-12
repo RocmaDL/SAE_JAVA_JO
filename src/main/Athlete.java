@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Map;
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.

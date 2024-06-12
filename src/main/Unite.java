@@ -1,3 +1,5 @@
+package main;
+
 public enum Unite {
 
     TEMPS("temps") ,
