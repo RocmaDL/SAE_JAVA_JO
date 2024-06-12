@@ -19,7 +19,7 @@ public class EquipeTest {
     public void setUp(){
         Pays lePays = new Pays("France");
         Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0);
+        Athlete a2 = new Athlete("Bella","Jane" , 'F', 2.0, 3.0, 2.0);
         Athlete a3 = new Athlete("John","Doe" , 'M', 2.0, 3.0, 2.0);
         Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 3.0, 2.0);
         Athlete a5 = new Athlete("Alycia","Bergot" , 'F', 2.0, 3.0, 2.0);

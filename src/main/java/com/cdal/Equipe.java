@@ -117,6 +117,9 @@ public class Equipe implements Participer {
             res += perf;
             cpt += 1;
         }
+        if (cpt == 0) {
+            throw new ArithmeticException("L'équipe ne contient aucun athlète.");
+        }
         return res / cpt;
     }
 
