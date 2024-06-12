@@ -1,6 +1,7 @@
 package main.java.com.cdal;
 
 import java.util.Map;
+
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
  * Elle implémente l'interface Participer.
@@ -15,11 +16,12 @@ public class Athlete implements Participer {
 
     /**
      * Constructeur de la classe Athlete.
-     * @param nomAt Le nom de l'athlète
-     * @param prenomAt Le prénom de l'athlète
-     * @param sexe Le sexe de l'athlète
-     * @param force La force de l'athlète
-     * @param agilite L'agilité de l'athlète
+     * 
+     * @param nomAt     Le nom de l'athlète
+     * @param prenomAt  Le prénom de l'athlète
+     * @param sexe      Le sexe de l'athlète
+     * @param force     La force de l'athlète
+     * @param agilite   L'agilité de l'athlète
      * @param endurance L'endurance de l'athlète
      */
     public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance) {
@@ -33,20 +35,23 @@ public class Athlete implements Participer {
 
     /**
      * Méthode pour participer à une épreuve.
+     * 
      * @param epreuve L'épreuve à laquelle l'athlète participe
      * @return Le résultat de la participation de l'athlète à l'épreuve
      */
     @Override
-    public double participer(Epreuve epreuve){  
+    public double participer(Epreuve epreuve) {
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
-        return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() + 
-        lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random() + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random() ) / 
-        (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE) + lesCoeffs.get(Caracteristique.ENDURANCE));
-        
+        return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() +
+                lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random()
+                + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random()) /
+                (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE)
+                        + lesCoeffs.get(Caracteristique.ENDURANCE));
+
     }
 
-    // Les getters et setters pour les attributs de la classe Athlete sont ci-dessous
-    
+    // Les getters et setters pour les attributs de la classe Athlete sont
+    // ci-dessous
 
     public String getNomAt() {
         return nomAt;
@@ -94,6 +99,35 @@ public class Athlete implements Participer {
 
     public void setEndurance(double endurance) {
         this.endurance = endurance;
+    }
+
+    @Override
+    public String toString() {
+        return "Athlete [agilite=" + agilite + ", endurance=" + endurance + ", force=" + force + ", nomAt=" + nomAt
+                + ", prenomAt=" + prenomAt + ", sexe=" + sexe + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Athlete)) {
+            return false;
+        }
+        Athlete tmp = (Athlete) obj;
+        return this.nomAt.equals(tmp.nomAt) && this.prenomAt.equals(tmp.prenomAt) && this.sexe == tmp.sexe
+                && this.force == tmp.force && this.agilite == tmp.agilite && this.endurance == tmp.endurance;
+    }
+
+    @Override
+    public int hashCode() {
+        return nomAt.hashCode() + prenomAt.hashCode() + (int) sexe * 11 + (int) force * 31 + (int) agilite * 51
+                + (int) endurance
+                        * 41;
     }
 
 }

@@ -5,7 +5,6 @@ public class Epreuve {
     private int scoreMax;
     private char sexe;
     private Sport sport;
-    
 
     public Epreuve(String nom, int scoreMax, char sexe, Sport sport) {
         this.nomEpreuve = nom;
@@ -46,5 +45,30 @@ public class Epreuve {
         this.sport = sport;
     }
 
+    @Override
+    public String toString() {
+        return "Epreuve [nomEpreuve=" + nomEpreuve + ", scoreMax=" + scoreMax + ", sexe=" + sexe + ", sport=" + sport
+                + "]";
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Epreuve)) {
+            return false;
+        }
+        Epreuve tmp = (Epreuve) obj;
+        return this.nomEpreuve.equals(tmp.nomEpreuve) && this.scoreMax == tmp.scoreMax && this.sexe == tmp.sexe
+                && this.sport.equals(tmp.sport);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.nomEpreuve.hashCode() + this.scoreMax * 11 + this.sexe * 31 + this.sport.hashCode();
+    }
 }
