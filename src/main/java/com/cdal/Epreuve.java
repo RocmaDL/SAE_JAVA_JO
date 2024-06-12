@@ -1,4 +1,4 @@
-package main;
+package main.java.com.cdal;
 
 public class Epreuve {
     private String nomEpreuve;

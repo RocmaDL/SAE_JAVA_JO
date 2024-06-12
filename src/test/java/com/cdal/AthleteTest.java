@@ -1,4 +1,4 @@
-package test;
+package test.java.com.cdal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals; 
 
@@ -8,7 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import main.*;
+import main.java.com.cdal.*;
+
 
 
 public class AthleteTest {

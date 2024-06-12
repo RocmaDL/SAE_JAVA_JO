@@ -1,4 +1,4 @@
-package main;
+package main.java.com.cdal;
 
 public enum Caracteristique {
     FORCE("force") ,
