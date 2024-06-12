@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import main.java.com.cdal.*;
 
-public class JeuxOlympiquesTest {
-    private JeuxOlympiques jeuxOlympiques;
+public class JeuOlympiquesTest {
+    private JeuOlympiques JeuOlympiques;
 
     @BeforeEach
     public void setUp(){
@@ -51,8 +51,8 @@ public class JeuxOlympiquesTest {
 
         
 
-        Map<Epreuve, Set<Participer>> lesParticipations = new Map<>();
-        //jeuxOlympiques = new JeuxOlympiques(lesPays, lesSports, lesParticipations);
+        // Map<Epreuve, Set<Participer>> lesParticipations = new Map<>();
+        //JeuOlympiques = new JeuOlympiques(lesPays, lesSports, lesParticipations);
     }
 
     
