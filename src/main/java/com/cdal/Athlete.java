@@ -42,12 +42,12 @@ public class Athlete implements Participer {
     @Override
     public double participer(Epreuve epreuve) {
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
-        return (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() +
+        double res = (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() +
                 lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random()
                 + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random()) /
                 (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE)
                         + lesCoeffs.get(Caracteristique.ENDURANCE));
-
+        return res * 10;
     }
 
     // Les getters et setters pour les attributs de la classe Athlete sont
