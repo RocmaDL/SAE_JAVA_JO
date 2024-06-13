@@ -39,5 +39,7 @@ public class Executable {
         france.getLesEquipes().forEach(e -> {
             System.out.println(e.getNomEq());
         });
+
+        System.out.println("");
     }
 }

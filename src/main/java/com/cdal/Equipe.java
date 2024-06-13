@@ -137,12 +137,11 @@ public class Equipe implements Participer {
         if (!(obj instanceof Equipe))
             return false;
         Equipe tmp = (Equipe) obj;
-        return this.nomEq.equals(tmp.nomEq) && this.lePays.equals(tmp.lePays)
-                && this.lesAthletes.equals(tmp.lesAthletes);
+        return this.nomEq.equals(tmp.nomEq) && this.lePays.equals(tmp.lePays);
     }
 
     @Override
     public int hashCode() {
-        return this.nomEq.hashCode() + this.lePays.hashCode() + this.lesAthletes.hashCode();
+        return this.nomEq.hashCode() + this.lePays.hashCode();
     }
 }
