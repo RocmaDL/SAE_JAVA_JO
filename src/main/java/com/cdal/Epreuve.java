@@ -1,8 +1,11 @@
 package main.java.com.cdal;
+
 /**
  * Classe représentant une épreuve dans un contexte sportif.
- * Cette classe encapsule les détails d'une épreuve, incluant son nom, le score maximum pouvant être atteint,
- * le sexe des participants (masculin ou féminin, représenté par un caractère) et le sport associé à l'épreuve.
+ * Cette classe encapsule les détails d'une épreuve, incluant son nom, le score
+ * maximum pouvant être atteint,
+ * le sexe des participants (masculin ou féminin, représenté par un caractère)
+ * et le sport associé à l'épreuve.
  */
 public class Epreuve {
 
@@ -15,10 +18,10 @@ public class Epreuve {
      * Constructeur de la classe Epreuve.
      * Initialise une nouvelle instance d'Epreuve avec les détails spécifiés.
      * 
-     * @param nom Le nom de l'épreuve.
+     * @param nom      Le nom de l'épreuve.
      * @param scoreMax Le score maximum pouvant être atteint.
-     * @param sexe Le sexe des participants ('M' ou 'F').
-     * @param sport Le sport associé à l'épreuve.
+     * @param sexe     Le sexe des participants ('M' ou 'F').
+     * @param sport    Le sport associé à l'épreuve.
      */
     public Epreuve(String nom, int scoreMax, char sexe, Sport sport) {
         this.nomEpreuve = nom;
@@ -101,7 +104,8 @@ public class Epreuve {
 
     @Override
     public String toString() {
-        return "Epreuve [nomEpreuve=" + nomEpreuve + ", scoreMax=" + scoreMax + ", sexe=" + sexe + ", sport=" + sport
+        return "Epreuve [nomEpreuve=" + nomEpreuve + ", scoreMax=" + scoreMax + ", sexe=" + sexe + ", sport="
+                + sport.getNom()
                 + "]";
     }
 

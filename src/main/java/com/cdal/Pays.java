@@ -115,12 +115,11 @@ public class Pays {
         if (!(obj instanceof Pays))
             return false;
         Pays tmp = (Pays) obj;
-        return this.nom.equals(tmp.nom) && this.lesAthletes.equals(tmp.lesAthletes)
-                && this.lesEquipes.equals(tmp.lesEquipes);
+        return this.nom.equals(tmp.nom);
     }
 
     @Override
     public int hashCode() {
-        return this.nom.hashCode() + this.lesAthletes.hashCode() + this.lesEquipes.hashCode();
+        return this.nom.hashCode();
     }
 }
