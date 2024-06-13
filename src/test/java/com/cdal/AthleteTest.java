@@ -3,6 +3,7 @@ package test.java.com.cdal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -88,9 +89,15 @@ public class AthleteTest {
     public void testParticiper() {
         Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);
         Epreuve epreuve = new Epreuve("50m", 9, 'M', sport);
+        Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
         double result = athlete.participer(epreuve);
-        assertEquals(result, (1.0 * athlete.getForce() * Math.random() + 2.0 * athlete.getAgilite() * Math.random()
-                + 3.0 * athlete.getEndurance() * Math.random()) / (1.0 + 2.0 + 3.0));
+        assertEquals((lesCoeffs.get(Caracteristique.FORCE) * athlete.getForce() +
+        lesCoeffs.get(Caracteristique.AGILITE) * athlete.getAgilite()
+        + lesCoeffs.get(Caracteristique.ENDURANCE) * athlete.getEndurance()) /
+        (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE)
+                + lesCoeffs.get(Caracteristique.ENDURANCE)) *10 ,result);
     }
+
+ 
 
 }

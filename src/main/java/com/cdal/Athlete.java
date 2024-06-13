@@ -42,9 +42,9 @@ public class Athlete implements Participer {
     @Override
     public double participer(Epreuve epreuve) {
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
-        double res = (lesCoeffs.get(Caracteristique.FORCE) * getForce() * Math.random() +
-                lesCoeffs.get(Caracteristique.AGILITE) * getAgilite() * Math.random()
-                + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance() * Math.random()) /
+        double res = (lesCoeffs.get(Caracteristique.FORCE) * getForce() +
+                lesCoeffs.get(Caracteristique.AGILITE) * getAgilite()
+                + lesCoeffs.get(Caracteristique.ENDURANCE) * getEndurance()) /
                 (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE)
                         + lesCoeffs.get(Caracteristique.ENDURANCE));
         return res * 10;

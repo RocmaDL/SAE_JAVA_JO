@@ -1,168 +1,3 @@
-Lnny971
-lnny971
-En ligne
-
-Mr.P01NT_P
- — 
-08/06/2024 00:06
-Je dois y aller alors
-Bonne nuit
-Lnny971
- — 
-08/06/2024 00:06
-vsy bb
-bonne nuit
-Mr.P01NT_P
- — 
-08/06/2024 00:06
-Merci
-Lnny971
- — 
-08/06/2024 23:44
-Igo
-Envoie moi le rendu finale de la SAE Graphe  stp
-Lnny971
- — 
-09/06/2024 01:12
-Je suis content ce soir  j'ai bien avancé dans le rapport mais il reste tout de même du travail
-Tu pourrais faire une partie demain stp ? j'ai trop de trucs à gérer en ce moment
-https://docs.google.com/document/d/1UEJ3y-Ku-EY7iDAAiln0_L9gRjE2qjzDGRJQcwpKQlU/edit?usp=sharing
-Google Docs
-SAE 2
-SAE 2.02 Exploration Algorithmique d’un problème    DIMBA-LAU RocmaVERGEROLLE Lenny    Groupe de TD 14IUT d’Orléans - Département InformatiqueAnnée universitaire 2023/2024 Sommaire     Introduction  Dans le cadre du projet Python SAE 2.02 de fin de première année, il nous a été demandé de ...
-Image
-Mr.P01NT_P
- — 
-09/06/2024 13:26
-Vas y je peux pas mtn
-Mais dès que j'ai accès à un ordi je te l'envoie
-Mr.P01NT_P
- — 
-09/06/2024 16:51
-Type de fichier joint : archive
-SAE_HOLLYWOOD_VERGEROLLE_DIMBA-LAU.zip
-5.63 KB
-Tiens le  rendu
-Lnny971
- — 
-09/06/2024 21:03
-Tu t'en ai sorti ?
-Mr.P01NT_P
- — 
-09/06/2024 21:04
-Oui
-Sauf que les images sont buggés de  fou
-Mais je me bat avec
-Lnny971
- — 
-09/06/2024 21:05
-mdrrr
-T'es en voc avec qlq là ?
-Mr.P01NT_P
- — 
-09/06/2024 21:05
-Oui mais on écoute juste de la musique
-Lnny971
- — 
-09/06/2024 21:05
-d'acc
-Mr.P01NT_P
- — 
-09/06/2024 21:17
-Viens ce soir dans ma demeure
-Tu auras toute ma chaleur
-Viens ce soir dans ma cabane
-Tu n'connaîtras pas la panne
-Viens ce soir dans ma bicoque
-Toi la poule et moi le coq
-Viens ce soir dans ma villa
-Tu verras tu reviendras
-Lnny971
- — 
-09/06/2024 21:36
-T'es un détraqué ahahahhahah
-Mr.P01NT_P
- — 
-09/06/2024 21:38
-Dsl
-Donne moi ton avis sur le rapport stp
-Lnny971
- — 
-09/06/2024 21:39
-Vsy 2 sec
-Mr.P01NT_P
- — 
-09/06/2024 21:41
-Tkt
-Dis moi ce que tu veux que je rajoute
-Et je le rajouterai tout de suite
-Lnny971
- — 
-09/06/2024 21:42
-Allez hop ça part
-nike
-C'est bien 👍
-Tu peux enoyer
-envoyer
-Mr.P01NT_P
- — 
-09/06/2024 21:53
-Okay
-Lnny971
- — 
-09/06/2024 22:14
-Quand t'as du temps envoie moi ton tp d'Exploitation en base de données stp
-Mr.P01NT_P
- — 
-09/06/2024 22:37
-Je ne l'ai pas sur ce pc
-Dsl
-Lnny971
- — 
-09/06/2024 22:49
-ok pg
-Lnny971
- — 
-11/06/2024 18:20
-https://www.canva.com/design/DAGH1-2RnAw/WlGRurkBHBm0bvrpHcA1og/edit?utm_content=DAGH1-2RnAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-Voilà j'ai fais la diapo de SAE Graphes
-On pourra ajouter des fonctions à expliquer si besoin 
-Faudra qu'on essaie de test pour s'entraîner
-Au moins une fois quoi
-Lnny971
- — 
-Hier à 22:33
-T'es là ?
-Mr.P01NT_P
- — 
-Hier à 22:33
-Oui
-Mr.P01NT_P
- a commencé un appel qui a duré 6 minutes.
- — 
-Hier à 22:34
-Mr.P01NT_P
- — 
-Aujourd’hui à 00:01
-Go mentir plus fort
-Lnny971
- — 
-Aujourd’hui à 03:17
-
-package test.java.com.cdal;
-
-import static org.junit.jupiter.api.Assertions.assertEquals; 
-
-import java.util.List;
-import java.util.Map;
-
-Afficher plus
-message.txt7 Ko
-﻿
-Mr.P01NT_P
-mrp01nt
-Pdg de la RocmiCorp
-
 package test.java.com.cdal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals; 
@@ -317,13 +152,13 @@ public class JeuOlympiquesTest {
         Set<Participer> ensParticipants3= new HashSet<>();
 
         lesParticipations = new HashMap<>();
-        Epreuve epreuve = new Epreuve(sport, pays);
-        Epreuve epreuve1 = new Epreuve(sport1, pays);
-        Epreuve epreuve2 = new Epreuve(sport2, pays1);
-        Epreuve epreuve3 = new Epreuve(sport3, pays1);
-        Epreuve epreuve4 = new Epreuve(sport4, pays2);
-        Epreuve epreuve5 = new Epreuve(sport5, pays2);
-        Epreuve epreuve6 = new Epreuve(sport6, pays);
+        //Epreuve epreuve = new Epreuve(sport, pays);
+        //Epreuve epreuve1 = new Epreuve(sport1, pays);
+        //Epreuve epreuve2 = new Epreuve(sport2, pays1);
+        //Epreuve epreuve3 = new Epreuve(sport3, pays1);
+        //Epreuve epreuve4 = new Epreuve(sport4, pays2);
+        //Epreuve epreuve5 = new Epreuve(sport5, pays2);
+        //Epreuve epreuve6 = new Epreuve(sport6, pays);
         
         
        
@@ -336,7 +171,7 @@ public class JeuOlympiquesTest {
     @Test
     public void testAjouterPays() {
         JeuOlympiques.ajouterPays("France");
-        assertEquals(4, JeuOlympiques.getLesPays().size());
+        assertEquals(3, JeuOlympiques.getLesPays().size());
     }
     @Test 
     public void testAjouterSport() {

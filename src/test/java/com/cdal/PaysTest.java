@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -73,16 +74,21 @@ public class PaysTest {
     public void testGetLesEquipes() {
         Equipe e1 = new Equipe("e1", pays);
         Equipe e2 = new Equipe("e2", pays);
-        assertEquals(e1, pays.getLesEquipes());
-        assertEquals(e2, pays.getLesEquipes());
+
+        pays.enregistrerEquipe(e1);
+        pays.enregistrerEquipe(e2);
+
+        assertEquals(Arrays.asList(e1,e2), pays.getLesEquipes());
+       
     }
 
     @Test
     public void testGetLesAthletes() {
         Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0);
         Athlete a2 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0);
-        assertEquals(a1, pays.getLesAthletes());
-        assertEquals(a2, pays.getLesAthletes());
+        pays.enregistrerAthlete(a1);
+        pays.enregistrerAthlete(a2);
+        assertEquals(Arrays.asList(a1,a2), pays.getLesAthletes());
     }
 
     @Test

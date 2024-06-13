@@ -21,7 +21,7 @@ public class EpreuveTest {
 
     @Test
     public void testGetNomEp() {
-        assertEquals("Course", epreuve.getNomEpreuve());
+        assertEquals("50m", epreuve.getNomEpreuve());
     }
 
     @Test
