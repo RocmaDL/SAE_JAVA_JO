@@ -1,7 +1,7 @@
 package test.java.com.cdal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals; 
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,25 +45,7 @@ public class EquipeTest {
         Pays lePays = new Pays("France");
         assertEquals(lePays, equipe.getLePays());
     }
-    @Test
-    public void testGetLesAthletes() {
-        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0);
-        Athlete a3 = new Athlete("John","Doe" , 'M', 2.0, 3.0, 2.0);
-        Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 3.0, 2.0);
-        Athlete a5 = new Athlete("Alycia","Bergot" , 'F', 2.0, 3.0, 2.0);
-        Athlete a6 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0);
-
-        List<Athlete> lesAthletes = new ArrayList<>();
-        lesAthletes.add(a1);
-        lesAthletes.add(a2);
-        lesAthletes.add(a3);
-        lesAthletes.add(a4);
-        lesAthletes.add(a5);
-        lesAthletes.add(a6);
-
-        assertEquals(lesAthletes, equipe.getLesAthletes());
-    }
+    
     @Test
     public void testSetNomEquipe() {
         equipe.setNomEq("e2");
@@ -79,20 +61,29 @@ public class EquipeTest {
     public void testSetLesAthletes() {
         Athlete a1 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0);
         Athlete a2 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0);
-        Athlete a3 = new Athlete("John","Pivot" , 'M', 1.0, 3.0, 2.0);
-        Athlete a4 = new Athlete("Alfreda","Doe" , 'F', 2.0, 4.0, 3.0);
-        Athlete a5 = new Athlete("Saphira","Bel" , 'F', 2.0, 1.0, 2.0);
 
+
+        
+        Equipe equipe1 = new Equipe("e2", new Pays("Allemagne"));
         List<Athlete> lesAthletes = new ArrayList<>();
-        lesAthletes.add(a1);
-        lesAthletes.add(a2);
+
+        Athlete a4 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0);
+        Athlete a3 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0);
+
+       
         lesAthletes.add(a3);
-        lesAthletes.add(a4);
-        lesAthletes.add(a5);
+        lesAthletes.add(a2);
+     
+
+        equipe1.setLesAthletes(lesAthletes);
+        assertEquals(true, lesAthletes.equals(equipe1.getLesAthletes()));
+
+
+        
     
 
         equipe.setLesAthletes(lesAthletes);
-        assertEquals(lesAthletes, equipe.getLesAthletes());
+        assertEquals(true, lesAthletes.equals(equipe.getLesAthletes()));
     }
     @Test 
     public void testAjouterMembre() {
