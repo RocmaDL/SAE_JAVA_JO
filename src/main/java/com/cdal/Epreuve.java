@@ -122,7 +122,7 @@ public class Epreuve {
         }
         Epreuve tmp = (Epreuve) obj;
         return this.nomEpreuve.equals(tmp.nomEpreuve) && this.scoreMax == tmp.scoreMax && this.sexe == tmp.sexe
-                && this.sport.equals(tmp.sport);
+                && this.sport.getNom().equals(tmp.sport.getNom());
     }
 
     @Override

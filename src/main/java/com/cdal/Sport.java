@@ -7,8 +7,10 @@ import java.util.Map;
 
 /**
  * Représente un sport avec ses épreuves, caractéristiques et unité de mesure.
- * Un sport est caractérisé par son nom, une liste d'épreuves associées, un ensemble de coefficients
- * représentant les caractéristiques physiques requises (force, agilité, endurance) et une unité de mesure.
+ * Un sport est caractérisé par son nom, une liste d'épreuves associées, un
+ * ensemble de coefficients
+ * représentant les caractéristiques physiques requises (force, agilité,
+ * endurance) et une unité de mesure.
  */
 public class Sport {
     /**
@@ -24,21 +26,22 @@ public class Sport {
     private Unite unite;
 
     /**
-     * Constructeur pour créer un sport avec des coefficients spécifiques pour les caractéristiques physiques.
+     * Constructeur pour créer un sport avec des coefficients spécifiques pour les
+     * caractéristiques physiques.
      * 
-     * @param nom Nom du sport.
-     * @param force Coefficient de force.
-     * @param agilite Coefficient d'agilité.
+     * @param nom       Nom du sport.
+     * @param force     Coefficient de force.
+     * @param agilite   Coefficient d'agilité.
      * @param endurance Coefficient d'endurance.
-     * @param unite Unité de mesure pour les résultats des épreuves.
+     * @param unite     Unité de mesure pour les résultats des épreuves.
      */
-    public Sport(String nom , double force , double agilite , double endurance , Unite unite) {
+    public Sport(String nom, double force, double agilite, double endurance, Unite unite) {
         this.nom = nom;
         this.lesEpreuves = new ArrayList<>();
         this.LesCoefficients = new HashMap<>();
 
-        this.LesCoefficients.put(Caracteristique.FORCE , force );
-        this.LesCoefficients.put(Caracteristique.AGILITE , agilite);
+        this.LesCoefficients.put(Caracteristique.FORCE, force);
+        this.LesCoefficients.put(Caracteristique.AGILITE, agilite);
         this.LesCoefficients.put(Caracteristique.ENDURANCE, endurance);
         this.unite = unite;
     }
@@ -46,7 +49,7 @@ public class Sport {
     /**
      * Constructeur pour créer un sport avec une liste d'épreuves prédéfinies.
      * 
-     * @param nom Nom du sport.
+     * @param nom         Nom du sport.
      * @param lesEpreuves Liste des épreuves associées au sport.
      */
     public Sport(String nom, List<Epreuve> lesEpreuves) {
@@ -104,7 +107,7 @@ public class Sport {
      * 
      * @return Map des coefficients des caractéristiques.
      */
-    public Map<Caracteristique,Double> getCoefficient(){     
+    public Map<Caracteristique, Double> getCoefficient() {
         return this.LesCoefficients;
     }
 
@@ -113,7 +116,7 @@ public class Sport {
      * 
      * @param nvCoefficients Nouveaux coefficients des caractéristiques.
      */
-    public void setCoefficient( Map<Caracteristique,Double> nvCoefficients){
+    public void setCoefficient(Map<Caracteristique, Double> nvCoefficients) {
         this.LesCoefficients = nvCoefficients;
     }
 
@@ -141,13 +144,11 @@ public class Sport {
         if (!(obj instanceof Sport))
             return false;
         Sport tmp = (Sport) obj;
-        return this.nom.equals(tmp.nom) && this.lesEpreuves.equals(tmp.lesEpreuves)
-                && this.LesCoefficients.equals(tmp.LesCoefficients) && this.unite.equals(tmp.unite);
+        return this.nom.equals(tmp.nom) && this.LesCoefficients.equals(tmp.LesCoefficients) && this.unite.equals(tmp.unite);
     }
 
     @Override
     public int hashCode() {
-        return this.nom.hashCode() + this.lesEpreuves.hashCode() + this.LesCoefficients.hashCode()
-                + this.unite.hashCode();
+        return this.nom.hashCode() + this.unite.hashCode();
     }
 }

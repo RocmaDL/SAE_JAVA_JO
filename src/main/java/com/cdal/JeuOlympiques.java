@@ -160,8 +160,24 @@ public class JeuOlympiques {
             String[] sport = donnees[4].split(" ");
             Sport s = new Sport(sport[0], 1.0, 1.0, 1.0, Unite.TEMPS); // ! Les coefficients et les unites sont
                                                                        // arbitraires
-            Epreuve e = new Epreuve(sport.length == 1 ? sport[0] : sport[1], 100, donnees[2].charAt(0), s);
+            String nomEpreuve = "";
+            if (sport.length == 1) {
+                nomEpreuve = sport[0];
+            } else {
+                for (int i = 1; i < sport.length; i++) {
+                    nomEpreuve += sport[i] + " ";
+                }
+            }
+            Epreuve e = new Epreuve(nomEpreuve, 100, donnees[2].charAt(0), s);
             Pays p = new Pays(donnees[3]);
+
+            if (!this.getLesPays().contains(p)) {
+                p.enregistrerAthlete(a);
+                this.getLesPays().add(p);
+            } else {
+                p = this.getLesPays().get(this.getLesPays().indexOf(p));
+                p.enregistrerAthlete(a);
+            }
 
             if (!(this.lesParticipations.keySet().contains(e))) {
                 this.lesParticipations.put(e, new HashSet<Participer>());
@@ -170,20 +186,13 @@ public class JeuOlympiques {
             List<String> lesNomsDesSportsCollective = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball"));
             if (lesNomsDesSportsCollective.contains(sport[0])) {
                 Equipe eq = new Equipe(s.getNom(), p);
-                if (new Pays(p.getNom()).getLesEquipes().contains(eq)) {
+                if (p.getLesEquipes().contains(eq)) {
                     eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
                     eq.ajouterMembre(a);
                 } else {
                     eq.ajouterMembre(a);
                     p.enregistrerEquipe(eq);
                 }
-            }
-
-            if (!this.getLesPays().contains(p)) {
-                p.enregistrerAthlete(a);
-                this.getLesPays().add(p);
-            } else {
-                this.getLesPays().get(this.getLesPays().indexOf(p)).enregistrerAthlete(a);
             }
 
             if (!this.getLesSports().contains(s)) {
