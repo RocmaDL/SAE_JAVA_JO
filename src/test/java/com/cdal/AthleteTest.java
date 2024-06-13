@@ -98,6 +98,8 @@ public class AthleteTest {
                 + lesCoeffs.get(Caracteristique.ENDURANCE)) *10 ,result);
     }
 
+    
+
  
 
 }

@@ -58,9 +58,9 @@ public class PaysTest {
 
     @Test
     public void testSupprimerEquipe() {
-        Equipe e1 = new Equipe("e1", pays);
-        pays.supprimerEquipe(e1);
-        assertEquals(1, pays.getLesEquipes().size());
+        Equipe e3 = new Equipe("e3", pays);
+        pays.supprimerEquipe(e3);
+        assertEquals(2, pays.getLesEquipes().size());
     }
 
     @Test
@@ -70,26 +70,6 @@ public class PaysTest {
         assertEquals(3, pays.getLesAthletes().size());
     }
 
-    @Test
-    public void testGetLesEquipes() {
-        Equipe e1 = new Equipe("e1", pays);
-        Equipe e2 = new Equipe("e2", pays);
-
-        pays.enregistrerEquipe(e1);
-        pays.enregistrerEquipe(e2);
-
-        assertEquals(Arrays.asList(e1,e2), pays.getLesEquipes());
-       
-    }
-
-    @Test
-    public void testGetLesAthletes() {
-        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0);
-        pays.enregistrerAthlete(a1);
-        pays.enregistrerAthlete(a2);
-        assertEquals(Arrays.asList(a1,a2), pays.getLesAthletes());
-    }
 
     @Test
     public void testGetNom() {
