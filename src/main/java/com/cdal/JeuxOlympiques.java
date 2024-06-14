@@ -18,7 +18,7 @@ import java.io.FileReader;
  * Elle permet d'ajouter des pays, des sports, d'enregistrer des épreuves, de
  * lancer des épreuves et d'inscrire des participants.
  */
-public class JeuOlympiques {
+public class JeuxOlympiques {
     private List<Pays> lesPays; // Liste des pays participants.
     private List<Sport> lesSports; // Liste des sports disputés.
     private Map<Epreuve, Set<Participer>> lesParticipations; // Map des participations aux épreuves.
@@ -32,7 +32,7 @@ public class JeuOlympiques {
      * @param lesSports         Liste des sports disputés.
      * @param lesParticipations Map des participations aux épreuves.
      */
-    public JeuOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations) {
+    public JeuxOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations) {
         this.lesPays = new ArrayList<>(lesPays);
         this.lesSports = new ArrayList<>(lesSports);
         this.lesParticipations = new HashMap<>(lesParticipations);
@@ -42,7 +42,7 @@ public class JeuOlympiques {
      * Constructeur par défaut pour initialiser les jeux olympiques sans pays,
      * sports ou participations pré-définis.
      */
-    public JeuOlympiques() {
+    public JeuxOlympiques() {
         this.lesPays = new ArrayList<>();
         this.lesSports = new ArrayList<>();
         this.lesParticipations = new HashMap<>();

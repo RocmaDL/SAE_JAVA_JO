@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import main.java.com.cdal.*;
 
-public class JeuOlympiquesTest {
-    private JeuOlympiques JeuOlympiques;
+public class JeuxOlympiquesTest {
+    private JeuOlympiques JeuxOlympiques;
 
     @BeforeEach
     public void setUp(){
@@ -170,14 +170,14 @@ public class JeuOlympiquesTest {
 
     @Test
     public void testAjouterPays() {
-        JeuOlympiques.ajouterPays("France");
-        assertEquals(3, JeuOlympiques.getLesPays().size());
+        JeuxOlympiques.ajouterPays("France");
+        assertEquals(3, JeuxOlympiques.getLesPays().size());
     }
     @Test 
     public void testAjouterSport() {
         Sport sport = new Sport("Natation", 1.0, 1.0, 1.0, Unite.TEMPS);
-        JeuOlympiques.ajouterSport(sport);
-        assertEquals(9, JeuOlympiques.getLesSports().size());
+        JeuxOlympiques.ajouterSport(sport);
+        assertEquals(9, JeuxOlympiques.getLesSports().size());
     }
      
     
