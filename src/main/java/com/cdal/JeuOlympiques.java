@@ -22,6 +22,7 @@ public class JeuOlympiques {
     private List<Pays> lesPays; // Liste des pays participants.
     private List<Sport> lesSports; // Liste des sports disputés.
     private Map<Epreuve, Set<Participer>> lesParticipations; // Map des participations aux épreuves.
+    private <Epreuve,  Map<Participer, Double>> resultats;
 
     /**
      * Constructeur avec paramètres pour initialiser les jeux olympiques avec des
