@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Collections;
 
 /**
  * Classe représentant les Jeux Olympiques.
@@ -22,7 +23,7 @@ public class JeuxOlympiques {
     private List<Pays> lesPays; // Liste des pays participants.
     private List<Sport> lesSports; // Liste des sports disputés.
     private Map<Epreuve, Set<Participer>> lesParticipations; // Map des participations aux épreuves.
-    private <Epreuve,  Map<Participer, Double>> resultats;
+    private Map<Epreuve,  Map<Participer, Double>> resultats; // Map des résultats des épreuves.
 
     /**
      * Constructeur avec paramètres pour initialiser les jeux olympiques avec des
@@ -31,11 +32,13 @@ public class JeuxOlympiques {
      * @param lesPays           Liste des pays participants.
      * @param lesSports         Liste des sports disputés.
      * @param lesParticipations Map des participations aux épreuves.
+     * @param resultats         Map des résultats des épreuves.
      */
-    public JeuxOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations) {
+    public JeuxOlympiques(List<Pays> lesPays, List<Sport> lesSports, Map<Epreuve, Set<Participer>> lesParticipations, Map<Epreuve,  Map<Participer, Double>> resultats) {
         this.lesPays = new ArrayList<>(lesPays);
         this.lesSports = new ArrayList<>(lesSports);
         this.lesParticipations = new HashMap<>(lesParticipations);
+        this.resultats = new HashMap<>(resultats);
     }
 
     /**
@@ -46,6 +49,7 @@ public class JeuxOlympiques {
         this.lesPays = new ArrayList<>();
         this.lesSports = new ArrayList<>();
         this.lesParticipations = new HashMap<>();
+        this.resultats = new HashMap<>();
     }
 
     /**
@@ -122,6 +126,50 @@ public class JeuxOlympiques {
         return resultatEpreuve;
     }
 
+
+    /**
+     * Enregistre le résultat d'une épreuve donnée.
+     * Cette méthode lance l'épreuve spécifiée, récupère les résultats sous forme d'une Map où chaque participant
+     * est associé à son score, puis stocke ces résultats dans la Map des résultats de l'instance.
+     *
+     * @param e L'épreuve dont le résultat doit être enregistré.
+     */
+    public void enregistrerResultat(Epreuve e ) {
+        Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
+        this.resultats.put(e, resultatEpreuve);
+    }
+
+
+    //public  Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe, Map<Participer, Double> resultatEpreuve){
+    //    List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
+    //    Collections.sort(lesResultats);
+//
+//
+//
+    //    Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
+    //    for (Participer p : this.getLesParticipations().get(e)) {
+    //        if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) {
+    //            resultatEpreuve.remove(p);
+//
+    //            
+    //            
+//
+    //           
+//
+//
+    //        }
+//
+    //
+    //    }
+//
+    //}
+
+
+
+    public Map<Epreuve,  Map<Participer, Double>> getResultats() {
+        return this.resultats;
+    }
+
     public Pays getPays(String nom) {
         for (Pays p : this.getLesPays()) {
             if (p.getNom().equals(nom)) {
@@ -159,8 +207,79 @@ public class JeuxOlympiques {
             Athlete a = new Athlete(donnees[0], donnees[1], donnees[2].charAt(0), Double.parseDouble(donnees[5]),
                     Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]));
             String[] sport = donnees[4].split(" ");
-            Sport s = new Sport(sport[0], 1.0, 1.0, 1.0, Unite.TEMPS); // ! Les coefficients et les unites sont
-                                                                       // arbitraires
+
+            Map<Caracteristique, Double> LesCoefficients = new HashMap<>();
+
+            
+            
+            switch (sport[0]) {
+                case "Natation":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 5.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 4.0);
+                        Unite uniteBis = Unite.TEMPS;
+                        break;
+                    }
+            // double force, double agilite, double endurance, Unite unite
+                case "Athlétisme":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 4.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 6.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 8.0);
+                        Unite uniteBis = Unite.TEMPS;
+                        break;
+                    }
+                case "Handball":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 7.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 5.0);
+                        Unite uniteBis = Unite.POINT;
+                        break;
+                    }
+                case "Volley-Ball":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 6.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 4.0);
+                        Unite uniteBis = Unite.POINT;
+                        break;
+                    }
+                case "Escrime":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 3.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 6.0);
+                        Unite uniteBis = Unite.POINT;
+                        break;
+                    }
+                case "Athlétisme relais 400m":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 9.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 7.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 5.0);
+                        Unite uniteBis = Unite.TEMPS;
+                        break;
+                    }
+                case "Natation relais libre":
+                    {
+                        LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
+                        LesCoefficients.put(Caracteristique.FORCE, 5.0);
+                        LesCoefficients.put(Caracteristique.AGILITE, 4.0);
+                        Unite uniteBis = Unite.TEMPS;
+                        break;
+                    }
+                default:
+                    {
+                        Unite uniteBis = Unite.POINT;
+                        break;
+                    }
+            }
+            
+            
+            Sport s = new Sport(sport[0], LesCoefficients.get(Caracteristique.FORCE), LesCoefficients.get(Caracteristique.ENDURANCE), LesCoefficients.get(Caracteristique.AGILITE), uniteBis); // ! Les coefficients et les unites sont arbitraires
+
             String nomEpreuve = "";
             if (sport.length == 1) {
                 nomEpreuve = sport[0];
@@ -184,8 +303,8 @@ public class JeuxOlympiques {
                 this.lesParticipations.put(e, new HashSet<Participer>());
             }
 
-            List<String> lesNomsDesSportsCollective = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball"));
-            if (lesNomsDesSportsCollective.contains(sport[0])) {
+            List<String> lesNomsDesSportsCollectifs = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball","Athlétisme relais 400m","Natation relais libre"));
+            if (lesNomsDesSportsCollectifs.contains(sport[0])) {
                 Equipe eq = new Equipe(s.getNom(), p);
                 if (p.getLesEquipes().contains(eq)) {
                     eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
