@@ -13,6 +13,7 @@ public class Athlete implements Participer {
     private double force; // La force de l'athlète
     private double agilite; // L'agilité de l'athlète
     private double endurance; // L'endurance de l'athlète
+    private Pays pays; // Le pays de l'athlète
 
     /**
      * Constructeur de la classe Athlete.
@@ -23,14 +24,16 @@ public class Athlete implements Participer {
      * @param force     La force de l'athlète
      * @param agilite   L'agilité de l'athlète
      * @param endurance L'endurance de l'athlète
+     * @param pays      Le pays de l'athlète
      */
-    public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance) {
+    public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance, Pays pays) {
         this.nomAt = nomAt;
         this.prenomAt = prenomAt;
         this.sexe = sexe;
         this.force = force;
         this.agilite = agilite;
         this.endurance = endurance;
+        this.pays = pays;
     }
 
     /**
@@ -100,6 +103,13 @@ public class Athlete implements Participer {
     public void setEndurance(double endurance) {
         this.endurance = endurance;
     }
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
 
     @Override
     public String toString() {
@@ -129,5 +139,7 @@ public class Athlete implements Participer {
                 + (int) endurance
                         * 41;
     }
+
+    
 
 }

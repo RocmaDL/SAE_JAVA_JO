@@ -2,12 +2,14 @@ package main.java.com.cdal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Pays {
 
     private String nom;
     private List<Equipe> lesEquipes;
     private List<Athlete> lesAthletes;
+    private Map<String, Integer > medailles;
 
     /**
      * Constructeur qui met à jour les attributs de la classe Pays
@@ -92,6 +94,40 @@ public class Pays {
         this.nom = nom;
     }
 
+    public Integer getNbMedailles() {
+        int res = 0;
+        for (Integer med : this.medailles.values()){
+            res +=med;
+
+        }
+        return res;
+    }
+    public Integer getNbMedaillesCouleur(String typeMedaille) {
+        int res = 0;
+        for (String  med : this.medailles.keySet()){
+            if (typeMedaille.equals(med)){
+                res +=1;
+            }
+               
+
+        }
+        return res;
+    }
+
+    public void addMedailles(String typeMedaille) {
+        for (String  med : this.medailles.keySet()){
+            if (typeMedaille.equals(med)){
+                this.medailles.replace(med, getNbMedaillesCouleur(typeMedaille), this.medailles.get(typeMedaille)+1);
+
+            }
+            else {
+                // Si le type de médaille n'existe pas, on met 0
+                this.medailles.put(typeMedaille, 0);
+            }
+            
+        }
+    }
+
     /**
      * Compte le nombre d'athlètes individuels du pays
      * 
@@ -122,4 +158,6 @@ public class Pays {
     public int hashCode() {
         return this.nom.hashCode();
     }
+
+    
 }

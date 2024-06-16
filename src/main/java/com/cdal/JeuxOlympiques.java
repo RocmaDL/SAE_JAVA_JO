@@ -1,16 +1,14 @@
 package main.java.com.cdal;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Classe représentant les Jeux Olympiques.
@@ -164,6 +162,26 @@ public class JeuxOlympiques {
 //
     //}
 
+    public void attribuerMedailles (Epreuve e ){
+        Map<Participer, Double> resEpreuve = this.resultats.get(e);   // !!! Prendre les résultats triées de l'épreuve e
+        for (int i = 0; i < 3 ; i++) {
+            Participer p = (Participer) resEpreuve.keySet().toArray()[i];
+            Pays pays = p.getPays();
+            pays.addMedailles(); /// !! Spécifier le type de médaille
+
+            
+        }
+
+
+
+        // On récupère le pays du premier, du dueuxième et du troisième d'une Epreuve
+        // Puis on leur ajoute une médaille
+        // Une en Or, une en Argent et une en Bronze
+
+        
+
+    }
+
 
 
     public Map<Epreuve,  Map<Participer, Double>> getResultats() {
@@ -205,7 +223,7 @@ public class JeuxOlympiques {
         while ((ligne = br.readLine()) != null) {
             String[] donnees = ligne.split(",");
             Athlete a = new Athlete(donnees[0], donnees[1], donnees[2].charAt(0), Double.parseDouble(donnees[5]),
-                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]));
+                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]),new Pays(donnees[3]));  // !!! Changement du constructeur car besoin dans fonction AttribuerMedailles
             String[] sport = donnees[4].split(" ");
 
             Map<Caracteristique, Double> LesCoefficients = new HashMap<>();
@@ -291,7 +309,7 @@ public class JeuxOlympiques {
             Epreuve e = new Epreuve(nomEpreuve, 100, donnees[2].charAt(0), s);
             Pays p = new Pays(donnees[3]);
 
-            if (!this.getLesPays().contains(p)) {
+            if (!this.getLesPays().contains(p)) {      
                 p.enregistrerAthlete(a);
                 this.getLesPays().add(p);
             } else {
