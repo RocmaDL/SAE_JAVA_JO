@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collections;
 
 /**
  * Classe représentant les Jeux Olympiques.
@@ -138,21 +139,16 @@ public class JeuxOlympiques {
     }
 
 
-    //public  Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe, Map<Participer, Double> resultatEpreuve){
+    //public  Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe){
+    //    Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
     //    List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
     //    Collections.sort(lesResultats);
 //
-//
-//
     //    Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
     //    for (Participer p : this.getLesParticipations().get(e)) {
-    //        if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) {
+    //        if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) { //!!! Pour Rocma
     //            resultatEpreuve.remove(p);
 //
-    //            
-    //            
-//
-    //           
 //
 //
     //        }
@@ -167,8 +163,24 @@ public class JeuxOlympiques {
         for (int i = 0; i < 3 ; i++) {
             Participer p = (Participer) resEpreuve.keySet().toArray()[i];
             Pays pays = p.getPays();
-            pays.addMedailles(); /// !! Spécifier le type de médaille
 
+            switch(i){
+                case 0 :
+                    {
+                    pays.addMedailles("Or"); 
+
+                    }
+                case 1 :
+                    {
+                    pays.addMedailles("Argent");
+                }
+                case 2 :
+                    {
+                    pays.addMedailles("Bronze");
+
+                    }
+            }
+           
             
         }
 

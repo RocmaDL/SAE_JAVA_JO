@@ -1,6 +1,7 @@
 package main.java.com.cdal;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,13 @@ public class Pays {
         this.nom = nom;
         this.lesEquipes = new ArrayList<>();
         this.lesAthletes = new ArrayList<>();
+        this.medailles = new HashMap<>();
+        this.medailles.put("Or", 0);
+        this.medailles.put("Argent", 0);
+        this.medailles.put("Bronze", 0);
+
+        
+        
     }
 
     /**
@@ -94,7 +102,7 @@ public class Pays {
         this.nom = nom;
     }
 
-    public Integer getNbMedailles() {
+    public Integer getTotalNbMedailles() {
         int res = 0;
         for (Integer med : this.medailles.values()){
             res +=med;
