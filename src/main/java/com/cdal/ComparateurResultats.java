@@ -18,7 +18,7 @@ public class ComparateurResultats implements Comparator<JeuxOlympiques>{
     public int compare(JeuxOlympiques entree1, JeuxOlympiques entree2 ){
     //Le tri se fait dans l'ordre ascendant. 
     //si vous souhaitez changer l'ordre de tri
-        return (entree1.getValue()).compareTo(entree2.getValue());
+    return 0;
     }
 
 
