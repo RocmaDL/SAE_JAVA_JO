@@ -23,7 +23,7 @@ public class EquipeTest {
         Athlete a3 = new Athlete("John","Doe" , 'M', 4.0, 3.0, 1.0,lePays);
         Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 1.0, 2.0,lePays);
         Athlete a5 = new Athlete("Alycia","Bergot" , 'F', 2.0, 5.0, 2.0,lePays);
-        Athlete a6 = new Athlete("Saphira","Jane" , 'F', 1.0, 3.0, 3.0),lePays;
+        Athlete a6 = new Athlete("Saphira","Jane" , 'F', 1.0, 3.0, 3.0,lePays);
 
         List<Athlete> lesAthletes = new ArrayList<>();
         lesAthletes.add(a1);

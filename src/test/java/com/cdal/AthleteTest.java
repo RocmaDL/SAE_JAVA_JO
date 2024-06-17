@@ -89,7 +89,7 @@ public class AthleteTest {
     @Test
     public void testParticiper() {
         Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);
-        Epreuve epreuve = new Epreuve("50m", 9, 'M', sport);
+        Epreuve epreuve = new Epreuve("50m", 'M', sport);
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
         double result = athlete.participer(epreuve);
         assertEquals((lesCoeffs.get(Caracteristique.FORCE) * athlete.getForce() +
@@ -100,7 +100,7 @@ public class AthleteTest {
     }
     @Test 
     public void testHashCode(){
-        Athlete athlete1 = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0);
+        Athlete athlete1 = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0,pays);
         assertEquals(athlete.hashCode(),athlete1.hashCode());
 
     }

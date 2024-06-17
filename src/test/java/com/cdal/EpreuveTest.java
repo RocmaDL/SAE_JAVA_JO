@@ -16,7 +16,7 @@ public class EpreuveTest {
     @BeforeEach
     public void setUp() {
         Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);
-        epreuve = new Epreuve("50m", 9, 'M', sport);
+        epreuve = new Epreuve("50m",'M', sport);
     }
 
     @Test

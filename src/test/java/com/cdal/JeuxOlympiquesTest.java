@@ -42,10 +42,10 @@ public class JeuxOlympiquesTest {
         Equipe e6 = new Equipe("e6",pays2, lesAthletes5);
 
         
-        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0);
-        Athlete a3 = new Athlete("John","Doe" , 'M', 2.0, 3.0, 2.0);
-        Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 3.0, 2.0);
+        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0,pays);
+        Athlete a2 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0,pays);
+        Athlete a3 = new Athlete("John","Doe" , 'M', 2.0, 3.0, 2.0,pays);
+        Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 3.0, 2.0,pays);
 
         e1.ajouterMembre(a1);
         e1.ajouterMembre(a2);
@@ -53,40 +53,40 @@ public class JeuxOlympiquesTest {
         e1.ajouterMembre(a4);
         
 
-        Athlete a5 = new Athlete("Alycia","Bgot" , 'F', 1.0, 3.0, 3.0);
-        Athlete a6 = new Athlete("Saphira","Bark" , 'F', 4.0, 3.0, 1.0);
-        Athlete a7 = new Athlete("Franck","Illyat" , 'F', 2.0, 1.0, 2.0);
-        Athlete a8 = new Athlete("Bilel","Janz" , 'F', 2.0, 2.0, 3.0);
+        Athlete a5 = new Athlete("Alycia","Bgot" , 'F', 1.0, 3.0, 3.0,pays);
+        Athlete a6 = new Athlete("Saphira","Bark" , 'F', 4.0, 3.0, 1.0,pays);
+        Athlete a7 = new Athlete("Franck","Illyat" , 'F', 2.0, 1.0, 2.0,pays);
+        Athlete a8 = new Athlete("Bilel","Janz" , 'F', 2.0, 2.0, 3.0,pays);
 
         e2.ajouterMembre(a5);
         e2.ajouterMembre(a6);
         e2.ajouterMembre(a7);
         e2.ajouterMembre(a8);
 
-        Athlete a9 = new Athlete("Bertrand","ALibaba" , 'F', 1.0, 2.0, 1.0);
-        Athlete a10 = new Athlete("Babou","Loris" , 'M', 4.0, 2.0, 1.0);
-        Athlete a11 = new Athlete("Francis","Ngannou" , 'M', 2.0, 1.0, 4.0);
-        Athlete a12 = new Athlete("Hassani","Bilal" , 'F', 2.0, 1.0, 2.0);
+        Athlete a9 = new Athlete("Bertrand","ALibaba" , 'F', 1.0, 2.0, 1.0,pays1);
+        Athlete a10 = new Athlete("Babou","Loris" , 'M', 4.0, 2.0, 1.0,pays1);
+        Athlete a11 = new Athlete("Francis","Ngannou" , 'M', 2.0, 1.0, 4.0,pays1);
+        Athlete a12 = new Athlete("Hassani","Bilal" , 'F', 2.0, 1.0, 2.0,pasy1);
 
         e3.ajouterMembre(a9);
         e3.ajouterMembre(a10);
         e3.ajouterMembre(a11);
         e3.ajouterMembre(a12);
 
-        Athlete a13 = new Athlete("Jojo","Ba" , 'F', 1.0, 1.0, 2.0);
-        Athlete a14 = new Athlete("Alie","Express" , 'F', 1.0, 2.0, 1.0);
-        Athlete a15 = new Athlete("Patrick","Sebastien" , 'F', 2.0, 3.0, 4.0);
-        Athlete a16 = new Athlete("George","Lardon" , 'M', 2.0, 4.0, 1.0);
+        Athlete a13 = new Athlete("Jojo","Ba" , 'F', 1.0, 1.0, 2.0,pays1);
+        Athlete a14 = new Athlete("Alie","Express" , 'F', 1.0, 2.0, 1.0,pays1);
+        Athlete a15 = new Athlete("Patrick","Sebastien" , 'F', 2.0, 3.0, 4.0,pays1);
+        Athlete a16 = new Athlete("George","Lardon" , 'M', 2.0, 4.0, 1.0,pays1);
 
         e4.ajouterMembre(a13);
         e4.ajouterMembre(a14);
         e4.ajouterMembre(a15);
         e4.ajouterMembre(a16);
 
-        Athlete a17 = new Athlete("Mohammed","Amin" , 'F', 1.0, 3.0, 2.0);
-        Athlete a18 = new Athlete("Boris","Lebreton" , 'M', 2.0, 2.0, 1.0);
-        Athlete a19 = new Athlete("Ahmed","Elalaoui" , 'M', 2.0, 3.0, 4.0);
-        Athlete a20 = new Athlete("Louis","Bridgeton" , 'M', 1.0, 2.0, 1.0);
+        Athlete a17 = new Athlete("Mohammed","Amin" , 'F', 1.0, 3.0, 2.0,pays2);
+        Athlete a18 = new Athlete("Boris","Lebreton" , 'M', 2.0, 2.0, 1.0,pays2);
+        Athlete a19 = new Athlete("Ahmed","Elalaoui" , 'M', 2.0, 3.0, 4.0,pays2);
+        Athlete a20 = new Athlete("Louis","Bridgeton" , 'M', 1.0, 2.0, 1.0,pays2);
 
 
         e5.ajouterMembre(a17);
@@ -94,10 +94,10 @@ public class JeuxOlympiquesTest {
         e5.ajouterMembre(a19);
         e5.ajouterMembre(a20);
 
-        Athlete a21 = new Athlete("Mohammed","Aziz" , 'F', 1.0, 3.0, 2.0);
-        Athlete a22 = new Athlete("Britney","Lebreton" , 'F', 2.0, 2.0, 1.0);
-        Athlete a23 = new Athlete("Ahmed","Babou" , 'M', 2.0, 3.0, 4.0);
-        Athlete a24 = new Athlete("Franck","Boucher" , 'M', 1.0, 2.0, 1.0);
+        Athlete a21 = new Athlete("Mohammed","Aziz" , 'F', 1.0, 3.0, 2.0,pays2);
+        Athlete a22 = new Athlete("Britney","Lebreton" , 'F', 2.0, 2.0, 1.0,pays2);
+        Athlete a23 = new Athlete("Ahmed","Babou" , 'M', 2.0, 3.0, 4.0,pays2);
+        Athlete a24 = new Athlete("Franck","Boucher" , 'M', 1.0, 2.0, 1.0,pays2);
 
         e6.ajouterMembre(a21);
         e6.ajouterMembre(a22);

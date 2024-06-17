@@ -48,8 +48,8 @@ public class SportTest {
     @Test
     public void testEnregistrerEpreuve() {
         List<Epreuve> listeEpreuves = new ArrayList<>();
-        Epreuve epreuve = new Epreuve("50m", 9, 'M', sport);
-        Epreuve epreuve1 = new Epreuve("100m", 9, 'F', sport);
+        Epreuve epreuve = new Epreuve("50m", 'M', sport);
+        Epreuve epreuve1 = new Epreuve("100m", 'F', sport);
         // listeEpreuves.enregistrerEpreuve();
         // epreuve1.enregistrerEpreuve();
         // assertEquals(listeEpreuves.get(0),epreuve);
@@ -60,7 +60,7 @@ public class SportTest {
     @Test
     public void testSupprimerEpreuve() {
         List<Epreuve> listeEpreuves = new ArrayList<>();
-        Epreuve epreuve = new Epreuve("50m", 9, 'M', sport);
+        Epreuve epreuve = new Epreuve("50m",'M', sport);
         // epreuve.enregistrerEpreuve();
         // epreuve.supprimerEpreuve();
         // assertEquals(0,listeEpreuves.size());
@@ -70,8 +70,8 @@ public class SportTest {
     @Test
     public void testGetlesEpreuves() {
         List<Epreuve> listeEpreuves = new ArrayList<>();
-        Epreuve epreuve = new Epreuve("50m", 9, 'M', sport);
-        Epreuve epreuve1 = new Epreuve("100m", 9, 'F', sport);
+        Epreuve epreuve = new Epreuve("50m",'M', sport);
+        Epreuve epreuve1 = new Epreuve("100m",'F', sport);
         // assertEquals((epreuve,epreuve1), listeEpreuves.getlesEpreuves());
 
     }
