@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * Classe représentant les Jeux Olympiques.
@@ -18,7 +19,7 @@ import java.util.Collections;
  * Elle permet d'ajouter des pays, des sports, d'enregistrer des épreuves, de
  * lancer des épreuves et d'inscrire des participants.
  */
-public class JeuxOlympiques {
+public class JeuxOlympiques  {
     private List<Pays> lesPays; // Liste des pays participants.
     private List<Sport> lesSports; // Liste des sports disputés.
     private Map<Epreuve, Set<Participer>> lesParticipations; // Map des participations aux épreuves.
@@ -125,6 +126,7 @@ public class JeuxOlympiques {
         return resultatEpreuve;
     }
 
+    
 
     /**
      * Enregistre le résultat d'une épreuve donnée.
@@ -139,25 +141,37 @@ public class JeuxOlympiques {
     }
 
 
-    //public  Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe){
-    //    Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
-    //    List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
-    //    Collections.sort(lesResultats);
-//
-    //    Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
-    //    for (Participer p : this.getLesParticipations().get(e)) {
-    //        if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) { //!!! Pour Rocma
-    //            resultatEpreuve.remove(p);
-//
-//
-//
-    //        }
-//
-    //
-    //    }
-//
-    //}
+    public Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe){
+        Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
+        List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
+        Collections.sort(lesResultats);
 
+
+        LinkedList liste = new LinkedList<>(resultatEpreuve.entrySet() );
+        Collections.sort(liste, new Comparator<>());
+
+        Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
+        for (Participer p : this.getLesParticipations().get(e)) {
+            if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) { 
+                resultatEpreuve.remove(p);
+
+
+
+            }
+
+    
+        }
+    }
+
+    
+
+    
+    
+    
+   
+
+
+    
     public void attribuerMedailles (Epreuve e ){
         Map<Participer, Double> resEpreuve = this.resultats.get(e);   // !!! Prendre les résultats triées de l'épreuve e
         for (int i = 0; i < 3 ; i++) {
