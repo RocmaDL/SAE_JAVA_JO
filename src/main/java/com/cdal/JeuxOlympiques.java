@@ -148,7 +148,10 @@ public class JeuxOlympiques  {
 
 
         LinkedList liste = new LinkedList<>(resultatEpreuve.entrySet() );
-        Collections.sort(liste, new Comparator<>());
+        Collections.sort(liste, new Comparator<>(){
+            @Override
+            public int compare()
+        });
 
         Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
         for (Participer p : this.getLesParticipations().get(e)) {

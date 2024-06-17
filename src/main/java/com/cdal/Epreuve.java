@@ -9,8 +9,7 @@ package main.java.com.cdal;
  */
 public class Epreuve {
 
-    private String nomEpreuve; // Nom de l'épreuve.
-    private int scoreMax; // Score maximum pouvant être atteint dans cette épreuve.
+    private String nomEpreuve; // Nom de l'épreuve
     private char sexe; // Sexe des participants ('M' pour masculin, 'F' pour féminin).
     private Sport sport; // Sport associé à l'épreuve.
 
@@ -19,13 +18,11 @@ public class Epreuve {
      * Initialise une nouvelle instance d'Epreuve avec les détails spécifiés.
      * 
      * @param nom      Le nom de l'épreuve.
-     * @param scoreMax Le score maximum pouvant être atteint.
      * @param sexe     Le sexe des participants ('M' ou 'F').
      * @param sport    Le sport associé à l'épreuve.
      */
-    public Epreuve(String nom, int scoreMax, char sexe, Sport sport) {
+    public Epreuve(String nom, char sexe, Sport sport) {
         this.nomEpreuve = nom;
-        this.scoreMax = scoreMax;
         this.sexe = sexe;
         this.sport = sport;
     }
@@ -48,23 +45,6 @@ public class Epreuve {
         this.nomEpreuve = nom;
     }
 
-    /**
-     * Retourne le score maximum de l'épreuve.
-     * 
-     * @return Le score maximum.
-     */
-    public int getScoreMax() {
-        return scoreMax;
-    }
-
-    /**
-     * Définit le score maximum de l'épreuve.
-     * 
-     * @param scoreMax Le nouveau score maximum.
-     */
-    public void setScoreMax(int scoreMax) {
-        this.scoreMax = scoreMax;
-    }
 
     /**
      * Retourne le sexe des participants de l'épreuve.
@@ -104,7 +84,7 @@ public class Epreuve {
 
     @Override
     public String toString() {
-        return "Epreuve [nomEpreuve=" + nomEpreuve + ", scoreMax=" + scoreMax + ", sexe=" + sexe + ", sport="
+        return "Epreuve [nomEpreuve=" + nomEpreuve + ", sexe=" + sexe + ", sport="
                 + sport.getNom()
                 + "]";
     }
@@ -121,12 +101,12 @@ public class Epreuve {
             return false;
         }
         Epreuve tmp = (Epreuve) obj;
-        return this.nomEpreuve.equals(tmp.nomEpreuve) && this.scoreMax == tmp.scoreMax && this.sexe == tmp.sexe
+        return this.nomEpreuve.equals(tmp.nomEpreuve) && this.sexe == tmp.sexe
                 && this.sport.getNom().equals(tmp.sport.getNom());
     }
 
     @Override
     public int hashCode() {
-        return this.nomEpreuve.hashCode() + this.scoreMax * 11 + this.sexe * 31 + this.sport.hashCode();
+        return this.nomEpreuve.hashCode() + this.sexe * 31 + this.sport.hashCode();
     }
 }
