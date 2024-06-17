@@ -43,7 +43,7 @@ public class EquipeTest {
     @Test
     public void testGetPays() {
         Pays lePays = new Pays("France");
-        assertEquals(lePays, equipe.getLePays());
+        assertEquals(lePays, equipe.getPays());
     }
     
     @Test
@@ -55,7 +55,7 @@ public class EquipeTest {
     public void testSetPays() {
         Pays lePays = new Pays("Allemagne");
         equipe.setLePays(lePays);
-        assertEquals(lePays, equipe.getLePays());
+        assertEquals(lePays, equipe.getPays());
     }
     @Test
     public void testSetLesAthletes() {
@@ -79,10 +79,6 @@ public class EquipeTest {
         equipe1.setLesAthletes(lesAthletes);
         assertEquals(true, lesAthletes.equals(equipe1.getLesAthletes()));
 
-
-        
-    
-
         equipe.setLesAthletes(lesAthletes);
         assertEquals(true, lesAthletes.equals(equipe.getLesAthletes()));
     }
@@ -104,14 +100,16 @@ public class EquipeTest {
         assertEquals(5, lesAthletes.size());
         assertEquals(false, lesAthletes.contains(a1));
     }
-    //@Test 
-    //public double participer() {
-    //   Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);;
-    //   Epreuve epreuve = new Epreuve("50m",9,'M', sport);
-    //    double score = equipe.participer(epreuve);
-    //    
-    //    assertEquals(, score);     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //} 
+    @Test 
+    public void testParticiper() {
+       Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);;
+       Epreuve epreuve = new Epreuve("50m",'M', sport);
+       double score = equipe.participer(epreuve);
+
+        
+        //assertEquals(, score);     
+
+    } 
 
 
 

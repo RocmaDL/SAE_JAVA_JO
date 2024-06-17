@@ -66,7 +66,7 @@ public class JeuxOlympiquesTest {
         Athlete a9 = new Athlete("Bertrand","ALibaba" , 'F', 1.0, 2.0, 1.0,pays1);
         Athlete a10 = new Athlete("Babou","Loris" , 'M', 4.0, 2.0, 1.0,pays1);
         Athlete a11 = new Athlete("Francis","Ngannou" , 'M', 2.0, 1.0, 4.0,pays1);
-        Athlete a12 = new Athlete("Hassani","Bilal" , 'F', 2.0, 1.0, 2.0,pasy1);
+        Athlete a12 = new Athlete("Hassani","Bilal" , 'F', 2.0, 1.0, 2.0,pays1);
 
         e3.ajouterMembre(a9);
         e3.ajouterMembre(a10);
@@ -126,45 +126,32 @@ public class JeuxOlympiquesTest {
         lesPays.add(pays2);
 
         Sport sport = new Sport("Natation", 1.0, 1.0, 1.0, Unite.TEMPS);
-        Sport sport1 = new Sport("Tennis", 2.0, 2.0, 2.0, Unite.POINT);
-        Sport sport2 = new Sport("Football", 3.0, 3.0, 3.0, Unite.BUT);
-        Sport sport3 = new Sport("Basketball", 2.0, 4.0, 1.0, Unite.POINT);
         Sport sport4 = new Sport("Volleyball", 3.0, 1.0, 1.0, Unite.POINT);
-        Sport sport5 = new Sport("Handball", 2.0, 1.0, 3.0,Unite.POINT);
-        Sport sport6 = new Sport("Athletisme", 1.0, 3.0, 1.0, Unite.TEMPS);
         Sport sport7 = new Sport("Escrime", 1.0, 1.0, 3.0, Unite.TOUCHE);
     
 
         lesSports.add(sport);
-        lesSports.add(sport1);
-        lesSports.add(sport2);
-        lesSports.add(sport3);
         lesSports.add(sport4);
-        lesSports.add(sport5);
-        lesSports.add(sport6);
         lesSports.add(sport7);
 
-        Map<Epreuve, Set<Participer>> lesParticipations;
-
+    
         Set<Participer> ensParticipants= new HashSet<>();
         Set<Participer> ensParticipants1= new HashSet<>();
         Set<Participer> ensParticipants2= new HashSet<>();
-        Set<Participer> ensParticipants3= new HashSet<>();
 
-        lesParticipations = new HashMap<>();
-        //Epreuve epreuve = new Epreuve(sport, pays);
-        //Epreuve epreuve1 = new Epreuve(sport1, pays);
-        //Epreuve epreuve2 = new Epreuve(sport2, pays1);
-        //Epreuve epreuve3 = new Epreuve(sport3, pays1);
-        //Epreuve epreuve4 = new Epreuve(sport4, pays2);
-        //Epreuve epreuve5 = new Epreuve(sport5, pays2);
-        //Epreuve epreuve6 = new Epreuve(sport6, pays);
         
-        
+        Epreuve epreuve = new Epreuve("100m",'M',sport);
+        Epreuve epreuve2 = new Epreuve("1vs1",'F',sport4);
+        Epreuve epreuve3 = new Epreuve("1vs1",'M',sport7);
        
+    
+        Map<Epreuve, Set<Participer>> lesParticipations = new HashMap<>();
+        lesParticipations.put(epreuve,ensParticipants);
+        lesParticipations.put(epreuve2,ensParticipants1);
+        lesParticipations.put(epreuve3,ensParticipants2);
+        
 
-        // Map<Epreuve, Set<Participer>> lesParticipations = new Map<>();
-        JeuOlympiques = new JeuOlympiques(lesPays, lesSports, lesParticipations);
+        JeuxOlympiques = new JeuxOlympiques();
     }
 
 
@@ -179,7 +166,7 @@ public class JeuxOlympiquesTest {
         JeuxOlympiques.ajouterSport(sport);
         assertEquals(9, JeuxOlympiques.getLesSports().size());
     }
-     
+    
     
 
     

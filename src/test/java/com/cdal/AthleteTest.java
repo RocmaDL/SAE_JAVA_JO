@@ -100,7 +100,8 @@ public class AthleteTest {
     }
     @Test 
     public void testHashCode(){
-        Athlete athlete1 = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0,pays);
+        Pays pays1 = new Pays("France");
+        Athlete athlete1 = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0,pays1);
         assertEquals(athlete.hashCode(),athlete1.hashCode());
 
     }

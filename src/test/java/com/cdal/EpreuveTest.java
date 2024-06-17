@@ -35,25 +35,42 @@ public class EpreuveTest {
     }
 
     @Test
-    public void testsetScoreMax() {
-        assertEquals(9, epreuve.getScoreMax());
-    }
-
-    @Test
     public void testSetSexe() {
         epreuve.setSexe('F');
         assertEquals('F', epreuve.getSexe());
     }
-
-    @Test
-    public void testGetScoreMax() {
-        assertEquals(9, epreuve.getScoreMax());
+    @Test 
+    public void testEquals(){
+        Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);
+        Epreuve epreuve2 = new Epreuve("50m",'M', sport);
+        assertEquals(true,epreuve.equals(epreuve2));
+    
     }
 
     @Test
-    public void testSetScoreMax() {
-        epreuve.setScoreMax(10);
-        assertEquals(10, epreuve.getScoreMax());
+    public void testHashCode(){
+        Sport sport = new Sport("Natation", 1.0, 2.0, 3.0, Unite.TEMPS);
+        Epreuve epreuve2 = new Epreuve("50m",'M', sport);
+        assertEquals(epreuve2.hashCode(),epreuve.hashCode());
+
+
     }
+
+    @Test
+    public void testToString(){
+        assertEquals("Epreuve [nomEpreuve=50m, sexe=M, sport=Natation]",epreuve.toString());
+
+    }
+    @Test 
+    public void testSetNomEpreuve(String nomEpreuve){
+        epreuve.setNomEpreuve("100m");
+        assertEquals("100m",epreuve.getNomEpreuve());
+        
+
+
+
+    }
+
+
 
 }

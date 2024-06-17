@@ -22,7 +22,7 @@ public class PaysTest {
         Athlete a3 = new Athlete("John", "Doe", 'M', 2.0, 3.0, 2.0,pays);
         Athlete a4 = new Athlete("Jane", "Doe", 'F', 2.0, 3.0, 2.0,pays);
         Athlete a5 = new Athlete("Alycia", "Bergot", 'F', 2.0, 3.0, 2.0,pays);
-        Athlete a6 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,Pays);
+        Athlete a6 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,pays);
 
         Equipe e1 = new Equipe("e1", pays);
         e1.ajouterMembre(a1);
@@ -51,7 +51,7 @@ public class PaysTest {
 
     @Test
     public void testEnregistrerAthlete() {
-        Athlete a7 = new Athlete("Aliba", "Berg", 'M', 2.0, 3.0, 2.0);
+        Athlete a7 = new Athlete("Aliba", "Berg", 'M', 2.0, 3.0, 2.0,pays);
         pays.enregistrerAthlete(a7);
         assertEquals(5, pays.getLesAthletes().size());
     }
@@ -65,7 +65,7 @@ public class PaysTest {
 
     @Test
     public void testSupprimerAthlete() {
-        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0);
+        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0,pays);
         pays.supprimerAthlete(a1);
         assertEquals(3, pays.getLesAthletes().size());
     }
@@ -86,5 +86,33 @@ public class PaysTest {
     public void testNombreAthletes() {
         assertEquals(4, pays.nombreAthletes());
 
+    }
+
+    @Test
+    public void testHashCode(){
+        Pays pays1 = new Pays("France");
+        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0,pays1);
+        Athlete a2 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,pays1);
+        Athlete a3 = new Athlete("John", "Doe", 'M', 2.0, 3.0, 2.0,pays1);
+        Athlete a4 = new Athlete("Jane", "Doe", 'F', 2.0, 3.0, 2.0,pays1);
+        Athlete a5 = new Athlete("Alycia", "Bergot", 'F', 2.0, 3.0, 2.0,pays1);
+        Athlete a6 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,pays1);
+
+        Equipe e1 = new Equipe("e1", pays1);
+        e1.ajouterMembre(a1);
+        e1.ajouterMembre(a2);
+        e1.ajouterMembre(a3);
+        Equipe e2 = new Equipe("e2", pays1);
+        e2.ajouterMembre(a4);
+        e2.ajouterMembre(a5);
+        e2.ajouterMembre(a6);
+
+        pays1.enregistrerEquipe(e1);
+        pays1.enregistrerEquipe(e2);
+        pays1.enregistrerAthlete(a1);
+        pays1.enregistrerAthlete(a2);
+        pays1.enregistrerAthlete(a3);
+        pays1.enregistrerAthlete(a4);
+        assertEquals(pays1.hashCode(),pays.hashCode());
     }
 }
