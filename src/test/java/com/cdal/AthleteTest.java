@@ -16,7 +16,8 @@ public class AthleteTest {
 
     @BeforeEach
     public void setUp() {
-        athlete = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0);
+        Pays pays = new Pays("France");
+        athlete = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0,pays);
     }
 
     @Test
@@ -97,6 +98,13 @@ public class AthleteTest {
         (lesCoeffs.get(Caracteristique.FORCE) + lesCoeffs.get(Caracteristique.AGILITE)
                 + lesCoeffs.get(Caracteristique.ENDURANCE)) *10 ,result);
     }
+    @Test 
+    public void testHashCode(){
+        Athlete athlete1 = new Athlete("Doe", "John", 'M', 1.0, 2.0, 3.0);
+        assertEquals(athlete.hashCode(),athlete1.hashCode());
+
+    }
+    
 
     
 

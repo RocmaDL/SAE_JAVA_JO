@@ -141,30 +141,30 @@ public class JeuxOlympiques  {
     }
 
 
-    public Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe){
-        Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
-        List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
-        Collections.sort(lesResultats);
-
-
-        LinkedList liste = new LinkedList<>(resultatEpreuve.entrySet() );
-        Collections.sort(liste, new Comparator<>(){
-            @Override
-            public int compare()
-        });
-
-        Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
-        for (Participer p : this.getLesParticipations().get(e)) {
-            if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) { 
-                resultatEpreuve.remove(p);
-
-
-
-            }
-
-    
-        }
-    }
+   // public Map<Participer, Double> trierResultatsParSexe(Epreuve e, char sexe){
+   //     Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
+   //     List<Double> lesResultats = new ArrayList<>(resultatEpreuve.values());
+   //     Collections.sort(lesResultats);
+//
+//
+   //     LinkedList liste = new LinkedList<>(resultatEpreuve.entrySet() );
+   //     Collections.sort(liste, new Comparator<>(){
+   //         @Override
+   //         //public int compare()
+   //     });
+//
+   //     Map<Participer, Double> resultatEpreuveTriee = new HashMap<>();
+   //     for (Participer p : this.getLesParticipations().get(e)) {
+   //         if (p instanceof Athlete && ((Athlete) p).getSexe() == sexe) { 
+   //             resultatEpreuve.remove(p);
+//
+//
+//
+   //         }
+//
+   // 
+   //     }
+   // }
 
     
 
@@ -258,14 +258,14 @@ public class JeuxOlympiques  {
             Map<Caracteristique, Double> LesCoefficients = new HashMap<>();
 
             
-            
+            Unite uniteBis;
             switch (sport[0]) {
                 case "Natation":
                     {
                         LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
                         LesCoefficients.put(Caracteristique.FORCE, 5.0);
                         LesCoefficients.put(Caracteristique.AGILITE, 4.0);
-                        Unite uniteBis = Unite.TEMPS;
+                        uniteBis = Unite.TEMPS;
                         break;
                     }
             // double force, double agilite, double endurance, Unite unite
@@ -274,7 +274,7 @@ public class JeuxOlympiques  {
                         LesCoefficients.put(Caracteristique.ENDURANCE, 4.0);
                         LesCoefficients.put(Caracteristique.FORCE, 6.0);
                         LesCoefficients.put(Caracteristique.AGILITE, 8.0);
-                        Unite uniteBis = Unite.TEMPS;
+                        uniteBis = Unite.TEMPS;
                         break;
                     }
                 case "Handball":
@@ -282,7 +282,7 @@ public class JeuxOlympiques  {
                         LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
                         LesCoefficients.put(Caracteristique.FORCE, 7.0);
                         LesCoefficients.put(Caracteristique.AGILITE, 5.0);
-                        Unite uniteBis = Unite.POINT;
+                        uniteBis = Unite.POINT;
                         break;
                     }
                 case "Volley-Ball":
@@ -290,7 +290,7 @@ public class JeuxOlympiques  {
                         LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
                         LesCoefficients.put(Caracteristique.FORCE, 6.0);
                         LesCoefficients.put(Caracteristique.AGILITE, 4.0);
-                        Unite uniteBis = Unite.POINT;
+                        uniteBis = Unite.POINT;
                         break;
                     }
                 case "Escrime":
@@ -298,28 +298,13 @@ public class JeuxOlympiques  {
                         LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
                         LesCoefficients.put(Caracteristique.FORCE, 3.0);
                         LesCoefficients.put(Caracteristique.AGILITE, 6.0);
-                        Unite uniteBis = Unite.POINT;
+                        uniteBis = Unite.POINT;
                         break;
                     }
-                case "Athlétisme relais 400m":
-                    {
-                        LesCoefficients.put(Caracteristique.ENDURANCE, 9.0);
-                        LesCoefficients.put(Caracteristique.FORCE, 7.0);
-                        LesCoefficients.put(Caracteristique.AGILITE, 5.0);
-                        Unite uniteBis = Unite.TEMPS;
-                        break;
-                    }
-                case "Natation relais libre":
-                    {
-                        LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
-                        LesCoefficients.put(Caracteristique.FORCE, 5.0);
-                        LesCoefficients.put(Caracteristique.AGILITE, 4.0);
-                        Unite uniteBis = Unite.TEMPS;
-                        break;
-                    }
+                    
                 default:
                     {
-                        Unite uniteBis = Unite.POINT;
+                    uniteBis = Unite.POINT;
                         break;
                     }
             }
@@ -335,7 +320,7 @@ public class JeuxOlympiques  {
                     nomEpreuve += sport[i] + " ";
                 }
             }
-            Epreuve e = new Epreuve(nomEpreuve, 100, donnees[2].charAt(0), s);
+            Epreuve e = new Epreuve(nomEpreuve, donnees[2].charAt(0), s);
             Pays p = new Pays(donnees[3]);
 
             if (!this.getLesPays().contains(p)) {      
@@ -350,7 +335,7 @@ public class JeuxOlympiques  {
                 this.lesParticipations.put(e, new HashSet<Participer>());
             }
 
-            List<String> lesNomsDesSportsCollectifs = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball","Athlétisme relais 400m","Natation relais libre"));
+            List<String> lesNomsDesSportsCollectifs = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball","Athlétisme relais 400m","Natation relais libre")); //TODO 
             if (lesNomsDesSportsCollectifs.contains(sport[0])) {
                 Equipe eq = new Equipe(s.getNom(), p);
                 if (p.getLesEquipes().contains(eq)) {

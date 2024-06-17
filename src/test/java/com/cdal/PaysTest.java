@@ -17,12 +17,12 @@ public class PaysTest {
     @BeforeEach
     public void setUp() {
 
-        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0);
-        Athlete a3 = new Athlete("John", "Doe", 'M', 2.0, 3.0, 2.0);
-        Athlete a4 = new Athlete("Jane", "Doe", 'F', 2.0, 3.0, 2.0);
-        Athlete a5 = new Athlete("Alycia", "Bergot", 'F', 2.0, 3.0, 2.0);
-        Athlete a6 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0);
+        Athlete a1 = new Athlete("Alan", "Berg", 'M', 2.0, 3.0, 2.0,pays);
+        Athlete a2 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,pays);
+        Athlete a3 = new Athlete("John", "Doe", 'M', 2.0, 3.0, 2.0,pays);
+        Athlete a4 = new Athlete("Jane", "Doe", 'F', 2.0, 3.0, 2.0,pays);
+        Athlete a5 = new Athlete("Alycia", "Bergot", 'F', 2.0, 3.0, 2.0,pays);
+        Athlete a6 = new Athlete("Saphira", "Jane", 'F', 2.0, 3.0, 2.0,Pays);
 
         Equipe e1 = new Equipe("e1", pays);
         e1.ajouterMembre(a1);

@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import main.java.com.cdal.*;
 
 public class JeuxOlympiquesTest {
-    private JeuOlympiques JeuxOlympiques;
+    private JeuxOlympiques JeuxOlympiques;
 
     @BeforeEach
     public void setUp(){

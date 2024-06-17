@@ -18,12 +18,12 @@ public class EquipeTest {
     @BeforeEach
     public void setUp(){
         Pays lePays = new Pays("France");
-        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Bella","Jane" , 'F', 2.0, 3.0, 2.0);
-        Athlete a3 = new Athlete("John","Doe" , 'M', 2.0, 3.0, 2.0);
-        Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 3.0, 2.0);
-        Athlete a5 = new Athlete("Alycia","Bergot" , 'F', 2.0, 3.0, 2.0);
-        Athlete a6 = new Athlete("Saphira","Jane" , 'F', 2.0, 3.0, 2.0);
+        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 5.0,lePays);
+        Athlete a2 = new Athlete("Bella","Jane" , 'F', 2.0, 2.0, 2.0,lePays);
+        Athlete a3 = new Athlete("John","Doe" , 'M', 4.0, 3.0, 1.0,lePays);
+        Athlete a4 = new Athlete("Jane","Doe" , 'F', 2.0, 1.0, 2.0,lePays);
+        Athlete a5 = new Athlete("Alycia","Bergot" , 'F', 2.0, 5.0, 2.0,lePays);
+        Athlete a6 = new Athlete("Saphira","Jane" , 'F', 1.0, 3.0, 3.0),lePays;
 
         List<Athlete> lesAthletes = new ArrayList<>();
         lesAthletes.add(a1);
@@ -59,16 +59,17 @@ public class EquipeTest {
     }
     @Test
     public void testSetLesAthletes() {
-        Athlete a1 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0);
-        Athlete a2 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0);
+        Pays lePays = new Pays("Allemagne");
+        Athlete a1 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0,lePays);
+        Athlete a2 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0,lePays);
 
 
         
-        Equipe equipe1 = new Equipe("e2", new Pays("Allemagne"));
+        Equipe equipe1 = new Equipe("e2", lePays);
         List<Athlete> lesAthletes = new ArrayList<>();
 
-        Athlete a4 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0);
-        Athlete a3 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0);
+        Athlete a4 = new Athlete("Bob","John" , 'M', 2.0, 3.0, 2.0,lePays);
+        Athlete a3 = new Athlete("Albert","Jane" , 'F', 2.0, 1.0, 3.0,lePays);
 
        
         lesAthletes.add(a3);
@@ -87,7 +88,8 @@ public class EquipeTest {
     }
     @Test 
     public void testAjouterMembre() {
-        Athlete a7 = new Athlete("Bobby","Johnatan" , 'M', 4.0, 3.0, 1.0);
+        Pays lePays = new Pays("Allemagne");
+        Athlete a7 = new Athlete("Bobby","Johnatan" , 'M', 4.0, 3.0, 1.0,lePays);
         equipe.ajouterMembre(a7);
         List<Athlete> lesAthletes = equipe.getLesAthletes();
         assertEquals(7, lesAthletes.size());
@@ -95,7 +97,8 @@ public class EquipeTest {
     }
     @Test
     public void testSupprimerMembre() {
-        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0);
+        Pays lePays = new Pays("Allemagne");
+        Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0,lePays);
         equipe.retirerMembre(a1);
         List<Athlete> lesAthletes = equipe.getLesAthletes();
         assertEquals(5, lesAthletes.size());
