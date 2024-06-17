@@ -1,9 +1,7 @@
 package main.java.com.cdal;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
 
 public class Equipe implements Participer {
     private String nomEq;
@@ -59,7 +57,7 @@ public class Equipe implements Participer {
      * 
      * @return la nationalité de l'équipe
      */
-    public Pays getLePays() {
+    public Pays getPays() {
         return lePays;
     }
 

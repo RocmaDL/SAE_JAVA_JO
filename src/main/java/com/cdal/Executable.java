@@ -2,7 +2,7 @@ package main.java.com.cdal;
 
 public class Executable {
     public static void main(String[] args) {
-        JeuOlympiques jo = new JeuOlympiques();
+        JeuxOlympiques jo = new JeuxOlympiques();
         try {
             jo.chargerDonneeCSV("donnees.csv");
             System.out.println("Données chargées avec succès" + "\n");

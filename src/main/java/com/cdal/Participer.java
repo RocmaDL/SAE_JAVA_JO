@@ -16,4 +16,6 @@ public interface Participer {
      * @return Un double représentant le résultat de la participation à l'épreuve.
      */
     public double participer(Epreuve epreuve);
+
+    public Pays getPays();
 }
