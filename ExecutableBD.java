@@ -1,10 +1,12 @@
+import java.sql.*;
+
 public class ExecutableBD {
     public static void main(String[] args) {
         try {
             ConnexionMySQL connexion = new ConnexionMySQL();
-           
-            connexion.connecter("servinfo-maria", "BDkhadjou", "khadjou", "khadjou");
-   
+
+            connexion.connecter("servinfo-maria", "DBkhadjou", "khadjou", "khadjou");
+
             if (connexion.isConnecte()) {
                 BD bd = new BD(connexion);
                 bd.csvToSQL("donnees.csv");
@@ -17,4 +19,3 @@ public class ExecutableBD {
         }
     }
 }
-
