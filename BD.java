@@ -1,17 +1,19 @@
-/**
- * La classe BD est responsable de la gestion des interactions avec la base de données pour l'application
- * des Jeux IUT'Olympiques.
- * Elle permet de charger des données à partir d'un fichier CSV et de les insérer dans la base de données.
- */
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
+
 public class BD {
-    private ConnexionMySQL laConnexion;
+    private Connection laConnexion;
     private Statement st;
 
     /**
      * Constructeur de la classe BD.
      * @param laConnexion La connexion MySQL à utiliser.
      */
-    public BD(ConnexionMySQL laConnexion) {
+    public BD(Connection laConnexion) {
         this.laConnexion = laConnexion;
     }
 
@@ -24,7 +26,7 @@ public class BD {
         PreparedStatement athleteStmt = null;
         PreparedStatement epreuveStmt = null;
         BufferedReader reader = null;
-        String line = "";// pour stocker chaque ligne lue du fichier CSV
+        String line = ""; // pour stocker chaque ligne lue du fichier CSV
 
         try {
             // Prépare les requêtes SQL pour insérer les données
@@ -34,12 +36,11 @@ public class BD {
             String requeteEpreuve = "INSERT INTO EPREUVE(idEpreuve, nom) VALUES (?, ?)";
             epreuveStmt = this.laConnexion.prepareStatement(requeteEpreuve);
 
-
-            // pour lire le fichier CSV
+            // Pour lire le fichier CSV
             reader = new BufferedReader(new FileReader(cheminCSV));
             // Initialise les identifiants des athlètes et des épreuves
             int idAthlete = 1;
-            int idEpreuve = 101;
+            int idEpreuve = 1;
 
             // Récupère les sports existants dans la base de données
             Set<String> sportsExistants = getExistingSports();
