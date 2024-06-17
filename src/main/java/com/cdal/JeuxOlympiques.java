@@ -219,14 +219,7 @@ public class JeuxOlympiques {
         while ((ligne = br.readLine()) != null) {
             String[] donnees = ligne.split(",");
             Athlete a = new Athlete(donnees[0], donnees[1], donnees[2].charAt(0), Double.parseDouble(donnees[5]),
-                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]), new Pays(donnees[3])); // !!!
-                                                                                                           // Changement
-                                                                                                           // du
-                                                                                                           // constructeur
-                                                                                                           // car besoin
-                                                                                                           // dans
-                                                                                                           // fonction
-                                                                                                           // AttribuerMedailles
+                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]), new Pays(donnees[3]));
             String[] sport = donnees[4].split(" ");
 
             Map<Caracteristique, Double> LesCoefficients = new HashMap<>();
@@ -270,20 +263,6 @@ public class JeuxOlympiques {
                     uniteBis = Unite.POINT;
                     break;
                 }
-                case "Athlétisme relais 400m": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 9.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 7.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 5.0);
-                    uniteBis = Unite.TEMPS;
-                    break;
-                }
-                case "Natation relais libre": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 5.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 4.0);
-                    uniteBis = Unite.TEMPS;
-                    break;
-                }
                 default: {
                     uniteBis = Unite.POINT;
                     break;
@@ -306,36 +285,31 @@ public class JeuxOlympiques {
             Pays p = new Pays(donnees[3]);
 
             if (!this.getLesPays().contains(p)) {
-                p.enregistrerAthlete(a);
                 this.getLesPays().add(p);
             } else {
                 p = this.getLesPays().get(this.getLesPays().indexOf(p));
-                p.enregistrerAthlete(a);
             }
+            p.enregistrerAthlete(a);
 
-            if (!(this.lesParticipations.keySet().contains(e))) {
-                this.lesParticipations.put(e, new HashSet<Participer>());
-            }
+            this.lesParticipations.computeIfAbsent(e, k -> new HashSet<>());
 
-            List<String> lesNomsDesSportsCollectifs = new ArrayList<>(
-                    Arrays.asList("Handball", "Volley-Ball", "Athlétisme relais 400m", "Natation relais libre"));
-            if (lesNomsDesSportsCollectifs.contains(sport[0])) {
+            if (Arrays.asList("Handball", "Volley-Ball").contains(sport[0])
+                    || Arrays.asList(sport).contains("relais")) {
                 Equipe eq = new Equipe(s.getNom(), p);
-                if (p.getLesEquipes().contains(eq)) {
-                    eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
-                    eq.ajouterMembre(a);
-                } else {
-                    eq.ajouterMembre(a);
+                if (!p.getLesEquipes().contains(eq)) {
                     p.enregistrerEquipe(eq);
+                } else {
+                    eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
                 }
+                eq.ajouterMembre(a);
             }
 
             if (!this.getLesSports().contains(s)) {
-                s.enregistrerEpreuve(e);
                 this.getLesSports().add(s);
             } else {
-                this.getLesSports().get(this.getLesSports().indexOf(s)).enregistrerEpreuve(e);
+                s = this.getLesSports().get(this.getLesSports().indexOf(s));
             }
+            s.enregistrerEpreuve(e);
         }
         br.close();
     }
