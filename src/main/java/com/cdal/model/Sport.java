@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.java.com.cdal.exception.*;
+import main.java.com.cdal.model.exception.*;
 
 /**
  * Représente un sport avec ses épreuves, caractéristiques et unité de mesure.

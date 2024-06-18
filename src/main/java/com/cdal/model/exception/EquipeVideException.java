@@ -1,4 +1,4 @@
-package main.java.com.cdal.exception;
+package main.java.com.cdal.model.exception;
 
 public class EquipeVideException extends ParticipationImpossibleException{
     

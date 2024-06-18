@@ -1,6 +1,6 @@
 package main.java.com.cdal.model;
 
-import main.java.com.cdal.exception.*;
+import main.java.com.cdal.model.exception.*;
 
 /**
  * Interface représentant la capacité de participer à une épreuve.

@@ -11,8 +11,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Collections;
 import java.util.Comparator;
+
+import main.java.com.cdal.model.exception.*;
 import main.java.com.cdal.util.Couple;
-import main.java.com.cdal.exception.*;
 
 /**
  * Classe représentant les Jeux Olympiques.

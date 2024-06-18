@@ -1,7 +1,8 @@
 package main.java.com.cdal.model;
 
 import java.util.Map;
-import main.java.com.cdal.exception.*;
+
+import main.java.com.cdal.model.exception.*;
 
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
