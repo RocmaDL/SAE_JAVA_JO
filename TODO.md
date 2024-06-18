@@ -6,3 +6,4 @@
 - [ ] Ajouter des tests unitaires
 - [ ] Améliorer l'arborecence des dossiers et des packages
 - [ ] Faire la documentation
+- [ ] Implémenter la BD avec JDBC
