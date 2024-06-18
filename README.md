@@ -28,7 +28,7 @@ Fonctonne seulement si vous placer le fichier fxml dans le dossier templates à 
 -
 
 ## Exemple de commande pour compiler et executer une application avec son controlleur
-- javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/main/java/com/cdal/view/AppEnregistrerRes.java 
+- javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/main/java/com/cdal/controler/ControlerEpreuveResultat.java 
 
 java -cp img:templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml main.java.com.cdal.view.AppEnregistrerRes
 
