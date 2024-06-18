@@ -24,7 +24,7 @@ public class AppTest extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        URL url = new File("templates/test.fxml").toURI().toURL();
+        URL url = new File("templates/PageClassementEpreuve.fxml").toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         BorderPane root = loader.load();
         Scene mainScene = new Scene(root);
