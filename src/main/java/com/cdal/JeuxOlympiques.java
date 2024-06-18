@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
-import main.java.com.cdal.util.*;
+import main.java.com.cdal.util.Couple;
 
 /**
  * Classe représentant les Jeux Olympiques.
