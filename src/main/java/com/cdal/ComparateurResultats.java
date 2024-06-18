@@ -1,14 +1,5 @@
 package main.java.com.cdal;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.LinkedHashMap;
-
 import java.util.Comparator;
 
 public class ComparateurResultats implements Comparator<JeuxOlympiques>{
