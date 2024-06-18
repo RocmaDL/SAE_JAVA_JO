@@ -29,7 +29,13 @@ public class Executable {
         } catch (Exception e) {
             System.out.println("Erreur lors du chargement des données");
         }
-        Pays france = jo.getPays("France");
+        Pays france;
+        try {
+            france = jo.getPays("France");
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération du pays");
+            france = new Pays("France");
+        }
         System.out.println(france);
         System.out.println("\n" + "Nombre d'athlètes : " + france.getLesAthletes().size() + "\n");
         System.out.println("\n" + "Liste des athlètes français : ");

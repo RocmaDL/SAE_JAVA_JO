@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import main.java.com.cdal.exception.*;
 
 public class Pays {
 
     private String nom;
     private List<Equipe> lesEquipes;
     private List<Athlete> lesAthletes;
-    private Map<String, Integer > medailles;
+    private Map<String, Integer> medailles;
 
     /**
      * Constructeur qui met à jour les attributs de la classe Pays
@@ -26,8 +27,6 @@ public class Pays {
         this.medailles.put("Argent", 0);
         this.medailles.put("Bronze", 0);
 
-        
-        
     }
 
     /**
@@ -53,7 +52,10 @@ public class Pays {
      * 
      * @param equipe
      */
-    public void supprimerEquipe(Equipe equipe) {
+    public void supprimerEquipe(Equipe equipe) throws EquipeInexistanteException {
+        if (!this.lesEquipes.contains(equipe)) {
+            throw new EquipeInexistanteException();
+        }
         this.lesEquipes.remove(equipe);
     }
 
@@ -62,7 +64,10 @@ public class Pays {
      * 
      * @param athlete
      */
-    public void supprimerAthlete(Athlete athlete) {
+    public void supprimerAthlete(Athlete athlete) throws AthleteInexistantException {
+        if (!this.lesAthletes.contains(athlete)) {
+            throw new AthleteInexistantException();
+        }
         this.lesAthletes.remove(athlete);
     }
 
@@ -104,35 +109,40 @@ public class Pays {
 
     public Integer getTotalNbMedailles() {
         int res = 0;
-        for (Integer med : this.medailles.values()){
-            res +=med;
+        for (Integer med : this.medailles.values()) {
+            res += med;
 
         }
         return res;
     }
-    public Integer getNbMedaillesCouleur(String typeMedaille) {
+
+    public Integer getNbMedaillesCouleur(String typeMedaille) throws MedailleInexistanteException {
+        if (!this.medailles.containsKey(typeMedaille)) {
+            throw new MedailleInexistanteException();
+        }
         int res = 0;
-        for (String  med : this.medailles.keySet()){
-            if (typeMedaille.equals(med)){
-                res +=1;
+        for (String med : this.medailles.keySet()) {
+            if (typeMedaille.equals(med)) {
+                res += 1;
             }
-               
 
         }
         return res;
     }
 
-    public void addMedailles(String typeMedaille) {
-        for (String  med : this.medailles.keySet()){
-            if (typeMedaille.equals(med)){
-                this.medailles.replace(med, getNbMedaillesCouleur(typeMedaille), this.medailles.get(typeMedaille)+1);
+    public void addMedailles(String typeMedaille) throws MedailleInexistanteException {
+        if (!this.medailles.containsKey(typeMedaille)) {
+            throw new MedailleInexistanteException();
+        }
+        for (String med : this.medailles.keySet()) {
+            if (typeMedaille.equals(med)) {
+                this.medailles.replace(med, getNbMedaillesCouleur(typeMedaille), this.medailles.get(typeMedaille) + 1);
 
-            }
-            else {
+            } else {
                 // Si le type de médaille n'existe pas, on met 0
                 this.medailles.put(typeMedaille, 0);
             }
-            
+
         }
     }
 
@@ -167,5 +177,4 @@ public class Pays {
         return this.nom.hashCode();
     }
 
-    
 }

@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.Comparator;
 import main.java.com.cdal.util.Couple;
+import main.java.com.cdal.exception.*;
 
 /**
  * Classe représentant les Jeux Olympiques.
@@ -119,7 +120,8 @@ public class JeuxOlympiques {
      * @param e L'épreuve à lancer.
      * @return Une map associant chaque participant à son résultat dans l'épreuve.
      */
-    public Map<Participer, Double> lancerEpreuve(Epreuve e) {
+    public Map<Participer, Double> lancerEpreuve(Epreuve e)
+            throws EpreuveInexistanteException, ParticipationImpossibleException {
         Map<Participer, Double> resultatEpreuve = new HashMap<>();
         for (Participer p : this.getLesParticipations().get(e)) {
             resultatEpreuve.put(p, p.participer(e));
@@ -137,12 +139,15 @@ public class JeuxOlympiques {
      *
      * @param e L'épreuve dont le résultat doit être enregistré.
      */
-    public void enregistrerResultat(Epreuve e) {
+    public void enregistrerResultat(Epreuve e) throws EpreuveInexistanteException, ParticipationImpossibleException {
         Map<Participer, Double> resultatEpreuve = lancerEpreuve(e);
         this.resultats.put(e, resultatEpreuve);
     }
 
-    public ArrayList<Couple<Participer, Double>> trierResultats(Epreuve e) {
+    public ArrayList<Couple<Participer, Double>> trierResultats(Epreuve e) throws EpreuveInexistanteException {
+        if (!this.resultats.keySet().contains(e)) {
+            throw new EpreuveInexistanteException();
+        }
         ArrayList<Couple<Participer, Double>> resultatEpreuve = new ArrayList<>();
         if (this.resultats.keySet().contains(e)) {
             for (Map.Entry<Participer, Double> entry : this.resultats.get(e).entrySet()) {
@@ -160,7 +165,7 @@ public class JeuxOlympiques {
         return new ArrayList<>();
     }
 
-    public void attribuerMedailles(Epreuve e) {
+    public void attribuerMedailles(Epreuve e) throws EpreuveInexistanteException, MedailleInexistanteException {
         ArrayList<Couple<Participer, Double>> resultatEpreuve = trierResultats(e);
         for (int i = 0; i < 3 && i < resultatEpreuve.size(); i++) {
             switch (i) {
@@ -183,23 +188,21 @@ public class JeuxOlympiques {
         return this.resultats;
     }
 
-    public Pays getPays(String nom) {
-        for (Pays p : this.getLesPays()) {
-            System.out.println(p.getNom());
-            if (p.getNom().equals(nom)) {
-                return p;
-            }
+    public Pays getPays(String nom) throws PaysInexistantException {
+        if (!(this.getLesPays().contains(new Pays(nom)))) {
+            throw new PaysInexistantException();
         }
-        return null;
+        return this.getLesPays().get(this.getLesPays().indexOf(new Pays(nom)));
     }
 
-    public Sport getSport(String nom) {
+    public Sport getSport(String nom) throws SportInexistantException {
         for (Sport s : this.getLesSports()) {
             if (s.getNom().equals(nom)) {
                 return s;
             }
         }
-        return null;
+        throw new SportInexistantException();
+
     }
 
     /**
@@ -212,7 +215,8 @@ public class JeuxOlympiques {
         this.lesParticipations.get(epreuve).add(participants);
     }
 
-    public void chargerDonneeCSV(String chemin) throws Exception { // ! Recoder cette méthode pour la rendre plus lisible et optimisée
+    public void chargerDonneeCSV(String chemin) throws Exception { // ! Recoder cette méthode pour la rendre plus
+                                                                   // lisible et optimisée
         BufferedReader br = new BufferedReader(new FileReader(chemin));
         String ligne = br.readLine();
         while ((ligne = br.readLine()) != null) {

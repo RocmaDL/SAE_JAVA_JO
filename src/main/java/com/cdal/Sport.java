@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import main.java.com.cdal.exception.*;
 
 /**
  * Représente un sport avec ses épreuves, caractéristiques et unité de mesure.
@@ -71,7 +72,10 @@ public class Sport {
      * 
      * @param Epreuve L'épreuve à supprimer.
      */
-    public void supprimerEpreuve(Epreuve Epreuve) {
+    public void supprimerEpreuve(Epreuve Epreuve) throws EpreuveInexistanteException {
+        if (!this.lesEpreuves.contains(Epreuve)) {
+            throw new EpreuveInexistanteException();
+        }
         this.lesEpreuves.remove(Epreuve);
     }
 

@@ -2,6 +2,7 @@ package main.java.com.cdal;
 
 import java.util.ArrayList;
 import java.util.List;
+import main.java.com.cdal.exception.*;
 
 public class Equipe implements Participer {
     private String nomEq;
@@ -102,21 +103,24 @@ public class Equipe implements Participer {
      * 
      * @param athlete
      */
-    public void retirerMembre(Athlete athlete) {
+    public void retirerMembre(Athlete athlete) throws AthleteInexistantException {
+        if (!this.lesAthletes.contains(athlete)) {
+            throw new AthleteInexistantException();
+        }
         this.lesAthletes.remove(this.lesAthletes.indexOf(athlete));
     }
 
     @Override
-    public double participer(Epreuve epreuve) {
+    public double participer(Epreuve epreuve) throws EquipeVideException, AthleteInvalideException {
+        if (this.lesAthletes.isEmpty()) {
+            throw new EquipeVideException();
+        }
         int cpt = 0;
         Double res = 0.0;
         for (Athlete athlete : this.lesAthletes) {
             Double perf = athlete.participer(epreuve);
             res += perf;
             cpt += 1;
-        }
-        if (cpt == 0) {
-            throw new ArithmeticException("L'équipe ne contient aucun athlète.");
         }
         return res / cpt;
     }

@@ -1,7 +1,7 @@
 package main.java.com.cdal;
 
 import java.util.Map;
-
+import main.java.com.cdal.exception.*;
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
  * Elle implémente l'interface Participer.
@@ -43,7 +43,10 @@ public class Athlete implements Participer {
      * @return Le résultat de la participation de l'athlète à l'épreuve
      */
     @Override
-    public double participer(Epreuve epreuve) {
+    public double participer(Epreuve epreuve) throws AthleteInvalideException {
+        if(epreuve.getSexe() == this.getSexe()) {
+            throw new AthleteInvalideException();
+        }
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
         double res = (lesCoeffs.get(Caracteristique.FORCE) * getForce() +
                 lesCoeffs.get(Caracteristique.AGILITE) * getAgilite()
