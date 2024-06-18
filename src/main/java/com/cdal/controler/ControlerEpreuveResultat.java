@@ -1,8 +1,8 @@
 package main.java.com.cdal.controler;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 
 public class ControlerEpreuveResultat {

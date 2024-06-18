@@ -8,10 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
 import main.java.com.cdal.controler.*;
 
-
-public class AppEnregistrerRes extends Application{
+public class AppRechercherJO extends Application{
     Scene mainScene;
     BorderPane root;
     FXMLLoader loader;
@@ -30,27 +30,20 @@ public class AppEnregistrerRes extends Application{
         //--- Chargement du fichier FXML
 
 
-        URL url = new File("templates/PageEpreuveResultat.fxml").toURI().toURL();
+        URL url = new File("templates/RechercheJO.fxml").toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         System.out.println("test.fxml chargé");
-        VBox root = loader.load();
+        Pane root = loader.load();
         Scene mainScene = new Scene(root);
         stage.setTitle("SayHello FXML");
         stage.setScene(mainScene);
         stage.show();
         //--- Récupération du bouton    
 
-        Button btLancerEpreuve = (Button) mainScene.lookup("#lancer_epreuve");
-        System.out.println("btLancerEpreuve : "+btLancerEpreuve);
-        btLancerEpreuve.setOnAction(new ControlerEpreuveResultat()::lancerEpreuve);
+        Button btRechercher= (Button) mainScene.lookup("#rechercher_jo");
+        btRechercher.setOnAction(new ControlerRechercher()::rechercheJO);
 
-        Button btEnregistrerResultat = (Button) mainScene.lookup("#enregistrer_res");
-        btEnregistrerResultat.setOnAction(new ControlerEpreuveResultat()::enregistrerRes);
         stage.show();
     }
-    
-        
-     
-
     
 }

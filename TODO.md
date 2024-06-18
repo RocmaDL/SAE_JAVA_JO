@@ -2,8 +2,11 @@
 
 - [ ] Améliorer la méthode chargerDonneesCSV
 - [ ] Ajouter une méthode pour sauvegarder les données dans un fichier CSV
-- [ ] Imlémenter d'autre Exception
+- [ ] Implémenter d'autres Exceptions
 - [ ] Ajouter des tests unitaires
 - [ ] Améliorer l'arborecence des dossiers et des packages
 - [ ] Faire la documentation
 - [ ] Implémenter la BD avec JDBC
+- [ ] Rendre plus ergonomique les vues de notre application 
+- [ ] Faire en sorte qu'une équipe possède une taille maximale
+- [ ]
