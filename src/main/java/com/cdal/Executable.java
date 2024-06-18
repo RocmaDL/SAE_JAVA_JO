@@ -1,5 +1,7 @@
 package main.java.com.cdal;
 
+import java.util.ArrayList;
+
 public class Executable {
     public static void main(String[] args) {
         JeuxOlympiques jo = new JeuxOlympiques();
@@ -40,7 +42,6 @@ public class Executable {
         france.getLesEquipes().forEach(e -> {
             System.out.println(e.getNomEq());
         });
-
         System.out.println("");
     }
 }
