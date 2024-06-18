@@ -1,4 +1,4 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 /**
  * Enumération représentant les différentes unités de mesure utilisées dans les épreuves sportives.

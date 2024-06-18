@@ -2,6 +2,9 @@ package main.java.com.cdal;
 
 import java.util.ArrayList;
 
+import main.java.com.cdal.model.JeuxOlympiques;
+import main.java.com.cdal.model.Pays;
+
 public class Executable {
     public static void main(String[] args) {
         JeuxOlympiques jo = new JeuxOlympiques();

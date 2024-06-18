@@ -1,4 +1,4 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 import main.java.com.cdal.exception.*;
 

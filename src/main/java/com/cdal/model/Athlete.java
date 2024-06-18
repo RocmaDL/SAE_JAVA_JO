@@ -1,7 +1,8 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 import java.util.Map;
 import main.java.com.cdal.exception.*;
+
 /**
  * La classe Athlete représente un athlète qui peut participer à une épreuve.
  * Elle implémente l'interface Participer.
@@ -26,7 +27,8 @@ public class Athlete implements Participer {
      * @param endurance L'endurance de l'athlète
      * @param pays      Le pays de l'athlète
      */
-    public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance, Pays pays) {
+    public Athlete(String nomAt, String prenomAt, char sexe, double force, double agilite, double endurance,
+            Pays pays) {
         this.nomAt = nomAt;
         this.prenomAt = prenomAt;
         this.sexe = sexe;
@@ -44,7 +46,7 @@ public class Athlete implements Participer {
      */
     @Override
     public double participer(Epreuve epreuve) throws AthleteInvalideException {
-        if(epreuve.getSexe() == this.getSexe()) {
+        if (epreuve.getSexe() == this.getSexe()) {
             throw new AthleteInvalideException();
         }
         Map<Caracteristique, Double> lesCoeffs = epreuve.getSport().getCoefficient();
@@ -106,6 +108,7 @@ public class Athlete implements Participer {
     public void setEndurance(double endurance) {
         this.endurance = endurance;
     }
+
     public Pays getPays() {
         return pays;
     }
@@ -142,7 +145,5 @@ public class Athlete implements Participer {
                 + (int) endurance
                         * 41;
     }
-
-    
 
 }

@@ -1,4 +1,4 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 /**
  * Enumération des caractéristiques d'un personnage.
  * Cette énumération définit les différentes caractéristiques que peut posséder un personnage,

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import main.java.com.cdal.*;
+import main.java.com.cdal.model.Equipe;
+import main.java.com.cdal.model.Pays;
 
 
 

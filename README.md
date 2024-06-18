@@ -2,7 +2,7 @@
 
 ## Commande pour compiler et executer le projet sans librairie
 
-- javac -d bin -cp src/ src/main/java/com/cdal/\*.java
+- javac -d bin -cp src/ src/main/java/com/cdal/*.java
 - java -cp bin main.java.com.cdal.Executable
 
 ## Commande pour compiler et executer le projet avec librairie de test
@@ -16,11 +16,11 @@
 
 ## Commande pour compiler et executer le projet avec librairie de JavaFX et FXML
 
-- javac -d bin -cp templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/<Chemin fichier>
+- javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/<Chemin fichier>
 
 Fonctonne seulement si vous placer le fichier fxml dans le dossier templates à la racine du projet, et que vous appeler le fichier fxml dans le fichier java avec le chemin `templates/<Nom du fichier>.fxml`
 
-- java -cp templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml <package>.<Nom de la classe>
+- java -cp img:templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml <package>.<Nom de la classe>
 
 ## Commande pour compiler et executer le projet pour la bd
 

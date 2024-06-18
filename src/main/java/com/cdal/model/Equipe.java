@@ -1,7 +1,8 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import main.java.com.cdal.exception.*;
 
 public class Equipe implements Participer {

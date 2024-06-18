@@ -1,4 +1,4 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 /**
  * Classe représentant une épreuve dans un contexte sportif.

@@ -1,4 +1,4 @@
-package main.java.com.cdal;
+package main.java.com.cdal.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

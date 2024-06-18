@@ -10,6 +10,9 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import main.java.com.cdal.*;
+import main.java.com.cdal.model.Epreuve;
+import main.java.com.cdal.model.Sport;
+import main.java.com.cdal.model.Unite;
 
 public class SportTest {
     private Sport sport;
