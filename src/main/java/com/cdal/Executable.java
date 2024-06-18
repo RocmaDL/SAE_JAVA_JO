@@ -28,6 +28,7 @@ public class Executable {
             System.out.println("Erreur lors du chargement des données");
         }
         Pays france = jo.getPays("France");
+        System.out.println(france);
         System.out.println("\n" + "Nombre d'athlètes : " + france.getLesAthletes().size() + "\n");
         System.out.println("\n" + "Liste des athlètes français : ");
         france.getLesAthletes().forEach(a -> {

@@ -186,6 +186,7 @@ public class JeuxOlympiques {
 
     public Pays getPays(String nom) {
         for (Pays p : this.getLesPays()) {
+            System.out.println(p.getNom());
             if (p.getNom().equals(nom)) {
                 return p;
             }
@@ -212,54 +213,59 @@ public class JeuxOlympiques {
         this.lesParticipations.get(epreuve).add(participants);
     }
 
-    public void chargerDonneeCSV(String chemin) throws Exception {
+    public void chargerDonneeCSV(String chemin) throws Exception { // ! Recoder cette méthode pour la rendre plus lisible et optimisée
         BufferedReader br = new BufferedReader(new FileReader(chemin));
         String ligne = br.readLine();
-        // Nom,Prénom,Sexe,Pays,Épreuve,Force,Endurance,agilite
         while ((ligne = br.readLine()) != null) {
             String[] donnees = ligne.split(",");
+            Pays p = new Pays(donnees[3]);
             Athlete a = new Athlete(donnees[0], donnees[1], donnees[2].charAt(0), Double.parseDouble(donnees[5]),
-                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]), new Pays(donnees[3]));
+                    Double.parseDouble(donnees[6]), Double.parseDouble(donnees[7]), p);
             String[] sport = donnees[4].split(" ");
-
-            Map<Caracteristique, Double> LesCoefficients = new HashMap<>();
-
+            Map<Caracteristique, Double> lesCoeffs = new HashMap<>();
             Unite uniteBis;
 
             switch (sport[0]) {
                 case "Natation": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 5.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 4.0);
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 7.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 5.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 4.0);
                     uniteBis = Unite.TEMPS;
                     break;
                 }
                 // double force, double agilite, double endurance, Unite unite
                 case "Athlétisme": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 4.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 6.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 8.0);
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 4.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 6.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 8.0);
+                    uniteBis = Unite.TEMPS;
+                    break;
+                }
+                case "Athétisme": { // ! Alternative à l'erreur dans le csv
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 4.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 6.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 8.0);
                     uniteBis = Unite.TEMPS;
                     break;
                 }
                 case "Handball": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 7.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 5.0);
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 8.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 7.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 5.0);
                     uniteBis = Unite.POINT;
                     break;
                 }
                 case "Volley-Ball": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 8.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 6.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 4.0);
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 8.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 6.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 4.0);
                     uniteBis = Unite.POINT;
                     break;
                 }
                 case "Escrime": {
-                    LesCoefficients.put(Caracteristique.ENDURANCE, 7.0);
-                    LesCoefficients.put(Caracteristique.FORCE, 3.0);
-                    LesCoefficients.put(Caracteristique.AGILITE, 6.0);
+                    lesCoeffs.put(Caracteristique.ENDURANCE, 7.0);
+                    lesCoeffs.put(Caracteristique.FORCE, 3.0);
+                    lesCoeffs.put(Caracteristique.AGILITE, 6.0);
                     uniteBis = Unite.POINT;
                     break;
                 }
@@ -269,10 +275,8 @@ public class JeuxOlympiques {
                 }
             }
 
-            Sport s = new Sport(sport[0], LesCoefficients.get(Caracteristique.FORCE),
-                    LesCoefficients.get(Caracteristique.ENDURANCE), LesCoefficients.get(Caracteristique.AGILITE),
-                    uniteBis);
-
+            Sport s = new Sport(sport[0], lesCoeffs.get(Caracteristique.FORCE),
+                    lesCoeffs.get(Caracteristique.ENDURANCE), lesCoeffs.get(Caracteristique.AGILITE), uniteBis);
             String nomEpreuve = "";
             if (sport.length == 1) {
                 nomEpreuve = sport[0];
@@ -282,34 +286,37 @@ public class JeuxOlympiques {
                 }
             }
             Epreuve e = new Epreuve(nomEpreuve, 100, donnees[2].charAt(0), s);
-            Pays p = new Pays(donnees[3]);
 
             if (!this.getLesPays().contains(p)) {
+                p.enregistrerAthlete(a);
                 this.getLesPays().add(p);
             } else {
                 p = this.getLesPays().get(this.getLesPays().indexOf(p));
+                p.enregistrerAthlete(a);
             }
-            p.enregistrerAthlete(a);
 
-            this.lesParticipations.computeIfAbsent(e, k -> new HashSet<>());
+            if (!(this.lesParticipations.keySet().contains(e))) {
+                this.lesParticipations.put(e, new HashSet<Participer>());
+            }
 
-            if (Arrays.asList("Handball", "Volley-Ball").contains(sport[0])
-                    || Arrays.asList(sport).contains("relais")) {
+            List<String> lesNomsDesSportsCollective = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball"));
+            if (lesNomsDesSportsCollective.contains(sport[0])) {
                 Equipe eq = new Equipe(s.getNom(), p);
-                if (!p.getLesEquipes().contains(eq)) {
-                    p.enregistrerEquipe(eq);
-                } else {
+                if (p.getLesEquipes().contains(eq)) {
                     eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
+                    eq.ajouterMembre(a);
+                } else {
+                    eq.ajouterMembre(a);
+                    p.enregistrerEquipe(eq);
                 }
-                eq.ajouterMembre(a);
             }
 
             if (!this.getLesSports().contains(s)) {
+                s.enregistrerEpreuve(e);
                 this.getLesSports().add(s);
             } else {
-                s = this.getLesSports().get(this.getLesSports().indexOf(s));
+                this.getLesSports().get(this.getLesSports().indexOf(s)).enregistrerEpreuve(e);
             }
-            s.enregistrerEpreuve(e);
         }
         br.close();
     }
