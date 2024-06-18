@@ -141,5 +141,6 @@ public class Equipe implements Participer {
     @Override
     public int hashCode() {
         return this.nomEq.hashCode()*11 + this.lePays.hashCode() *17;
+
     }
 }
