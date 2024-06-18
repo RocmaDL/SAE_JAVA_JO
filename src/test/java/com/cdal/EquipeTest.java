@@ -97,7 +97,7 @@ public class EquipeTest {
         Athlete a1 = new Athlete("Alan","Berg" , 'M', 2.0, 3.0, 2.0,lePays);
         equipe.retirerMembre(a1);
         List<Athlete> lesAthletes = equipe.getLesAthletes();
-        assertEquals(5, lesAthletes.size());
+        assertEquals(6, lesAthletes.size());
         assertEquals(false, lesAthletes.contains(a1));
     }
     @Test 

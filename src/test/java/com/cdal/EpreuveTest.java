@@ -31,6 +31,7 @@ public class EpreuveTest {
 
     @Test
     public void testSetNomEpreuve() {
+        epreuve.setNomEpreuve("50m");
         assertEquals("50m", epreuve.getNomEpreuve());
     }
 
