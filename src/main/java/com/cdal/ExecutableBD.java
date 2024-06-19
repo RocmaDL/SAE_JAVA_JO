@@ -10,7 +10,7 @@ public class ExecutableBD {
             connexion.connecter("servinfo-maria", "DBkhadjou", "khadjou", "khadjou");
 
             if (connexion.isConnecte()) {
-                BD bd = new BD(connexion);
+                JOBD bd = new JOBD(connexion);
                 bd.csvToSQL("donnees.csv");
             } else {
                 System.err.println("Erreur: Connection non établie.");

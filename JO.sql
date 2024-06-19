@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS JOUtilisateur;
 
 -- Création des tables
 CREATE TABLE JOUtilisateur (
-    idUser INT PRIMARY KEY,
+    idUser VARCHAR(50) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nomUser VARCHAR(50),
     prenomUser VARCHAR(50),
     mdpUser VARCHAR(50),
@@ -23,12 +23,12 @@ CREATE TABLE JOUtilisateur (
 );
 
 CREATE TABLE JOPays (
-    idPays INT PRIMARY KEY,
+    idPays INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nomPays VARCHAR(50)
 );
 
 CREATE TABLE JOSport (
-    idSport INT PRIMARY KEY,
+    idSport INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nomSport VARCHAR(50),
     unite VARCHAR(20),
     coefForce FLOAT,
@@ -37,7 +37,7 @@ CREATE TABLE JOSport (
 );
 
 CREATE TABLE JOEpreuve (
-    idEpreuve INT PRIMARY KEY,
+    idEpreuve INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nomEpreuve VARCHAR(50),
     sexeEpreuve CHAR(1),
     dateEpreuve DATE,
@@ -47,7 +47,7 @@ CREATE TABLE JOEpreuve (
 );
 
 CREATE TABLE JOJeuxOlympique (
-    idJO INT PRIMARY KEY,
+    idJO INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     dateJO DATE
 );
 
@@ -84,14 +84,14 @@ CREATE TABLE JOAnimer (
 );
 
 CREATE TABLE JOEquipe (
-    idEq INT PRIMARY KEY,
+    idEq INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nomEq VARCHAR(50),
     idPays INT,
     FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
 );
 
 CREATE TABLE JOAthlete (
-    idAthlete INT PRIMARY KEY,
+    idAthlete INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     prenomAthlete VARCHAR(50),
     nomAthlete VARCHAR(50),
     sexeAthlete CHAR(1),
@@ -106,7 +106,7 @@ CREATE TABLE JOAthlete (
 
 
 CREATE TABLE JOSinscrire (
-    idInscription INT PRIMARY KEY,
+    idInscription INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idAthlete INT,
     idEq INT,
     idEpreuve INT,
@@ -117,7 +117,7 @@ CREATE TABLE JOSinscrire (
 );
 
 CREATE TABLE JOParticiperResultat (
-    idResultat INT PRIMARY KEY,
+    idResultat INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idInscription INT,
     resultat FLOAT,
     FOREIGN KEY (idInscription) REFERENCES JOSinscrire(idInscription)

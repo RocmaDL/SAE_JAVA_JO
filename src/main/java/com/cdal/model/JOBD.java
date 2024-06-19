@@ -8,10 +8,10 @@ import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BD {
+public class JOBD {
     private ConnexionMySQL laConnexion;
 
-    public BD(ConnexionMySQL laConnexion) {
+    public JOBD(ConnexionMySQL laConnexion) {
         this.laConnexion = laConnexion;
     }
 
