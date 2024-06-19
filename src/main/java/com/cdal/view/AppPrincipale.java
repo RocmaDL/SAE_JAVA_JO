@@ -4,12 +4,16 @@ import java.io.File;
 import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.*;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javax.swing.border.Border;
 
 import main.java.com.cdal.controler.*;
 
@@ -20,9 +24,16 @@ public class AppPrincipale extends Application{
     Scene mainScene;
     //BorderPane centre;
     FXMLLoader loader;
+    private TextField barreRecherche;
+    private Button btnRechercher;
+    private Button btnParametres;
+    private Button btnDeco;
+    private BorderPane panelCentral;
+    private ImageView utilisateur;
     
     public void init(){
         //--- Initialisation de l'application
+        this.barreRecherche = new TextField("");
 
     }
     
@@ -81,11 +92,36 @@ public class AppPrincipale extends Application{
             this.loader = new FXMLLoader(url);
             System.out.println("PageClassementEpreuve.fxml chargé"+loader);
             this.root = loader.load();
-            this.mainScene = new Scene(root);
+            this.panelCentral.setCenter(this.root);
+            //this.mainScene.setRoot(root);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page PageClassementEpreuve");
 
         }
+    }
+
+
+    public Pane header() {
+        BorderPane banniere = new BorderPane();
+        this.barreRecherche.setPromptText("Rechercher une information");
+        this.barreRecherche.setPrefWidth(300);
+        this.barreRecherche.setPrefHeight(20);
+
+        HBox hbLeft = new HBox();
+        hbLeft.getChildren().addAll(this.utilisateur, this.barreRecherche, this.btnRechercher);
+        hbLeft.setMargin(this.barreRecherche, new Insets(35,1,0,20));
+        hbLeft.setMargin(this.btnRechercher, new Insets(35,0,0,0));
+        banniere.setLeft(hbLeft);
+        
+        //Right
+        HBox hbRight = new HBox();
+        hbRight.getChildren().addAll(this.btnParametres, this.btnDeco);
+        hbRight.setMargin(this.btnParametres, new Insets(20,0,0,0));
+        hbRight.setMargin(this.btnDeco, new Insets(20,20,0,10));
+        banniere.setRight(hbRight);
+        banniere.setStyle("-fx-background-color: #0095B6");
+        return banniere;
+
     }
 
     public void afficherPageConnexion(){
@@ -94,16 +130,22 @@ public class AppPrincipale extends Application{
 
     }
 
-    
-
+    private Scene laScene(){
+        BorderPane fenetre = new BorderPane();
+        fenetre.setCenter(this.panelCentral);
+        fenetre.setTop(header());
+        return new Scene(fenetre, 1000, 800);
+        
+    }
     @Override
     public void start(Stage stage) throws Exception {
         //--- Chargement du fichier FXML
-        afficherPageEnregistrerRes();
         stage.setTitle("SayHello FXML");
+        this.mainScene = laScene(); 
         stage.setScene(this.mainScene);
         stage.show();
     }
+
 
     public static void main(String[] args) {
         //--- Lancement de l'application
