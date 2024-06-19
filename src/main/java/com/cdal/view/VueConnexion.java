@@ -36,13 +36,11 @@ public class VueConnexion extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Connexion aux Jeux Olympiques");
 
-        // Créer le conteneur principal
         VBox root = new VBox(20);
         root.setPadding(new Insets(25, 25, 25, 25));
         root.setAlignment(Pos.TOP_CENTER);
         root.setStyle("-fx-background-color: #f0f0f0;");
 
-        // Conteneur pour les images et le titre
         HBox imagesPane = new HBox(10);
         imagesPane.setAlignment(Pos.CENTER);
         Image iutImage = new Image("file:img/logo-iut.png");
@@ -55,16 +53,14 @@ public class VueConnexion extends Application {
         olympicsImageView.setPreserveRatio(true);
         imagesPane.getChildren().addAll(iutImageView, creerPaneTitre(), olympicsImageView);
 
-        // Ajouter les images et le titre au conteneur principal
         root.getChildren().add(imagesPane);
 
-        // Créer le conteneur pour la partie connexion
+
         VBox loginBox = new VBox(20);
         loginBox.setAlignment(Pos.CENTER);
         loginBox.setPadding(new Insets(20));
         loginBox.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;");
 
-        // Conteneur pour le formulaire de connexion
         GridPane grille = new GridPane();
         grille.setAlignment(Pos.CENTER);
         grille.setHgap(10);
@@ -96,10 +92,8 @@ public class VueConnexion extends Application {
         boutonAfficherMasquerMotDePasse.setStyle("-fx-background-color: transparent;");
         grille.add(boutonAfficherMasquerMotDePasse, 2, 1);
 
-        // Ajouter le formulaire au conteneur principal
         loginBox.getChildren().add(grille);
 
-        // Conteneur pour les boutons
         HBox paneBoutons = new HBox(10);
         paneBoutons.setAlignment(Pos.CENTER);
         boutonValider = new Button("Valider");
@@ -108,24 +102,18 @@ public class VueConnexion extends Application {
         boutonAnnuler.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         paneBoutons.getChildren().addAll(boutonAnnuler, boutonValider);
 
-        // Ajouter les boutons au conteneur principal
         loginBox.getChildren().add(paneBoutons);
 
-        // Conteneur pour le message d'action
         messageAction = new Text();
         loginBox.getChildren().add(messageAction);
 
-        // Ajouter le conteneur de connexion au conteneur principal
         root.getChildren().add(loginBox);
 
-        // Définir la scène
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1200, 900));
 
-        // Création du contrôleur et liaison avec la vue
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
 
-        // Ajouter le gestionnaire d'événements pour le bouton Afficher/Masquer
         boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());
 
         primaryStage.show();
