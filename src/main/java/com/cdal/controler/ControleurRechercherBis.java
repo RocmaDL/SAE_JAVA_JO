@@ -1,20 +1,17 @@
 package main.java.com.cdal.controler;
 
-import javax.swing.Action;
-
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import main.java.com.cdal.view.AppliJournaliste;
+import main.java.com.cdal.view.AppPrincipale;
 
 
 public class ControleurRechercherBis implements EventHandler<ActionEvent> {
 
-    private AppliJournaliste vueJO;
+    private AppPrincipale vueJO;
     private String mot;
 
-    public ControleurRechercherBis(AppliJournaliste vueJo, String value) {
-        this.vueJO = vueJo;
+    public ControleurRechercherBis(AppPrincipale appPrincipale, String value) {
+        this.vueJO = appPrincipale;
         this.mot = value;
     }
     

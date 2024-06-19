@@ -1,18 +1,21 @@
 package main.java.com.cdal.controler;
 
-import javax.swing.Action;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import main.java.com.cdal.view.AppliJournaliste;
+import main.java.com.cdal.view.AppPrincipale;
 
 
-public class ControleurParamètres implements EventHandler<ActionEvent> {
+public class ControleurParametres implements EventHandler<ActionEvent> {
     
-    private AppliJournaliste vueJO;
+    private AppPrincipale vueJO;
 
-    public ControleurParamètres(AppliJournaliste vueJO) {
+    public ControleurParametres(AppPrincipale vueJO) {
         this.vueJO = vueJO;
+    }
+
+
+    public ControleurParametres(AppPrincipale appPrincipale) {
+        //TODO Auto-generated constructor stub
     }
 
 

@@ -1,10 +1,7 @@
 package main.java.com.cdal.view;
 
-import javafx.application.Application;
-import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,13 +13,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import main.java.com.cdal.controler.ControleurConnexion;
 
-public class VueConnexion extends Application {
+public class VueConnexion extends VBox{
 
     private ControleurConnexion controleur;
-
+    
+    
     private TextField champNomUtilisateur;
     private PasswordField champMotDePasse;
     private TextField champMotDePasseVisible;
@@ -33,9 +30,8 @@ public class VueConnexion extends Application {
 
     private boolean motDePasseVisible = false;
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Connexion aux Jeux Olympiques");
+    public VueConnexion() {
+        //primaryStage.setTitle("Connexion aux Jeux Olympiques");
 
         VBox root = new VBox(20);
         root.setPadding(new Insets(25, 25, 25, 25));
@@ -66,8 +62,8 @@ public class VueConnexion extends Application {
         imageView.setFitWidth(950); 
         imageView.setPreserveRatio(true);
 
-        DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
-        imageView.fitWidthProperty().bind(imageWidthBinding);
+        //DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
+        //imageView.fitWidthProperty().bind(imageWidthBinding);
         
         hbox.getChildren().add(imageView);
 
@@ -124,19 +120,22 @@ public class VueConnexion extends Application {
         loginBox.getChildren().add(messageAction);
 
         root.getChildren().addAll(loginBox , hbox);
+        this.getChildren().add(root);
 
-        primaryStage.setScene(new Scene(root, 1000, 920));
+        //primaryStage.setScene(new Scene(root, 1000, 920));
 
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
 
         boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());
 
-        primaryStage.show();
+
+
+        //primaryStage.show();
     }
 
     private VBox creerPaneTitre() {
-        Text titreScene = new Text("Bienvenue aux Jeux Olympiques");
+        Text titreScene = new Text("Bienvenue aux IUT'Olympiques");
         titreScene.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
         titreScene.setFill(Color.rgb(0, 47, 108));
         VBox titrePane = new VBox(titreScene);
@@ -209,7 +208,5 @@ public class VueConnexion extends Application {
         messageAction.setText("");
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }

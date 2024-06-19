@@ -47,48 +47,26 @@ public class AppliJournaliste extends Application {
 
     @Override
     public void init() {
-        this.barreRecherche = new TextField();
+       
         this.tableMedailles = new TableView<Classement>();
-        //Bouton Paramètres
-        ImageView imgP = new ImageView(new Image("file:./img/param.png"));
-        imgP.setFitWidth(40);
-        imgP.setFitHeight(40);
-        this.btnParametres = new Button("", imgP);
-        this.btnParametres.setOnAction(new ControleurParamètres(this));
-        //Bouton Déconnexion
-        ImageView imgD = new ImageView(new Image("file:./img/connexion.png"));
-        imgD.setFitWidth(40);
-        imgD.setFitHeight(40);
-        this.btnDeco = new Button("", imgD);
-
-        //Bouton Rechercher
-        this.btnRechercher = new Button("Rechercher");
-        this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
-
-        //ComboBox
-        List<String> classement = Arrays.asList("classement par défaut", "classement par épreuves", "listes des JO");
-        this.comboBox = new ComboBox<String>(FXCollections.observableArrayList(classement));
-        this.comboBox.setPromptText("sélection classement");
-
+       
         //Bouton Recherche
         this.recherche = new Button("Rechercher");
         this.recherche.setOnAction(new ControleurComboBox(this.modeleJO, this, this.comboBox.getValue()));
         
         this.panelCentral = new BorderPane();
         this.jeuxOlympiques = new Text("Jeux Olympiques Tokyo 2020");
-
-        this.utilisateur = new ImageView(new Image("file:./img/utilisateur.png"));
-        this.utilisateur.setFitWidth(100);
-        this.utilisateur.setFitHeight(100);
-
+        
         //Modèle Jeux Olympiques
-        this.modeleJO = new JeuxOlympiques();
-        try {
-            modeleJO.chargerDonneeCSV("/home/iut45/Etudiants/o22304996/SAE/Java -IHM/src/SAE_JAVA_JO/donnees.csv");
-        } catch (Exception e) {
-            System.out.println("Erreur lors du chargement des données");
-        }
+        
 
+        
+    }
+
+    private Scene laScene(){
+        BorderPane fenetre = new BorderPane();
+        fenetre.setCenter(this.panelCentral);
+        return new Scene(fenetre, 1000, 800);
         
     }
             

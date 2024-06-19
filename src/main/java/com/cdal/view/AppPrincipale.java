@@ -2,20 +2,23 @@ package main.java.com.cdal.view;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javax.swing.border.Border;
-
 import main.java.com.cdal.controler.*;
+import main.java.com.cdal.model.JeuxOlympiques;
 
 
 public class AppPrincipale extends Application{
@@ -26,14 +29,58 @@ public class AppPrincipale extends Application{
     FXMLLoader loader;
     private TextField barreRecherche;
     private Button btnRechercher;
+    private Button recherche;
     private Button btnParametres;
     private Button btnDeco;
-    private BorderPane panelCentral;
+    private Parent panelCentral;
     private ImageView utilisateur;
+    private JeuxOlympiques modeleJO;
+    private ComboBox<String> comboBox;
+  
+
     
+    @Override
     public void init(){
         //--- Initialisation de l'application
-        this.barreRecherche = new TextField("");
+        this.barreRecherche = new TextField();
+        //Bouton Paramètres
+        ImageView imgP = new ImageView(new Image("file:./img/param.png"));
+        imgP.setFitWidth(40);
+        imgP.setFitHeight(40);
+        this.btnParametres = new Button("", imgP);
+        this.btnParametres.setOnAction(new ControleurParametres(this));
+
+         //Bouton Déconnexion
+         ImageView imgD = new ImageView(new Image("file:./img/connexion.png"));
+         imgD.setFitWidth(40);
+         imgD.setFitHeight(40);
+         this.btnDeco = new Button("", imgD);
+        
+        //Icone User
+        this.utilisateur = new ImageView(new Image("file:./img/utilisateur.png"));
+        this.utilisateur.setFitWidth(100);
+        this.utilisateur.setFitHeight(100);
+
+        //Bouton Rechercher
+        this.btnRechercher = new Button("Rechercher");
+        this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
+
+        //ComboBox
+        List<String> classement = Arrays.asList("classement par défaut", "classement par épreuves", "listes des JO");
+        this.comboBox = new ComboBox<String>(FXCollections.observableArrayList(classement));
+        this.comboBox.setPromptText("sélection classement");
+        //Menu déroulant
+        this.recherche = new Button("Rechercher");
+        this.recherche.setOnAction(new ControleurComboBox(this.modeleJO, this, this.comboBox.getValue()));
+        
+        this.modeleJO = new JeuxOlympiques();
+        try {
+            modeleJO.chargerDonneeCSV("/home/iut45/Etudiants/o22304996/SAE/Java -IHM/src/SAE_JAVA_JO/donnees.csv");
+        } catch (Exception e) {
+            System.out.println("Erreur lors du chargement des données");
+        }
+        
+        
 
     }
     
@@ -92,7 +139,7 @@ public class AppPrincipale extends Application{
             this.loader = new FXMLLoader(url);
             System.out.println("PageClassementEpreuve.fxml chargé"+loader);
             this.root = loader.load();
-            this.panelCentral.setCenter(this.root);
+            //this.panelCentral.setCenter(this.root);
             //this.mainScene.setRoot(root);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page PageClassementEpreuve");
@@ -125,27 +172,35 @@ public class AppPrincipale extends Application{
     }
 
     public void afficherPageConnexion(){
-    
+        // Création d'une nouvelle scène 
+        System.out.println("Connexion");
+        this.panelCentral = new VueConnexion();
+
+    }
+
+    public void afficherPageJournaliste(){
+        
 
 
     }
 
     private Scene laScene(){
         BorderPane fenetre = new BorderPane();
+        System.out.println(this.panelCentral);
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(header());
         return new Scene(fenetre, 1000, 800);
         
     }
+
+
     @Override
     public void start(Stage stage) throws Exception {
         //--- Chargement du fichier FXML
+        stage.setScene(laScene());
         stage.setTitle("SayHello FXML");
-        this.mainScene = laScene(); 
-        stage.setScene(this.mainScene);
         stage.show();
     }
-
 
     public static void main(String[] args) {
         //--- Lancement de l'application
