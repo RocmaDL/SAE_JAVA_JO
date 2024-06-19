@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import main.java.com.cdal.view.VueConnexion;
 
-public class ControleurConnexion {
+public class ControleurConnexion implements EventHandler<ActionEvent>{
 
     private VueConnexion vue;
 
@@ -41,12 +41,15 @@ public class ControleurConnexion {
         String motDePasse = vue.getMotDePasse();
 
         // Simuler une validation de connexion
-        if (nomUtilisateur.equals("administrateur") ||   nomUtilisateur.equals("journaliste") || nomUtilisateur.equals("organisateur")) {
+        if (nomUtilisateur.contains("administrateur") ||   nomUtilisateur.contains("journaliste") || nomUtilisateur.contains("organisateur")) {
             vue.setMessageAction("Connexion réussie !", Color.GREEN);
+
         } else {
             vue.setMessageAction("Échec de la connexion. Veuillez réessayer.", Color.RED);
         }
     }
+
+
 
     private void annulerConnexion() {
         vue.clearFields();
@@ -55,4 +58,9 @@ public class ControleurConnexion {
     private void afficherMasquerMotDePasse() {
         vue.afficherMasquerMotDePasse();
     }
+    @Override
+    public void handle(ActionEvent actionEvent){
+        this.vue.popUpRegleConnexion().showAndWait();
+    }
 }
+
