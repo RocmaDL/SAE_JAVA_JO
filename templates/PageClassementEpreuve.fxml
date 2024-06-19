@@ -1,143 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
+   <top>
+      <GridPane prefHeight="134.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="48.0" minHeight="1.0" prefHeight="48.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="61.0" minHeight="9.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="61.0" minHeight="9.0" prefHeight="38.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox opacity="0.59" prefHeight="30.0" prefWidth="120.0" promptText="Epreuve" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Épreuve" textAlignment="CENTER" wrappingWidth="151.7294921875" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ComboBox opacity="0.59" prefHeight="30.0" prefWidth="120.0" promptText="Sport" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sport" textAlignment="CENTER" wrappingWidth="151.7294921875" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" wrappingWidth="44.65380859375" GridPane.columnIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <RadioButton mnemonicParsing="false" text="Féminin" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <RadioButton mnemonicParsing="false" text="Masculin" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <RadioButton mnemonicParsing="false" text="Collectif" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <RadioButton mnemonicParsing="false" text="Individuel" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </top>
+   <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="134.0" prefWidth="600.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="48.0" minHeight="1.0" prefHeight="48.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="61.0" minHeight="9.0" prefHeight="38.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ComboBox prefHeight="40.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowSpan="2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="151.7294921875" GridPane.rowSpan="2">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <ComboBox prefHeight="40.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="151.7294921875" GridPane.rowIndex="2" GridPane.rowSpan="2">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-               </children>
-            </GridPane>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Button" />
-            <TitledPane animated="false" prefHeight="264.0" prefWidth="600.0" text="untitled">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="598.0">
-                     <children>
-                        <VBox layoutX="-2.0" layoutY="-1.0" prefHeight="229.0" prefWidth="600.0">
-                           <children>
-                              <BorderPane prefHeight="46.0" prefWidth="600.0">
-                                 <left>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="59.7294921875" />
-                                          <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                    </HBox>
-                                 </left>
-                                 <right>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="28.7294921875" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                              <BorderPane prefHeight="46.0" prefWidth="600.0">
-                                 <left>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="59.7294921875" />
-                                          <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                    </HBox>
-                                 </left>
-                                 <right>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="28.7294921875" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                              <BorderPane prefHeight="46.0" prefWidth="600.0">
-                                 <left>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="59.7294921875" />
-                                          <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                    </HBox>
-                                 </left>
-                                 <right>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="28.7294921875" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                              <BorderPane prefHeight="46.0" prefWidth="600.0">
-                                 <left>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="59.7294921875" />
-                                          <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                    </HBox>
-                                 </left>
-                                 <right>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="28.7294921875" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                              <BorderPane prefHeight="46.0" prefWidth="600.0">
-                                 <left>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="59.7294921875" />
-                                          <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                    </HBox>
-                                 </left>
-                                 <right>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="28.7294921875" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
+            <TableView prefHeight="206.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="classement" prefWidth="75.0" text="Classement" visible="false" />
+                <TableColumn fx:id="drapeau" prefWidth="75.0" text="drapeau " visible="false" />
+                  <TableColumn fx:id="nom" prefWidth="75.0" text="Nom" visible="false" />
+              </columns>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </TableView>
          </children>
       </VBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </center>
+   <left>
+      <BorderPane prefHeight="66.0" prefWidth="627.0" BorderPane.alignment="CENTER">
+         <top>
+            <Button fx:id="rechercher_epreuve" mnemonicParsing="false" prefHeight="24.0" prefWidth="122.0" text="Rechercher" textAlignment="CENTER" textFill="#0a6de8" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </top>
+         <bottom>
+            <VBox prefHeight="21.0" prefWidth="207.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="nomEpreuve - Genre - Date" wrappingWidth="206.595703125" />
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </left>
 </BorderPane>
