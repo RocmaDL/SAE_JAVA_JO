@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.com.cdal.controler.ControleurConnexion;
 
 public class VueConnexion extends Application {
 

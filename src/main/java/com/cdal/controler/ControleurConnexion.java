@@ -3,6 +3,7 @@ package main.java.com.cdal.controler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
+import main.java.com.cdal.view.VueConnexion;
 
 public class ControleurConnexion {
 
@@ -55,4 +56,3 @@ public class ControleurConnexion {
         vue.afficherMasquerMotDePasse();
     }
 }
-
