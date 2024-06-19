@@ -41,7 +41,7 @@ public class ControleurConnexion {
         String motDePasse = vue.getMotDePasse();
 
         // Simuler une validation de connexion
-        if (nomUtilisateur.equals("admin") && motDePasse.equals("password")) {
+        if (nomUtilisateur.equals("administrateur") ||   nomUtilisateur.equals("journaliste") || nomUtilisateur.equals("organisateur")) {
             vue.setMessageAction("Connexion réussie !", Color.GREEN);
         } else {
             vue.setMessageAction("Échec de la connexion. Veuillez réessayer.", Color.RED);
