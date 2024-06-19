@@ -16,7 +16,7 @@
 
 ## Commande pour compiler et executer le projet avec librairie de JavaFX et FXML
 
-- javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/<Chemin fichier>
+- javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/main/java/com/cdal/*.java
 
 Fonctonne seulement si vous placer le fichier fxml dans le dossier templates à la racine du projet, et que vous appeler le fichier fxml dans le fichier java avec le chemin `templates/<Nom du fichier>.fxml`
 
@@ -31,5 +31,5 @@ Fonctonne seulement si vous placer le fichier fxml dans le dossier templates à 
 ## Exemple de commande pour compiler et executer une application avec son controlleur
 - javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/main/java/com/cdal/controler/ControlerEpreuveResultat.java 
 
-java -cp img:templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml main.java.com.cdal.view.AppEnregistrerRes
+- java -cp img:templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml main.java.com.cdal.view.AppEnregistrerRes
 
