@@ -1,28 +1,48 @@
---CREATE DATABASE JeuxOlympiques;
---USE JeuxOlympiques; 
+-- CREATE DATABASE JeuxOlympiques;
+-- USE JeuxOlympiques;
 
-CREATE TABLE ATHLETE (
-    idAthlete INT PRIMARY KEY,
-    prenom VARCHAR(50),
-    nom VARCHAR(50),
-    sexe CHAR(1),
-    force_ INT,
-    agilite INT,
-    endurance INT,
-    pays VARCHAR(50)
+DROP TABLE ATHLETE;
+DROP TABLE EPREUVE;
+DROP TABLE EQUIPE;
+DROP TABLE SPORT;
+DROP TABLE PAYS;
+
+CREATE TABLE PAYS (
+    idPays INT PRIMARY KEY,
+    nomPays VARCHAR(50) NOT NULL
 );
+
+CREATE TABLE SPORT (
+    idSport INT PRIMARY KEY,
+    nomSport VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE EQUIPE (
+    idEquipe INT PRIMARY KEY,
+    nomEquipe VARCHAR(100) NOT NULL,
+    idPays INT,
+    FOREIGN KEY (idPays) REFERENCES PAYS(idPays)
+);
+
 
 CREATE TABLE EPREUVE (
     idEpreuve INT PRIMARY KEY,
-    nom VARCHAR(50)
+    nomEpreuve VARCHAR(50),
+    idSport INT,
+    FOREIGN KEY (idSport) REFERENCES SPORT(idSport)
 );
 
-CREATE TABLE RESULTAT (
-    idResultat INT PRIMARY KEY,
-    idAthlete INT,
-    idEpreuve INT,
-    score DECIMAL(10,2),
-    rang INT,
-    FOREIGN KEY (idAthlete) REFERENCES ATHLETE(idAthlete),
-    FOREIGN KEY (idEpreuve) REFERENCES EPREUVE(idEpreuve)
+
+CREATE TABLE ATHLETE (
+    idAthlete INT PRIMARY KEY,
+    prenomAthlete VARCHAR(50),
+    nomAthlete VARCHAR(50),
+    idSexe CHAR(1),
+    force_ INT,
+    agilite INT,
+    endurance INT,
+    idPays INT,
+    idEquipe INT,
+    FOREIGN KEY (idPays) REFERENCES PAYS(idPays),
+    FOREIGN KEY (idEquipe) REFERENCES EQUIPE(idEquipe)
 );
