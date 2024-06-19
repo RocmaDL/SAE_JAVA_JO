@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -55,6 +57,19 @@ public class VueAjoutResultat extends Application {
         champResultat.setPromptText("Résultat");
 
         Button boutonAjouter = new Button("Ajouter");
+
+    
+        Image image = new Image("file:img/valider.png");
+
+        ImageView imageValider = new ImageView(image);
+
+
+        imageValider.setFitHeight(16);
+        imageValider.setFitWidth(16);
+
+
+        boutonAjouter.setGraphic(imageValider);
+
 
         Tooltip tooltip = new Tooltip("Ajouter un nouveau résultat !");
         boutonAjouter.setTooltip(tooltip);
