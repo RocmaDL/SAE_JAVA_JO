@@ -48,6 +48,12 @@ public class AppPrincipale extends Application{
             System.out.println("PageEpreuveResultat.fxml chargé"+loader);
             this.root = loader.load();
             this.mainScene = new Scene(root);
+            Button btLancerEpreuve = (Button) mainScene.lookup("#lancer_epreuve");
+            btLancerEpreuve.setOnAction(new ControlerEpreuveResultat()::lancerEpreuve);
+
+            Button btEnregistrerResultat = (Button) mainScene.lookup("#enregistrer_res");
+            btEnregistrerResultat.setOnAction(new ControlerEpreuveResultat()::enregistrerRes);
+
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page EnregistrerRes");
 
@@ -77,7 +83,7 @@ public class AppPrincipale extends Application{
             this.root = loader.load();
             this.mainScene = new Scene(root);
         } catch (Exception e) {
-            System.out.println("Erreur de chargement de la page AdminBis");
+            System.out.println("Erreur de chargement de la page PageClassementEpreuve");
 
         }
     }
@@ -93,7 +99,7 @@ public class AppPrincipale extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         //--- Chargement du fichier FXML
-        afficherPageRechercher();
+        afficherPageEnregistrerRes();
         stage.setTitle("SayHello FXML");
         stage.setScene(this.mainScene);
         stage.show();
