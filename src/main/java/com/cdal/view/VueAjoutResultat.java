@@ -5,11 +5,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import main.java.com.cdal.model.Resultat;
+import main.java.com.cdal.controler.ControleurAjoutResultat;
 
 public class VueAjoutResultat extends Application {
 
@@ -18,8 +21,9 @@ public class VueAjoutResultat extends Application {
     private TextField champNom;
     private TextField champPrenom;
     private TextField champResultat;
-    private TableView<String> tableResultats; // Tableau simplifié sans classe Resultat
+    private TableView<Resultat> tableResultats; 
     private Label messageAction;
+    private ControleurAjoutResultat controleur;
 
     @Override
     public void start(Stage primaryStage) {
@@ -28,7 +32,10 @@ public class VueAjoutResultat extends Application {
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(20));
 
-        // Partie supérieure : champs de saisie et bouton Ajouter
+
+        controleur = new ControleurAjoutResultat(this);
+
+
         VBox topBox = new VBox(10);
         topBox.setAlignment(Pos.CENTER);
 
@@ -37,7 +44,6 @@ public class VueAjoutResultat extends Application {
 
         champPays = new TextField();
         champPays.setPromptText("Pays");
-        
 
         champNom = new TextField();
         champNom.setPromptText("Nom");
@@ -51,8 +57,10 @@ public class VueAjoutResultat extends Application {
         Button boutonAjouter = new Button("Ajouter");
 
         Tooltip tooltip = new Tooltip("Ajouter un nouveau résultat !");
-
         boutonAjouter.setTooltip(tooltip);
+        
+
+        boutonAjouter.setOnAction(e -> controleur.ajouterResultatManuel());
 
         HBox champsBox = new HBox(10);
         champsBox.getChildren().addAll(comboEpreuve, champPays, champNom, champPrenom, champResultat, boutonAjouter);
@@ -65,10 +73,19 @@ public class VueAjoutResultat extends Application {
         tableResultats = new TableView<>();
         tableResultats.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        TableColumn<String, String> colonneResultat = new TableColumn<>("Résultat");
-        colonneResultat.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue()));
+        TableColumn<Resultat, String> colonnePays = new TableColumn<>("Pays");
+        colonnePays.setCellValueFactory(new PropertyValueFactory<>("pays"));
 
-        tableResultats.getColumns().add(colonneResultat);
+        TableColumn<Resultat, String> colonneNom = new TableColumn<>("Nom");
+        colonneNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+
+        TableColumn<Resultat, String> colonnePrenom = new TableColumn<>("Prénom");
+        colonnePrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+
+        TableColumn<Resultat, String> colonneResultat = new TableColumn<>("Résultat");
+        colonneResultat.setCellValueFactory(new PropertyValueFactory<>("resultat"));
+
+        tableResultats.getColumns().addAll(colonnePays, colonneNom, colonnePrenom, colonneResultat);
 
         VBox centerBox = new VBox(10);
         centerBox.getChildren().add(tableResultats);
@@ -89,6 +106,34 @@ public class VueAjoutResultat extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.show();
+    }
+
+    public ComboBox<String> getComboEpreuve() {
+        return comboEpreuve;
+    }
+
+    public TextField getChampPays() {
+        return champPays;
+    }
+
+    public TextField getChampNom() {
+        return champNom;
+    }
+
+    public TextField getChampPrenom() {
+        return champPrenom;
+    }
+
+    public TextField getChampResultat() {
+        return champResultat;
+    }
+
+    public TableView<Resultat> getTableResultats() {
+        return tableResultats;
+    }
+
+    public Label getMessageAction() {
+        return messageAction;
     }
 
     public static void main(String[] args) {
