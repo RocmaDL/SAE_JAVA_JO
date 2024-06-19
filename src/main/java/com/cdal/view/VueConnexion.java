@@ -10,9 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -38,45 +36,57 @@ public class VueConnexion extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Connexion aux Jeux Olympiques");
 
-        GridPane grille = new GridPane();
-        grille.setAlignment(Pos.CENTER);
-        grille.setHgap(10);
-        grille.setVgap(10);
-        grille.setPadding(new Insets(25, 25, 25, 25));
-        grille.setStyle("-fx-background-color: #f0f0f0;");
+        // Créer le conteneur principal
+        VBox root = new VBox(20);
+        root.setPadding(new Insets(25, 25, 25, 25));
+        root.setAlignment(Pos.TOP_CENTER);
+        root.setStyle("-fx-background-color: #f0f0f0;");
 
+        // Conteneur pour les images et le titre
+        HBox imagesPane = new HBox(10);
+        imagesPane.setAlignment(Pos.CENTER);
         Image iutImage = new Image("file:img/logo-iut.png");
         ImageView iutImageView = new ImageView(iutImage);
         iutImageView.setFitWidth(100);
         iutImageView.setPreserveRatio(true);
-
         Image olympicsImage = new Image("file:img/jeu.png");
         ImageView olympicsImageView = new ImageView(olympicsImage);
         olympicsImageView.setFitWidth(100);
         olympicsImageView.setPreserveRatio(true);
-
-        HBox imagesPane = new HBox(10);
-        imagesPane.setAlignment(Pos.CENTER);
         imagesPane.getChildren().addAll(iutImageView, creerPaneTitre(), olympicsImageView);
 
-        grille.add(imagesPane, 0, 0, 3, 1);
+        // Ajouter les images et le titre au conteneur principal
+        root.getChildren().add(imagesPane);
+
+        // Créer le conteneur pour la partie connexion
+        VBox loginBox = new VBox(20);
+        loginBox.setAlignment(Pos.CENTER);
+        loginBox.setPadding(new Insets(20));
+        loginBox.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;");
+
+        // Conteneur pour le formulaire de connexion
+        GridPane grille = new GridPane();
+        grille.setAlignment(Pos.CENTER);
+        grille.setHgap(10);
+        grille.setVgap(10);
 
         Label labelNomUtilisateur = new Label("Nom d'utilisateur:");
         labelNomUtilisateur.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
-        grille.add(labelNomUtilisateur, 0, 1);
-
         champNomUtilisateur = new TextField();
-        grille.add(champNomUtilisateur, 1, 1);
+        champNomUtilisateur.setPromptText("Votre nom d'utilisateur ");
+        grille.add(labelNomUtilisateur, 0, 0);
+        grille.add(champNomUtilisateur, 1, 0);
 
         Label labelMotDePasse = new Label("Mot de passe:");
         labelMotDePasse.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
-        grille.add(labelMotDePasse, 0, 2);
-
         champMotDePasse = new PasswordField();
         champMotDePasseVisible = new TextField();
+        champMotDePasseVisible.setPromptText("Votre mot de passe ");
         champMotDePasseVisible.setManaged(false);
         champMotDePasseVisible.setVisible(false);
-        grille.add(champMotDePasse, 1, 2);
+        grille.add(labelMotDePasse, 0, 1);
+        grille.add(champMotDePasse, 1, 1);
+        grille.add(champMotDePasseVisible, 1, 1);
 
         Image oeilImage = new Image("file:img/eye.png");
         ImageView iconeOeil = new ImageView(oeilImage);
@@ -84,26 +94,39 @@ public class VueConnexion extends Application {
         iconeOeil.setFitWidth(20);
         boutonAfficherMasquerMotDePasse = new Button("", iconeOeil);
         boutonAfficherMasquerMotDePasse.setStyle("-fx-background-color: transparent;");
-        grille.add(boutonAfficherMasquerMotDePasse, 2, 2);
+        grille.add(boutonAfficherMasquerMotDePasse, 2, 1);
 
+        // Ajouter le formulaire au conteneur principal
+        loginBox.getChildren().add(grille);
+
+        // Conteneur pour les boutons
+        HBox paneBoutons = new HBox(10);
+        paneBoutons.setAlignment(Pos.CENTER);
         boutonValider = new Button("Valider");
         boutonValider.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
         boutonAnnuler = new Button("Annuler");
         boutonAnnuler.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
-
-        HBox paneBoutons = new HBox(10);
-        paneBoutons.setAlignment(Pos.CENTER);
         paneBoutons.getChildren().addAll(boutonAnnuler, boutonValider);
-        grille.add(paneBoutons, 0, 3, 3, 1);
 
+        // Ajouter les boutons au conteneur principal
+        loginBox.getChildren().add(paneBoutons);
+
+        // Conteneur pour le message d'action
         messageAction = new Text();
-        grille.add(messageAction, 0, 4, 3, 1);
+        loginBox.getChildren().add(messageAction);
 
-        primaryStage.setScene(new Scene(grille, 800, 600));
+        // Ajouter le conteneur de connexion au conteneur principal
+        root.getChildren().add(loginBox);
+
+        // Définir la scène
+        primaryStage.setScene(new Scene(root, 800, 600));
 
         // Création du contrôleur et liaison avec la vue
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
+
+        // Ajouter le gestionnaire d'événements pour le bouton Afficher/Masquer
+        boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());
 
         primaryStage.show();
     }
