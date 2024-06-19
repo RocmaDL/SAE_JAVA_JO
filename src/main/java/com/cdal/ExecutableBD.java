@@ -1,5 +1,7 @@
-import java.sql.*;
+package main.java.com.cdal;
+import main.java.com.cdal.model.*;
 
+import java.sql.*;
 public class ExecutableBD {
     public static void main(String[] args) {
         try {
