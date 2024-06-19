@@ -289,7 +289,7 @@ public class JeuxOlympiques {
                     nomEpreuve += sport[i] + " ";
                 }
             }
-            Epreuve e = new Epreuve(nomEpreuve, 100, donnees[2].charAt(0), s);
+            Epreuve e = new Epreuve(nomEpreuve, donnees[2].charAt(0), s);
 
             if (!this.getLesPays().contains(p)) {
                 p.enregistrerAthlete(a);

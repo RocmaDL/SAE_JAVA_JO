@@ -1,3 +1,4 @@
+package main.java.com.cdal.model;
 
 
 import java.io.BufferedReader;
