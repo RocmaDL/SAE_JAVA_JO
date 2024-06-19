@@ -1,25 +1,12 @@
-package main.java.com.cdal.controler;
-
-import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import main.java.com.cdal.model.Resultat;
-import main.java.com.cdal.view.VueAjoutResultat;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class ControleurAjoutResultat {
-
+    
     private VueAjoutResultat vue;
-
+    
     public ControleurAjoutResultat(VueAjoutResultat vue) {
         this.vue = vue;
     }
-
-
+    
+    
     public void ajouterResultatManuel() {
         String pays = vue.getChampPays().getText();
         String nom = vue.getChampNom().getText();
@@ -30,26 +17,26 @@ public class ControleurAjoutResultat {
             vue.getMessageAction().setTextFill(Color.RED);
             return;
         }
-
+    
         Resultat nouveauResultat = new Resultat(pays, nom, prenom, resultat);
         vue.getTableResultats().getItems().add(nouveauResultat);
-
+    
         vue.getMessageAction().setText("Résultat ajouté avec succès.");
         vue.getMessageAction().setTextFill(Color.GREEN);
-
+    
         // Réinitialiser les champs de saisie
         vue.getChampPays().clear();
         vue.getChampNom().clear();
         vue.getChampPrenom().clear();
         vue.getChampResultat().clear();
     }
-
+    
     public void chargerResultatsDepuisFichier(Stage primaryStage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Charger des résultats depuis un fichier");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers CSV", "*.csv"));
         File fichier = fileChooser.showOpenDialog(primaryStage);
-
+    
         if (fichier != null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(fichier))) {
                 String ligne;
@@ -74,4 +61,6 @@ public class ControleurAjoutResultat {
             }
         }
     }
-}
+    
+    }
+    
