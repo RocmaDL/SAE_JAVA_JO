@@ -22,10 +22,11 @@ Fonctonne seulement si vous placer le fichier fxml dans le dossier templates à 
 
 - java -cp img:templates:bin/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml <package>.<Nom de la classe>
 
-## Commande pour compiler et executer le projet pour la bd
+## Commande pour compiler et executer le projet pour la bd ( Rentrer dans le répertoire "bd" )
 
--
--
+-javac -d ../bin *.java
+
+-javac -d ../bin *.java && java -cp ../bin:/usr/share/java/mariadb-java-client.jar ExecutableBD
 
 ## Exemple de commande pour compiler et executer une application avec son controlleur
 - javac -d bin -cp img:templates:src/ --module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml src/main/java/com/cdal/controler/ControlerEpreuveResultat.java 
