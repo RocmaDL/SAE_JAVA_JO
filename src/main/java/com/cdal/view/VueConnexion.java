@@ -1,6 +1,7 @@
 package main.java.com.cdal.view;
 
 import javafx.application.Application;
+import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -56,6 +57,21 @@ public class VueConnexion extends Application {
         root.getChildren().add(imagesPane);
 
 
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setPadding(new Insets(10));
+
+        Image accueil = new Image("file:img/image_accueil.jpg");
+        ImageView imageView = new ImageView(accueil);
+        imageView.setFitWidth(950); 
+        imageView.setPreserveRatio(true);
+
+        DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
+        imageView.fitWidthProperty().bind(imageWidthBinding);
+        
+        hbox.getChildren().add(imageView);
+
+
         VBox loginBox = new VBox(20);
         loginBox.setAlignment(Pos.CENTER);
         loginBox.setPadding(new Insets(20));
@@ -107,9 +123,9 @@ public class VueConnexion extends Application {
         messageAction = new Text();
         loginBox.getChildren().add(messageAction);
 
-        root.getChildren().add(loginBox);
+        root.getChildren().addAll(loginBox , hbox);
 
-        primaryStage.setScene(new Scene(root, 1200, 900));
+        primaryStage.setScene(new Scene(root, 1000, 920));
 
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
