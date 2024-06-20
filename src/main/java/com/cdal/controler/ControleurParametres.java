@@ -14,9 +14,6 @@ public class ControleurParametres implements EventHandler<ActionEvent> {
     }
 
 
-    public ControleurParametres(AppPrincipale appPrincipale) {
-        //TODO Auto-generated constructor stub
-    }
 
 
     @Override
