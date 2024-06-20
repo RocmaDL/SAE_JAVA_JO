@@ -71,4 +71,14 @@ public class Utilisateur {
         return this.role;
     }
 
+    @Override
+    public String toString() {
+        return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mdp=" + mdp + ", role=" + role
+                + "]";
+    }
+    
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
 }

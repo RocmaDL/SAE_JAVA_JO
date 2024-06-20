@@ -22,13 +22,13 @@ CREATE TABLE JOUtilisateur (
     roleUser VARCHAR(50)
 );
 
-CREATE TABLE JOPays (
-    idPays INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE JOPays ( -- Traduit en JDBC
+    idPays INT,
     nomPays VARCHAR(50)
 );
 
-CREATE TABLE JOSport (
-    idSport INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE JOSport ( -- Traduit en JDBC
+    idSport INT,
     nomSport VARCHAR(50),
     unite VARCHAR(20),
     coefForce FLOAT,
@@ -37,18 +37,16 @@ CREATE TABLE JOSport (
 );
 
 CREATE TABLE JOEpreuve (
-    idEpreuve INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idEpreuve INT PRIMARY KEY,
     nomEpreuve VARCHAR(50),
     sexeEpreuve CHAR(1),
-    dateEpreuve DATE,
     idSport INT,
     nombreAthletes INT,
     FOREIGN KEY (idSport) REFERENCES JOSport(idSport)
 );
 
 CREATE TABLE JOJeuxOlympique (
-    idJO INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    dateJO DATE
+    idJO INT PRIMARY KEY,
 );
 
 CREATE TABLE JOParticiper (
@@ -57,14 +55,6 @@ CREATE TABLE JOParticiper (
     PRIMARY KEY (idEpreuve, idJO),
     FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
     FOREIGN KEY (idJO) REFERENCES JOJeuxOlympique(idJO)
-);
-
-CREATE TABLE JOHeberger (
-    idJO INT,
-    idPays INT,
-    PRIMARY KEY (idJO, idPays),
-    FOREIGN KEY (idJO) REFERENCES JOJeuxOlympique(idJO),
-    FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
 );
 
 CREATE TABLE JOOrganiser (
@@ -84,14 +74,14 @@ CREATE TABLE JOAnimer (
 );
 
 CREATE TABLE JOEquipe (
-    idEq INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idEq INT PRIMARY KEY,
     nomEq VARCHAR(50),
     idPays INT,
     FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
 );
 
 CREATE TABLE JOAthlete (
-    idAthlete INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idAthlete INT PRIMARY KEY,
     prenomAthlete VARCHAR(50),
     nomAthlete VARCHAR(50),
     sexeAthlete CHAR(1),
@@ -106,7 +96,7 @@ CREATE TABLE JOAthlete (
 
 
 CREATE TABLE JOSinscrire (
-    idInscription INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idInscription INT PRIMARY KEY,
     idAthlete INT,
     idEq INT,
     idEpreuve INT,
@@ -117,7 +107,7 @@ CREATE TABLE JOSinscrire (
 );
 
 CREATE TABLE JOParticiperResultat (
-    idResultat INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idResultat INT PRIMARY KEY,
     idInscription INT,
     resultat FLOAT,
     FOREIGN KEY (idInscription) REFERENCES JOSinscrire(idInscription)

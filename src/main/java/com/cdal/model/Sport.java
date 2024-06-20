@@ -133,6 +133,18 @@ public class Sport {
         this.unite = unite;
     }
 
+    public double getCoefForce() {
+        return this.LesCoefficients.get(Caracteristique.FORCE);
+    }
+
+    public double getCoefAgilite() {
+        return this.LesCoefficients.get(Caracteristique.AGILITE);
+    }
+
+    public double getCoefEndurance() {
+        return this.LesCoefficients.get(Caracteristique.ENDURANCE);
+    }
+
     @Override
     public String toString() {
         return "Sport [lesEpreuves=" + lesEpreuves + ", nom=" + nom + ", LesCoefficients=" + LesCoefficients

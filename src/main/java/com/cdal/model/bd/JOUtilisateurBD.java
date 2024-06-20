@@ -52,9 +52,9 @@ public class JOUtilisateurBD {
         ps.executeUpdate();
     }
 
-    public void deleteJOUtilisateur(Utilisateur u) throws SQLException {
+    public void deleteJOUtilisateur(String u) throws SQLException {
         PreparedStatement ps = this.laConnexion.prepareStatement("delete from JOUtilisateur where idUser = ?");
-        ps.setString(1, u.getId());
+        ps.setString(1, u);
         ps.executeUpdate();
     }
 

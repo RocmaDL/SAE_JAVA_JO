@@ -325,4 +325,15 @@ public class JeuxOlympiques {
         br.close();
     }
 
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((lesParticipations == null) ? 0 : lesParticipations.hashCode());
+        result = prime * result + ((lesPays == null) ? 0 : lesPays.hashCode());
+        result = prime * result + ((lesSports == null) ? 0 : lesSports.hashCode());
+        result = prime * result + ((resultats == null) ? 0 : resultats.hashCode());
+        return result;
+    }
 }
