@@ -18,10 +18,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Hyperlink;
 
-//import main.java.com.cdal.controler.ControleurAide;
+
+
+import main.java.com.cdal.controler.ControleurAide;
 
 import main.java.com.cdal.controler.ControleurConnexion;
+
+import main.java.com.cdal.controler.ControleurLienInscription;
 
 public class VueConnexion extends VBox{
 
@@ -35,6 +40,7 @@ public class VueConnexion extends VBox{
     private Button boutonAnnuler;
     private Button boutonAfficherMasquerMotDePasse;
     private Text messageAction;
+    private Hyperlink lienInscription;
 
     private boolean motDePasseVisible = false;
 
@@ -48,7 +54,7 @@ public class VueConnexion extends VBox{
         aideImageView.setFitWidth(16);
         aideBouton.setGraphic(aideImageView);
 
-       // aideBouton.setOnAction(new ControleurAide(this));
+       aideBouton.setOnAction(new ControleurAide(this));
 
 
         VBox root = new VBox(20);
@@ -139,7 +145,14 @@ public class VueConnexion extends VBox{
 
         paneBoutons.getChildren().addAll(boutonAnnuler,aideBouton, boutonValider);
 
-        loginBox.getChildren().add(paneBoutons);
+
+        lienInscription = new Hyperlink("Pas de compte? Inscrivez-vous");
+        lienInscription.setOnAction(new ControleurLienInscription(this));
+
+
+        loginBox.getChildren().addAll(paneBoutons, lienInscription);
+
+
 
         messageAction = new Text();
         loginBox.getChildren().add(messageAction);
@@ -147,7 +160,6 @@ public class VueConnexion extends VBox{
         root.getChildren().addAll(loginBox , hbox);
         this.getChildren().add(root);
 
-        //primaryStage.setScene(new Scene(root, 1000, 920));
 
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
@@ -156,7 +168,6 @@ public class VueConnexion extends VBox{
         
         
 
-        //primaryStage.show();
     }
 
     private VBox creerPaneTitre() {
@@ -221,6 +232,10 @@ public class VueConnexion extends VBox{
         return champNomUtilisateur.getText();
     }
 
+    public Hyperlink getLienInscription() {
+        return lienInscription;
+    }
+
     public void setMessageAction(String message, Color color) {
         messageAction.setText(message);
         messageAction.setFill(color);
@@ -243,9 +258,5 @@ public class VueConnexion extends VBox{
         alert.getDialogPane().setPrefSize(600, 400);
     
         return alert;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
