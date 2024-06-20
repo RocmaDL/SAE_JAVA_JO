@@ -183,7 +183,7 @@ public class AppPrincipale extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-        return new Scene(fenetre, 900,600);
+        return new Scene(fenetre, 1200,900);
 
     }
 
