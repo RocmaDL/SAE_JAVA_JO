@@ -67,19 +67,23 @@ public class JOJeuxOlympiquesBD { // ! Implémenter les requetes pour trouver le
                 new JOEpreuveBD(this.laConnexionMySQL).createJOEpreuve(e);
             }
         }
-
         for (Map.Entry<Epreuve, Set<Participer>> entry : jo.getLesParticipations().entrySet()) {
+            System.out.println(entry.getValue().size() + "Nombre de participants");
             for (Participer p : entry.getValue()) {
                 if (p instanceof Athlete) {
                     new JOSinscrireBD(this.laConnexionMySQL).createJOSinscrire(entry.getKey(), (Athlete) p);
                 } else {
                     new JOSinscrireBD(this.laConnexionMySQL).createJOSinscrire(entry.getKey(), (Equipe) p);
+                    for (Athlete a : ((Equipe) p).getLesAthletes()) {
+                        new JOSintegrerBD(laConnexionMySQL).createJOSintegrer((Equipe) p, a);
+                    }
                 }
             }
         }
 
         for (Map.Entry<Epreuve, Map<Participer, Double>> entry : jo.getResultats().entrySet()) {
             for (Map.Entry<Participer, Double> entry2 : entry.getValue().entrySet()) {
+                System.out.println(entry2.getKey());
                 if (entry2.getKey() instanceof Athlete) {
                     new JOParticiperResultat(this.laConnexionMySQL).createJOParticiperResultat(entry.getKey(),
                             (Athlete) entry2.getKey(),

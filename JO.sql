@@ -77,7 +77,7 @@ CREATE TABLE JOSinscrire (
     idAthlete INT,
     idEq INT,
     idEpreuve INT,
-    PRIMARY KEY (idAthlete, idEq, idEpreuve),
+    UNIQUE (idAthlete, idEq, idEpreuve),
     FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
     FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq),
     FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),

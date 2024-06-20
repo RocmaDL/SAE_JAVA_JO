@@ -32,17 +32,21 @@ public class JOSinscrireBD {
 
     public void createJOSinscrire(Epreuve e, Athlete a) throws SQLException {
         PreparedStatement ps = this.laConnexionMySQL.prepareStatement(
-                "insert into JOSinscrire(idAthlete, idEpreuve) values(?,?)");
+                "insert into JOSinscrire(idAthlete, idEpreuve, idEq) values(?,?,?)");
         ps.setInt(1, a.hashCode());
         ps.setInt(2, e.hashCode());
+        ps.setNull(3, java.sql.Types.INTEGER);
+        System.out.println(ps.toString());
         ps.executeUpdate();
     }
 
     public void createJOSinscrire(Epreuve e, Equipe eq) throws SQLException {
         PreparedStatement ps = this.laConnexionMySQL.prepareStatement(
-                "insert into JOSinscrire(idEq, idEpreuve) values(?,?)");
+                "insert into JOSinscrire(idEq, idEpreuve, idAthlete) values(?,?,?)");
         ps.setInt(1, eq.hashCode());
         ps.setInt(2, e.hashCode());
+        ps.setNull(3, java.sql.Types.INTEGER);
+        System.out.println(ps.toString());
         ps.executeUpdate();
     }
 

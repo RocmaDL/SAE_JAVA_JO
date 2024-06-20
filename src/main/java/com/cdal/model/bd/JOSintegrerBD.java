@@ -7,7 +7,7 @@ import main.java.com.cdal.util.Couple;
 import java.util.ArrayList;
 
 public class JOSintegrerBD {
-    
+
     /*
      * idAthlete INT,
      * idEq INT,
@@ -39,14 +39,16 @@ public class JOSintegrerBD {
         ps.executeUpdate();
     }
 
-    public Couple<Athlete,Equipe> readJOSintegrer(int e, int a) throws SQLException {
+    public Couple<Athlete, Equipe> readJOSintegrer(int e, int a) throws SQLException {
         PreparedStatement ps = this.laConnexionMySQL
                 .prepareStatement("select * from JOSintegrer where idEq = ? and idAthlete = ?");
         ps.setInt(1, e);
         ps.setInt(2, a);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-            return new Couple<Athlete,Equipe>(new JOAthleteBD(this.laConnexionMySQL).readJOAthlete(rs.getInt("idAthlete")), new JOEquipeBD(this.laConnexionMySQL).readJOEquipe(rs.getInt("idEq")));
+            return new Couple<Athlete, Equipe>(
+                    new JOAthleteBD(this.laConnexionMySQL).readJOAthlete(rs.getInt("idAthlete")),
+                    new JOEquipeBD(this.laConnexionMySQL).readJOEquipe(rs.getInt("idEq")));
         } else {
             throw new SQLException("Couple non trouvé.");
         }
@@ -69,8 +71,8 @@ public class JOSintegrerBD {
         ps.setInt(2, a);
         ps.executeUpdate();
     }
-    
-    public ArrayList<Couple<Athlete,Equipe>> allJOSintegrer() throws SQLException {
+
+    public ArrayList<Couple<Athlete, Equipe>> allJOSintegrer() throws SQLException {
         PreparedStatement ps = this.laConnexionMySQL.prepareStatement("select * from JOSintegrer");
         ResultSet rs = ps.executeQuery();
         ArrayList<Couple<Athlete, Equipe>> lesCouples = new ArrayList<Couple<Athlete, Equipe>>();

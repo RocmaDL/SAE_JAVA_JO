@@ -304,7 +304,8 @@ public class JeuxOlympiques {
             }
 
             List<String> lesNomsDesSportsCollective = new ArrayList<>(Arrays.asList("Handball", "Volley-Ball"));
-            if (lesNomsDesSportsCollective.contains(sport[0])) {
+            if (lesNomsDesSportsCollective.contains(sport[0]) || Arrays.asList(
+                    e.getNomEpreuve().split("")).contains("relais")) {
                 Equipe eq = new Equipe(s.getNom(), p);
                 if (p.getLesEquipes().contains(eq)) {
                     eq = p.getLesEquipes().get(p.getLesEquipes().indexOf(eq));
@@ -313,6 +314,8 @@ public class JeuxOlympiques {
                     eq.ajouterMembre(a);
                     p.enregistrerEquipe(eq);
                 }
+            }else{
+                this.lesParticipations.get(e).add(a);
             }
 
             if (!this.getLesSports().contains(s)) {
@@ -326,6 +329,25 @@ public class JeuxOlympiques {
             }
         }
         br.close();
+        char sexe;
+        for (Pays p : this.getLesPays()) {
+            for (Equipe equipe : p.getLesEquipes()) {
+                for (Athlete a : equipe.getLesAthletes()) {
+                    if (a.getSexe() == 'M') {
+                        sexe = 'M';
+                    } else {
+                        sexe = 'F';
+                    }
+                    for (Sport s : this.getLesSports()) {
+                        for (Epreuve e : s.getlesEpreuves()) {
+                            if (e.getSexe() == sexe) {
+                                this.lesParticipations.get(e).add(equipe);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Override
