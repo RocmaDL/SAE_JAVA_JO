@@ -2,16 +2,10 @@ package main.java.com.cdal.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-=======
->>>>>>> LennyAppPrincipale
-=======
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
->>>>>>> 8675e83bfce29514f327c7ea9967d96fbe508115
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -23,17 +17,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javafx.stage.Stage;
-import main.java.com.cdal.controler.ControleurAide;
-=======
->>>>>>> LennyAppPrincipale
-=======
-import javafx.stage.Stage;
-import main.java.com.cdal.controler.ControleurAide;
 
->>>>>>> 8675e83bfce29514f327c7ea9967d96fbe508115
+//import main.java.com.cdal.controler.ControleurAide;
+
 import main.java.com.cdal.controler.ControleurConnexion;
 
 public class VueConnexion extends VBox{
@@ -61,7 +48,7 @@ public class VueConnexion extends VBox{
         aideImageView.setFitWidth(16);
         aideBouton.setGraphic(aideImageView);
 
-        aideBouton.setOnAction(new ControleurAide(this));
+       // aideBouton.setOnAction(new ControleurAide(this));
 
 
         VBox root = new VBox(20);
@@ -92,23 +79,6 @@ public class VueConnexion extends VBox{
         ImageView imageView = new ImageView(accueil);
         imageView.setFitWidth(950); 
         imageView.setPreserveRatio(true);
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-        DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); 
-        imageView.fitWidthProperty().bind(imageWidthBinding);
-=======
-        //DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
-        //imageView.fitWidthProperty().bind(imageWidthBinding);
->>>>>>> LennyAppPrincipale
-=======
-        //DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
-        //imageView.fitWidthProperty().bind(imageWidthBinding);
-
->>>>>>> 8675e83bfce29514f327c7ea9967d96fbe508115
-        
-        hbox.getChildren().add(imageView);
-
 
         VBox loginBox = new VBox(20);
         loginBox.setAlignment(Pos.CENTER);
@@ -183,8 +153,8 @@ public class VueConnexion extends VBox{
         controleur.initialiserActions();
 
         boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());
-
-
+        
+        
 
         //primaryStage.show();
     }
@@ -263,10 +233,6 @@ public class VueConnexion extends VBox{
         messageAction.setText("");
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8675e83bfce29514f327c7ea9967d96fbe508115
     public Alert popUpRegleConnexion() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Règles de Connexion");
@@ -282,10 +248,4 @@ public class VueConnexion extends VBox{
     public static void main(String[] args) {
         launch(args);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> LennyAppPrincipale
-=======
->>>>>>> 8675e83bfce29514f327c7ea9967d96fbe508115
 }

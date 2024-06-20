@@ -190,7 +190,7 @@ public class AppPrincipale extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // --- Chargement du fichier FXML
-        this.afficherPageRechercher();
+        this.afficherPageConnexion();
         stage.setScene(laScene());
         stage.setTitle("SayHello FXML");
         stage.show();
