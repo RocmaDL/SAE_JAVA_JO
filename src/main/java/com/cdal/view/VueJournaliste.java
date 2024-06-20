@@ -1,32 +1,23 @@
 package main.java.com.cdal.view;
 
-import javafx.collections.ObservableList;
-import javafx.application.Application;
+import java.util.Arrays;
+import java.util.List;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.geometry.Pos;
-
-import java.util.List;
-import java.util.Arrays;
-import java.io.File;
-import java.util.ArrayList;
-
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import main.java.com.cdal.controler.*;
 import main.java.com.cdal.model.*;
 
 
-public class AppliJournaliste extends Application {
+public class VueJournaliste extends VBox{
 
     private JeuxOlympiques modeleJO;
+
+    private AppPrincipale vueJO;
 
     private Text jeuxOlympiques;
 
@@ -45,34 +36,27 @@ public class AppliJournaliste extends Application {
     private ComboBox<String> comboBox;
 
 
-    @Override
-    public void init() {
-       
+    public VueJournaliste() {
         this.tableMedailles = new TableView<Classement>();
+
+         // ComboBox
+        List<String> classement = Arrays.asList("classement par défaut", "classement par épreuves", "listes des JO");
+        this.comboBox = new ComboBox<String>(FXCollections.observableArrayList(classement));
+        this.comboBox.setPromptText("sélection classement");
        
         //Bouton Recherche
         this.recherche = new Button("Rechercher");
-        this.recherche.setOnAction(new ControleurComboBox(this.modeleJO, this, this.comboBox.getValue()));
+        this.recherche.setOnAction(new ControleurComboBox(this.modeleJO, this.vueJO, this.comboBox.getValue()));
+
+       
+        // Menu déroulant
+        this.recherche = new Button("Rechercher");
+        this.recherche.setOnAction(new ControleurComboBox(this.modeleJO, this.vueJO, this.comboBox.getValue()));
+
         
         this.panelCentral = new BorderPane();
         this.jeuxOlympiques = new Text("Jeux Olympiques Tokyo 2020");
         
-        //Modèle Jeux Olympiques
-        
-
-        
-    }
-
-    private Scene laScene(){
-        BorderPane fenetre = new BorderPane();
-        fenetre.setCenter(this.panelCentral);
-        return new Scene(fenetre, 1000, 800);
-        
-    }
-            
-    
-
-    public Pane fenetreClassementParMedailles() {
         BorderPane centreAccueil = new BorderPane();
         HBox hBox = new HBox();
         
@@ -81,8 +65,8 @@ public class AppliJournaliste extends Application {
         centreAccueil.setLeft(hBox);
         centreAccueil.setMargin(hBox, new Insets(10, 0, 0, 20));
         
-        this.tableMedailles.setPrefWidth(100);
-        this.tableMedailles.setPrefHeight(100);
+        this.tableMedailles.setPrefWidth(500);
+        this.tableMedailles.setPrefHeight(500);
 
         ObservableList<Classement> listePays = this.tableMedailles.getItems();
         Classement cl1 = new Classement(1, "Etats-Unis", 60, 30, 10, 100);
@@ -119,36 +103,14 @@ public class AppliJournaliste extends Application {
         this.tableMedailles.getColumns().setAll(c1,c2,c3,c4,c5,c6);
         centreAccueil.setMargin(this.tableMedailles, new Insets(80, 50, 0, 0));
         centreAccueil.setCenter(this.tableMedailles);
-        return centreAccueil;
+        this.getChildren().add(centreAccueil);
+        
+
+        
     }
-
-
-
-    public void modeAccueilJournaliste() {
-        //this.panelCentral.setCenter(fenetreClassementParEpreuve());
-        this.panelCentral.setCenter(this.fenetreClassementParMedailles());
-    }
-
-
-
-
-    /**
-     * créer le graphe de scène et lance le jeu
-     * @param stage la fenêtre principale
-     */
-    @Override
-    public void start(Stage stage) {
-        stage.setScene(this.laScene());
-        stage.setTitle("IUTEAM'S - La plateforme des résultats JO ");
-        this.modeAccueilJournaliste();
-        stage.show();
-    }
-
-    /**
-     * Programme principal
-     * @param args inutilisé
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }  
 }
+
+
+
+
+

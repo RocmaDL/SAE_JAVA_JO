@@ -3,7 +3,6 @@ package main.java.com.cdal.controler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import main.java.com.cdal.view.*;
 
 
@@ -14,7 +13,7 @@ public class ControlerRechercher {
     public void rechercheJO(ActionEvent event) {
         //--- Rechercher les JO
         System.out.println("Jo recherché");
-        this.vueRecherche.majImageJo();
+       // this.vueRecherche.majImageJo();
         
     }
 
