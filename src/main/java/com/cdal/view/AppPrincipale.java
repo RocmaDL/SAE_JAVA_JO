@@ -267,11 +267,16 @@ public class AppPrincipale extends Application {
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
 <<<<<<< HEAD
+<<<<<<< HEAD
         return new Scene(fenetre, 1200,900);
 =======
         fenetre.setBottom(this.footer());
         return new Scene(fenetre, 900,600);
 >>>>>>> LennyLiasonPages
+=======
+        fenetre.setBottom(this.footer());
+        return new Scene(fenetre, 900,600);
+>>>>>>> ccca0fd9990d010d61f2a97cf62419c34548d193
 
     }
 
