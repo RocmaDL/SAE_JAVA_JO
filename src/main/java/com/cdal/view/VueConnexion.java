@@ -19,7 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-//import main.java.com.cdal.controler.ControleurAide;
+import main.java.com.cdal.controler.ControleurAide;
 
 import main.java.com.cdal.controler.ControleurConnexion;
 
@@ -48,7 +48,7 @@ public class VueConnexion extends VBox{
         aideImageView.setFitWidth(16);
         aideBouton.setGraphic(aideImageView);
 
-       // aideBouton.setOnAction(new ControleurAide(this));
+       aideBouton.setOnAction(new ControleurAide(this));
 
 
         VBox root = new VBox(20);
@@ -243,9 +243,5 @@ public class VueConnexion extends VBox{
         alert.getDialogPane().setPrefSize(600, 400);
     
         return alert;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
