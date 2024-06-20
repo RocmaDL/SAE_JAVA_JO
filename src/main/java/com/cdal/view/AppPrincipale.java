@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.java.com.cdal.controler.*;
 import main.java.com.cdal.model.JeuxOlympiques;
@@ -33,6 +34,7 @@ public class AppPrincipale extends Application {
     private ComboBox<String> comboBox;
     private Button btnRetour;
     private Button btnAvant;
+    private URL url;
 
     @Override
     public void init() {
@@ -51,6 +53,9 @@ public class AppPrincipale extends Application {
         //    System.out.println("Erreur lors du chargement des donnéeshargement des données");
         //}
         this.panelCentral = new BorderPane() ;
+        this.btnDeco = new Button("");
+        this.btnParametres = new Button("");
+        this.btnRetour = new Button("");
 
             
         
@@ -60,8 +65,8 @@ public class AppPrincipale extends Application {
     public void afficherPageAdmin() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            URL url = new File("templates/PageAdmin.fxml").toURI().toURL();
-            this.loader = new FXMLLoader(url);
+            this.url = new File("templates/PageAdmin.fxml").toURI().toURL();
+            this.loader = new FXMLLoader(this.url);
             System.out.println("PageAdmin.fxml chargé" + loader);
             this.root = loader.load();
             this.panelCentral.setCenter(this.root);
@@ -78,7 +83,7 @@ public class AppPrincipale extends Application {
     public void afficherPageEnregistrerRes() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            URL url = new File("templates/PageEpreuveResultat.fxml").toURI().toURL();
+            this.url = new File("templates/PageEpreuveResultat.fxml").toURI().toURL();
             this.loader = new FXMLLoader(url);
             System.out.println("PageEpreuveResultat.fxml chargé" + loader);
             this.root = loader.load();
@@ -100,7 +105,7 @@ public class AppPrincipale extends Application {
     public void afficherPageAjouterEpreuve() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            URL url = new File("templates/PageAjouterEpreuve.fxml").toURI().toURL();
+            this.url = new File("templates/PageAjouterEpreuve.fxml").toURI().toURL();
             this.loader = new FXMLLoader(url);
             System.out.println("PageAjouterEpreuve.fxml chargé" + loader);
             this.root = loader.load();
@@ -124,7 +129,7 @@ public class AppPrincipale extends Application {
     public void afficherPageAdminBis() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            URL url = new File("templates/PageClassementEpreuve.fxml").toURI().toURL();
+            this.url = new File("templates/PageClassementEpreuve.fxml").toURI().toURL();
             this.loader = new FXMLLoader(url);
             System.out.println("PageClassementEpreuve.fxml chargé" + loader);
             this.root = loader.load();
@@ -181,20 +186,43 @@ public class AppPrincipale extends Application {
     public Pane footer(){
         BorderPane footer = new BorderPane();
         VBox vb1 = new VBox();
-        ImageView imgArriere = new ImageView(new Image("file:./img/en_arriere.png"));
-        imgArriere.setFitWidth(40);
-        imgArriere.setFitHeight(40);
-        this.btnRetour= new Button("", imgArriere);
-        this.btnRetour.setOnAction(new ControlerDeconnexion(this));
+    
+        Text text = new Text("Retour");
 
-        ImageView imgAvant = new ImageView(new Image("file:./img/en-avant-Copie"));
+        text.setStyle("-fx-font: 40 arial;");
+        text.setStyle("-fx-stroke-width: 1.5;");
+
+        this.btnRetour= new Button("", text);
+        this.btnRetour.setStyle("-fx-background-color: #0095B6;");
+        this.btnRetour.setOnAction(new ControlerRetour(this));
+        this.btnRetour.setPrefWidth(80);  // Largeur du bouton
+        this.btnRetour.setPrefHeight(50); // Hauteur du bouton
+        this.btnRetour.setStyle("-fx-font: 20 arial;"); // Taille de la police
+
+        ImageView imgAvant = new ImageView(new Image("file:./img/en-avant-Copie.png"));
         imgAvant.setFitWidth(40);
         imgAvant.setFitHeight(40);
         this.btnAvant = new Button("", imgAvant);
         this.btnAvant.setOnAction(new ControlerDeconnexion(this));
         vb1.getChildren().addAll(this.btnRetour, this.btnAvant);
 
-        footer.setCenter(this.btnDeco);
+        //try{ 
+        //    Image image = new Image(("file:./img/JeuxOlympiques.png"));
+        //    BackgroundImage backgroundImage = new BackgroundImage(image,
+        //    BackgroundRepeat.NO_REPEAT,   // Répéter l'image horizontalement
+        //    BackgroundRepeat.NO_REPEAT,   // Répéter l'image verticalement
+        //    BackgroundPosition.DEFAULT,   // Position par défaut
+        //    BackgroundSize.DEFAULT);      // Taille par défaut
+        //    footer.setBackground(new Background(backgroundImage));
+//
+//
+        //}catch( Exception e){
+        //    System.out.println("ErreuRe r lors du chargement de l'image");
+        //    System.out.println(e.toString());
+    //
+        //}
+       //
+        footer.setCenter(this.btnRetour);
 
         return footer;
 
@@ -218,8 +246,15 @@ public class AppPrincipale extends Application {
 
     }
 
+    public void DesactiverBouton(Button bouton1){
+        bouton1.setDisable(true);
+    }
+
     public void modeAccueil(){
         this.afficherPageConnexion();
+        DesactiverBouton(this.btnRetour);
+        DesactiverBouton(this.btnDeco);
+
     
     }
 
@@ -235,8 +270,9 @@ public class AppPrincipale extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // --- Chargement du fichier FXML
-        this.afficherPageConnexion();
+        
         stage.setScene(laScene());
+        this.modeAccueil();
         stage.setTitle("SayHello FXML");
         stage.show();
     }
