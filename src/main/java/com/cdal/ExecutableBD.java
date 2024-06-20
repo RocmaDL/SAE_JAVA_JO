@@ -1,5 +1,7 @@
 package main.java.com.cdal;
+
 import main.java.com.cdal.model.*;
+import main.java.com.cdal.model.bd.*;
 
 import java.sql.*;
 public class ExecutableBD {
@@ -7,10 +9,10 @@ public class ExecutableBD {
         try {
             ConnexionMySQL connexion = new ConnexionMySQL();
 
-            connexion.connecter("servinfo-maria", "DBkhadjou", "khadjou", "khadjou");
+            connexion.connecter("servinfo-maria", "DBdimba", "dimba", "dimba");
 
             if (connexion.isConnecte()) {
-                JOBD bd = new JOBD(connexion);
+                JOJeuxOlympiquesBD bd = new JOJeuxOlympiquesBD(connexion);
                 bd.csvToSQL("donnees.csv");
             } else {
                 System.err.println("Erreur: Connection non établie.");

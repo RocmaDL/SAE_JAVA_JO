@@ -2,10 +2,15 @@ package main.java.com.cdal.model.bd;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.HashSet;
+
 import main.java.com.cdal.model.*;
 
 public class JOSinscrireBD {
-    
+
     /*
      * idInscription INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
      * idAthlete INT,
@@ -79,5 +84,25 @@ public class JOSinscrireBD {
             lesEpreuves.add(new JOEpreuveBD(this.laConnexionMySQL).readJOEpreuve(rs.getInt("idEpreuve")));
         }
         return lesEpreuves;
+    }
+
+    public Map<Epreuve, Set<Participer>> getLesParticipations() throws SQLException {
+        Map<Epreuve, Set<Participer>> lesParticipations = new HashMap<>();
+        Statement st = this.laConnexionMySQL.createStatement();
+        ResultSet rs = st.executeQuery("select * from JOSinscrire");
+        while (rs.next()) {
+            Epreuve e = new JOEpreuveBD(this.laConnexionMySQL).readJOEpreuve(rs.getInt("idEpreuve"));
+            if (!lesParticipations.containsKey(e)) {
+                lesParticipations.put(e, new HashSet<Participer>());
+            }
+            if (rs.getInt("idAthlete") != 0) {
+                Athlete a = new JOAthleteBD(this.laConnexionMySQL).readJOAthlete(rs.getInt("idAthlete"));
+                lesParticipations.get(e).add(a);
+            } else {
+                Equipe eq = new JOEquipeBD(this.laConnexionMySQL).readJOEquipe(rs.getInt("idEq"));
+                lesParticipations.get(e).add(eq);
+            }
+        }
+        return lesParticipations;
     }
 }

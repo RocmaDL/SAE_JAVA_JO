@@ -29,6 +29,7 @@ public class JOSportBD {
         ps.setDouble(4, s.getCoefForce());
         ps.setDouble(5, s.getCoefAgilite());
         ps.setDouble(6, s.getCoefEndurance());
+        ps.executeUpdate();
     }
 
     public Sport readJOSport(int id) throws SQLException {

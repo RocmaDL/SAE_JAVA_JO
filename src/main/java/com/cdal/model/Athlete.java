@@ -121,7 +121,7 @@ public class Athlete implements Participer {
     @Override
     public String toString() {
         return "Athlete [agilite=" + agilite + ", endurance=" + endurance + ", force=" + force + ", nomAt=" + nomAt
-                + ", prenomAt=" + prenomAt + ", sexe=" + sexe + "]";
+                + ", prenomAt=" + prenomAt + ", sexe=" + sexe + ", pays=" + pays.getNom() + "]";
     }
 
     @Override

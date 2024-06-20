@@ -161,11 +161,11 @@ public class Sport {
         if (!(obj instanceof Sport))
             return false;
         Sport tmp = (Sport) obj;
-        return this.nom.equals(tmp.nom) && this.LesCoefficients.equals(tmp.LesCoefficients) && this.unite.equals(tmp.unite);
+        return this.nom.equals(tmp.nom) && this.LesCoefficients.equals(tmp.LesCoefficients);
     }
 
     @Override
     public int hashCode() {
-        return this.nom.hashCode() + this.unite.hashCode();
+        return this.nom.hashCode();
     }
 }

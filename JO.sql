@@ -1,15 +1,16 @@
 -- Suppression des tables existantes si elles existent
 DROP TABLE IF EXISTS JOParticiperResultat;
 DROP TABLE IF EXISTS JOSinscrire;
-DROP TABLE IF EXISTS JOAthlete;
-DROP TABLE IF EXISTS JOEquipe;
 DROP TABLE IF EXISTS JOAnimer;
 DROP TABLE IF EXISTS JOOrganiser;
 DROP TABLE IF EXISTS JOHeberger;
 DROP TABLE IF EXISTS JOParticiper;
+DROP TABLE IF EXISTS JOSintegrer;
 DROP TABLE IF EXISTS JOJeuxOlympique;
 DROP TABLE IF EXISTS JOEpreuve;
 DROP TABLE IF EXISTS JOSport;
+DROP TABLE IF EXISTS JOAthlete;
+DROP TABLE IF EXISTS JOEquipe;
 DROP TABLE IF EXISTS JOPays;
 DROP TABLE IF EXISTS JOUtilisateur;
 
@@ -23,17 +24,17 @@ CREATE TABLE JOUtilisateur (
 );
 
 CREATE TABLE JOPays ( -- Traduit en JDBC
-    idPays INT,
+    idPays INT PRIMARY KEY,
     nomPays VARCHAR(50)
 );
 
 CREATE TABLE JOSport ( -- Traduit en JDBC
-    idSport INT,
+    idSport INT PRIMARY KEY,
     nomSport VARCHAR(50),
     unite VARCHAR(20),
-    coefForce FLOAT,
-    coefAgilite FLOAT,
-    coefEndurance FLOAT
+    coefForce DOUBLE,
+    coefAgilite DOUBLE,
+    coefEndurance DOUBLE
 );
 
 CREATE TABLE JOEpreuve ( -- Traduit en JDBC
@@ -61,7 +62,7 @@ CREATE TABLE JOAthlete (
     agiliteAthlete INT,
     enduranceAthlete INT,
     idPays INT,
-    FOREIGN KEY (idPays) REFERENCES JOPays(idPays),
+    FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
 );
 
 CREATE TABLE JOSintegrer (
@@ -71,7 +72,6 @@ CREATE TABLE JOSintegrer (
     FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
     FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq)
 );
-
 
 CREATE TABLE JOSinscrire (
     idAthlete INT,
@@ -85,15 +85,13 @@ CREATE TABLE JOSinscrire (
 );
 
 CREATE TABLE JOParticiperResultat (
-    idResultat INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    resultat FLOAT,
+    idResultat INT PRIMARY KEY AUTO_INCREMENT,
+    resultat DOUBLE,
     idAthlete INT,
     idEq INT,
     idEpreuve INT,
-    PRIMARY KEY (idResultat),
-    UNIQUE (idAthlete, idEq, idEpreuve),
     FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
     FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq),
-    FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve)
+    FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
     CHECK ((idAthlete IS NOT NULL AND idEq IS NULL) OR (idAthlete IS NULL AND idEq IS NOT NULL))
 );

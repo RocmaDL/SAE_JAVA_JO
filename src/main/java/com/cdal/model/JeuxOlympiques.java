@@ -319,12 +319,14 @@ public class JeuxOlympiques {
                 s.enregistrerEpreuve(e);
                 this.getLesSports().add(s);
             } else {
-                this.getLesSports().get(this.getLesSports().indexOf(s)).enregistrerEpreuve(e);
+                if (!this.getLesSports().get(this.getLesSports().indexOf(s)).getlesEpreuves().contains(e)) {
+                    this.getLesSports().get(this.getLesSports().indexOf(s)).enregistrerEpreuve(e);
+                }
+
             }
         }
         br.close();
     }
-
 
     @Override
     public int hashCode() {

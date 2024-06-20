@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import main.java.com.cdal.model.*;
 
 public class JOEpreuveBD {
-    
+
     /*
      * idEpreuve INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
      * nomEpreuve VARCHAR(50),
@@ -30,15 +30,19 @@ public class JOEpreuveBD {
         ps.setString(3, e.getSexe() + "");
         ps.setInt(4, e.getSport().hashCode());
         ps.setInt(5, e.getNombreAthletes()); // ! Ajout de l'attribut nombreAthletes
+        System.err.println(ps.toString());
+        System.err.println(e);
         ps.executeUpdate();
     }
-    
+
     public Epreuve readJOEpreuve(int id) throws SQLException {
         Statement st = this.laConnexionMySQL.createStatement();
         ResultSet rs = st.executeQuery("select * from JOEpreuve where idEpreuve = " + id);
         if (rs.next()) {
             Sport s = new JOSportBD(this.laConnexionMySQL).readJOSport(rs.getInt("idSport"));
-            return new Epreuve(rs.getString("nomEpreuve"), rs.getString("sexeEpreuve").charAt(0), s); // ! Ajout de l'attribut nombreAthletes
+            return new Epreuve(rs.getString("nomEpreuve"), rs.getString("sexeEpreuve").charAt(0), s); // ! Ajout de
+                                                                                                      // l'attribut
+                                                                                                      // nombreAthletes
         } else {
             throw new SQLException("Epreuve non trouvée.");
         }
@@ -67,7 +71,9 @@ public class JOEpreuveBD {
         ResultSet rs = st.executeQuery("select * from JOEpreuve");
         while (rs.next()) {
             Sport s = new JOSportBD(this.laConnexionMySQL).readJOSport(rs.getInt("idSport"));
-            Epreuve e = new Epreuve(rs.getString("nomEpreuve"), rs.getString("sexeEpreuve").charAt(0), s); // ! Ajout de l'attribut nombreAthletes
+            Epreuve e = new Epreuve(rs.getString("nomEpreuve"), rs.getString("sexeEpreuve").charAt(0), s); // ! Ajout de
+                                                                                                           // l'attribut
+                                                                                                           // nombreAthletes
             listeEpreuve.add(e);
         }
         return listeEpreuve;

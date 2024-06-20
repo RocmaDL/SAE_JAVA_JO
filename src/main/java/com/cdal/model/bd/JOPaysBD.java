@@ -21,6 +21,7 @@ public class JOPaysBD {
                 "insert into JOPays(idPays, nomPays) values(?,?)");
         ps.setInt(1, p.hashCode());
         ps.setString(2, p.getNom());
+        ps.executeUpdate();
     }
 
     public Pays readJOPays(int id) throws SQLException {
