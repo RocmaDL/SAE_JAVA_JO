@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS JOUtilisateur;
 
 -- Création des tables
 CREATE TABLE JOUtilisateur (
-    idUser VARCHAR(50) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idUser VARCHAR(50) PRIMARY KEY,
     nomUser VARCHAR(50),
     prenomUser VARCHAR(50),
     mdpUser VARCHAR(50),
@@ -36,40 +36,12 @@ CREATE TABLE JOSport ( -- Traduit en JDBC
     coefEndurance FLOAT
 );
 
-CREATE TABLE JOEpreuve (
+CREATE TABLE JOEpreuve ( -- Traduit en JDBC
     idEpreuve INT PRIMARY KEY,
     nomEpreuve VARCHAR(50),
     sexeEpreuve CHAR(1),
     idSport INT,
     nombreAthletes INT,
-    FOREIGN KEY (idSport) REFERENCES JOSport(idSport)
-);
-
-CREATE TABLE JOJeuxOlympique (
-    idJO INT PRIMARY KEY,
-);
-
-CREATE TABLE JOParticiper (
-    idEpreuve INT,
-    idJO INT,
-    PRIMARY KEY (idEpreuve, idJO),
-    FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
-    FOREIGN KEY (idJO) REFERENCES JOJeuxOlympique(idJO)
-);
-
-CREATE TABLE JOOrganiser (
-    idJO INT,
-    idEpreuve INT,
-    PRIMARY KEY (idJO, idEpreuve),
-    FOREIGN KEY (idJO) REFERENCES JOJeuxOlympique(idJO),
-    FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve)
-);
-
-CREATE TABLE JOAnimer (
-    idJO INT,
-    idSport INT,
-    PRIMARY KEY (idJO, idSport),
-    FOREIGN KEY (idJO) REFERENCES JOJeuxOlympique(idJO),
     FOREIGN KEY (idSport) REFERENCES JOSport(idSport)
 );
 
@@ -89,17 +61,23 @@ CREATE TABLE JOAthlete (
     agiliteAthlete INT,
     enduranceAthlete INT,
     idPays INT,
-    idEq INT,
     FOREIGN KEY (idPays) REFERENCES JOPays(idPays),
+);
+
+CREATE TABLE JOSintegrer (
+    idAthlete INT,
+    idEq INT,
+    PRIMARY KEY (idAthlete, idEq),
+    FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
     FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq)
 );
 
 
 CREATE TABLE JOSinscrire (
-    idInscription INT PRIMARY KEY,
     idAthlete INT,
     idEq INT,
     idEpreuve INT,
+    PRIMARY KEY (idAthlete, idEq, idEpreuve),
     FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
     FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq),
     FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
@@ -107,8 +85,15 @@ CREATE TABLE JOSinscrire (
 );
 
 CREATE TABLE JOParticiperResultat (
-    idResultat INT PRIMARY KEY,
-    idInscription INT,
+    idResultat INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     resultat FLOAT,
-    FOREIGN KEY (idInscription) REFERENCES JOSinscrire(idInscription)
+    idAthlete INT,
+    idEq INT,
+    idEpreuve INT,
+    PRIMARY KEY (idResultat),
+    UNIQUE (idAthlete, idEq, idEpreuve),
+    FOREIGN KEY (idAthlete) REFERENCES JOAthlete(idAthlete),
+    FOREIGN KEY (idEq) REFERENCES JOEquipe(idEq),
+    FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve)
+    CHECK ((idAthlete IS NOT NULL AND idEq IS NULL) OR (idAthlete IS NULL AND idEq IS NOT NULL))
 );
