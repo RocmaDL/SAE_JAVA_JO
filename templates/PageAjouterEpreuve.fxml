@@ -53,7 +53,7 @@
                         <Font size="11.0" />
                      </font>
                   </RadioButton>
-                <Button layoutX="71.0" layoutY="150.0" mnemonicParsing="false" text="Ajouter" />
+                <Button id="ajouter_epreuve" layoutX="71.0" layoutY="150.0" mnemonicParsing="false" text="Ajouter" />
                </children>
             </AnchorPane>
          </children>

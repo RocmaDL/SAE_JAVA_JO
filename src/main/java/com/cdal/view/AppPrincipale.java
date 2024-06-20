@@ -20,7 +20,6 @@ import main.java.com.cdal.model.JeuxOlympiques;
 public class AppPrincipale extends Application {
 
     Parent root;
-    Scene mainScene;
     // BorderPane centre;
     FXMLLoader loader;
     private TextField barreRecherche;
@@ -32,6 +31,8 @@ public class AppPrincipale extends Application {
     private ImageView utilisateur;
     private JeuxOlympiques modeleJO;
     private ComboBox<String> comboBox;
+    private Button btnRetour;
+    private Button btnAvant;
 
     @Override
     public void init() {
@@ -82,14 +83,34 @@ public class AppPrincipale extends Application {
             System.out.println("PageEpreuveResultat.fxml chargé" + loader);
             this.root = loader.load();
             this.panelCentral.setCenter(this.root);
-            Button btLancerEpreuve = (Button) mainScene.lookup("#lancer_epreuve");
-            btLancerEpreuve.setOnAction(new ControlerEpreuveResultat()::lancerEpreuve);
+            Button btLancerEpreuve = (Button) this.root.lookup("#lancer_epreuve");
+            System.out.println("btLancerEpreuve : " + btLancerEpreuve);
+            btLancerEpreuve.setOnAction(new ControlerEpreuveResultat(this));
 
-            Button btEnregistrerResultat = (Button) mainScene.lookup("#enregistrer_res");
-            btEnregistrerResultat.setOnAction(new ControlerEpreuveResultat()::enregistrerRes);
+            Button btEnregistrerResultat = (Button) this.root.lookup("#enregistrer_res");
+            btEnregistrerResultat.setOnAction(new ControlerEpreuveResultat(this));
 
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page EnregistrerRes");
+            System.out.println(e.toString());
+
+        }
+    }
+    //PageAjouterEpreuve
+    public void afficherPageAjouterEpreuve() throws Exception {
+        // --- Chargement du fichier FXML
+        try {
+            URL url = new File("templates/PageAjouterEpreuve.fxml").toURI().toURL();
+            this.loader = new FXMLLoader(url);
+            System.out.println("PageAjouterEpreuve.fxml chargé" + loader);
+            this.root = loader.load();
+            this.panelCentral.setCenter(this.root);
+            Button btAjouterEpreuve = (Button) this.root.lookup("#ajouter_epreuve");
+            btAjouterEpreuve.setOnAction(new ControlerAjouterEpreuve(this));
+
+        } catch (Exception e) {
+            System.out.println("Erreur de chargement de la page AjouterEpreuve gthrthrthrthtr");
+            System.out.println(e.toString());
 
         }
     }
@@ -157,6 +178,29 @@ public class AppPrincipale extends Application {
 
     }
 
+    public Pane footer(){
+        BorderPane footer = new BorderPane();
+        VBox vb1 = new VBox();
+        ImageView imgArriere = new ImageView(new Image("file:./img/en_arriere.png"));
+        imgArriere.setFitWidth(40);
+        imgArriere.setFitHeight(40);
+        this.btnRetour= new Button("", imgArriere);
+        this.btnRetour.setOnAction(new ControlerDeconnexion(this));
+
+        ImageView imgAvant = new ImageView(new Image("file:./img/en-avant-Copie"));
+        imgAvant.setFitWidth(40);
+        imgAvant.setFitHeight(40);
+        this.btnAvant = new Button("", imgAvant);
+        this.btnAvant.setOnAction(new ControlerDeconnexion(this));
+        vb1.getChildren().addAll(this.btnRetour, this.btnAvant);
+
+        footer.setCenter(this.btnDeco);
+
+        return footer;
+
+    }
+
+
     public void majAffichage() {
 
 
@@ -183,6 +227,7 @@ public class AppPrincipale extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
+        fenetre.setBottom(this.footer());
         return new Scene(fenetre, 900,600);
 
     }
