@@ -2,6 +2,8 @@ package main.java.com.cdal.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -13,6 +15,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import main.java.com.cdal.controler.ControleurAide;
+
 import main.java.com.cdal.controler.ControleurConnexion;
 
 public class VueConnexion extends VBox{
@@ -32,6 +37,16 @@ public class VueConnexion extends VBox{
 
     public VueConnexion() {
         //primaryStage.setTitle("Connexion aux Jeux Olympiques");
+
+
+        Button aideBouton = new Button("Aide");
+        ImageView aideImageView = new ImageView(new Image("file:img/aide.png")); 
+        aideImageView.setFitHeight(16);
+        aideImageView.setFitWidth(16);
+        aideBouton.setGraphic(aideImageView);
+
+        aideBouton.setOnAction(new ControleurAide(this));
+
 
         VBox root = new VBox(20);
         root.setPadding(new Insets(25, 25, 25, 25));
@@ -64,6 +79,7 @@ public class VueConnexion extends VBox{
 
         //DoubleBinding imageWidthBinding = primaryStage.widthProperty().multiply(0.95); // Exemple : image 50% de la largeur de la fenêtre
         //imageView.fitWidthProperty().bind(imageWidthBinding);
+
         
         hbox.getChildren().add(imageView);
 
@@ -112,7 +128,20 @@ public class VueConnexion extends VBox{
         boutonValider.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
         boutonAnnuler = new Button("Annuler");
         boutonAnnuler.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
-        paneBoutons.getChildren().addAll(boutonAnnuler, boutonValider);
+
+        Image imgAnnuler = new Image("file:img/annuler.png");
+        ImageView imageAnnuler = new ImageView(imgAnnuler);
+        imageAnnuler.setFitHeight(16);
+        imageAnnuler.setFitWidth(16);
+        boutonAnnuler.setGraphic(imageAnnuler);
+
+        Image imageValider = new Image("file:img/valider.png");
+        ImageView imageValiderView = new ImageView(imageValider);
+        imageValiderView.setFitHeight(16);
+        imageValiderView.setFitWidth(16);
+        boutonValider.setGraphic(imageValiderView);
+
+        paneBoutons.getChildren().addAll(boutonAnnuler,aideBouton, boutonValider);
 
         loginBox.getChildren().add(paneBoutons);
 
@@ -208,5 +237,19 @@ public class VueConnexion extends VBox{
         messageAction.setText("");
     }
 
+    public Alert popUpRegleConnexion() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Règles de Connexion");
+        alert.setHeaderText("Instructions de Connexion");
+        alert.setContentText("Pour vous connecter, veuillez respecter les consignes suivantes :\n"
+                + "1. Votre nom d'utilisateur doit inclure votre rôle, suivi d'un espace, puis votre nom et prénom.\n"
+                + "2. Votre mot de passe doit être votre date de naissance au format jj/mm/aaaa.");
+        alert.getDialogPane().setPrefSize(600, 400);
+    
+        return alert;
+    }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
