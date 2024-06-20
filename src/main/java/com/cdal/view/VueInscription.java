@@ -10,11 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class VueInscription extends Application {
+public class VueInscription extends GridPane {
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Inscription aux Jeux Olympiques");
+    public VueInscription() {
 
         GridPane grille = new GridPane();
         grille.setAlignment(Pos.CENTER);
@@ -46,7 +44,6 @@ public class VueInscription extends Application {
         motDePasseChamp.setPromptText("Entrez votre mot de passe");
         grille.add(motDePasseChamp, 1, 3);
 
-        // Bouton pour afficher/masquer le mot de passe
         Image oeilImage = new Image("file:img/eye.png");
         ImageView oeilIcon = new ImageView(oeilImage);
         oeilIcon.setFitHeight(20);
@@ -71,14 +68,6 @@ public class VueInscription extends Application {
         Button boutonRetour = new Button("Retour");
         grille.add(boutonRetour, 0, 5);
 
-        
 
-        Scene scene = new Scene(grille, 1200, 900);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

@@ -169,6 +169,10 @@ public class AppPrincipale extends Application {
     
     }
 
+    public void afficherPageInscription(){
+        this.panelCentral.setCenter(new VueInscription());
+    }
+
     public void afficherPageJournaliste() {
         this.panelCentral.setCenter(new VueJournaliste());
 
