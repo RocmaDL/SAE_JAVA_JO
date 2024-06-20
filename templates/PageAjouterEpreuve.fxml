@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="400.0" prefWidth="203.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="219.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="21.0" layoutY="33.0" text="Date" />
+                        <TextField layoutX="72.0" layoutY="29.0" prefHeight="24.0" prefWidth="115.0" />
+                        <TextField layoutX="72.0" layoutY="80.0" prefHeight="24.0" prefWidth="115.0" promptText="Sport" />
+                        <Label layoutX="20.0" layoutY="84.0" text="Sport" />
+                        <Label layoutX="10.0" layoutY="128.0" text="Epreuve" />
+                        <TextField layoutX="72.0" layoutY="124.0" prefHeight="24.0" prefWidth="116.0" promptText="Epreuve" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="14.0" text="Catégorie" />
+                  <Label layoutX="20.0" layoutY="84.0" text="Genre" />
+                  <RadioButton layoutX="32.0" layoutY="45.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="77.0" text="Collectif">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton layoutX="130.0" layoutY="45.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="77.0" text="Individuel">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton layoutX="22.0" layoutY="113.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="77.0" text="Féminin">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton layoutX="130.0" layoutY="113.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="77.0" text="Masculin">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </RadioButton>
+                <Button layoutX="71.0" layoutY="150.0" mnemonicParsing="false" text="Ajouter" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="400.0" prefWidth="369.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="490.0" prefWidth="379.0">
+               <children>
+                  <TableView layoutX="20.0" layoutY="78.0" prefHeight="273.0" prefWidth="341.0">
+                    <columns>
+                      <TableColumn prefWidth="100.0" text="A venir" />
+                      <TableColumn prefWidth="126.0" text="En cours " />
+                        <TableColumn prefWidth="113.0" text="Passées" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
