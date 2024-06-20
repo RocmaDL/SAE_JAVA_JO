@@ -1,6 +1,5 @@
 package main.java.com.cdal.view;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,11 +11,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import main.java.com.cdal.model.Resultat;
 import main.java.com.cdal.controler.ControleurAjoutResultat;
+import main.java.com.cdal.model.Resultat;
 
-public class VueAjoutResultat extends Application {
+public class VueAjoutResultat extends VBox {
 
     private ComboBox<String> comboEpreuve;
     private TextField champPays;
@@ -27,10 +25,7 @@ public class VueAjoutResultat extends Application {
     private Label messageAction;
     private ControleurAjoutResultat controleur;
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Ajouter un Résultat");
-
+    public VueAjoutResultat() {
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(20));
 
@@ -118,9 +113,7 @@ public class VueAjoutResultat extends Application {
 
         // Définir la scène principale
         Scene scene = new Scene(root, 1200, 900);
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
+        this.getChildren().add(root);
     }
 
     public ComboBox<String> getComboEpreuve() {
@@ -151,7 +144,4 @@ public class VueAjoutResultat extends Application {
         return messageAction;
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
