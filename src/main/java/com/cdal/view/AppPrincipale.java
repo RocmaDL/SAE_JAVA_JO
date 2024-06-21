@@ -171,26 +171,31 @@ public class AppPrincipale extends Application {
         BorderPane footer = new BorderPane();
         VBox vb1 = new VBox();
 
-        Text text = new Text("Retour");
-
-        text.setStyle("-fx-font: 40 arial;");
-        text.setStyle("-fx-stroke-width: 1.5;");
-
-        this.btnRetour = new Button("", text);
-        this.btnRetour.setStyle("-fx-background-color: #0095B6;");
+        this.btnRetour = new Button("Retour");
+        this.btnRetour.setStyle("-fx-background-color: #808080; -fx-text-fill: white; -fx-font-weight: bold;");
         this.btnRetour.setOnAction(new ControlerRetour(this));
-        this.btnRetour.setPrefWidth(80); // Largeur du bouton
+
+        this.btnRetour.setPrefWidth(110); // Largeur du bouton
         this.btnRetour.setPrefHeight(50); // Hauteur du bouton
-        this.btnRetour.setStyle("-fx-font: 20 arial;"); // Taille de la police
+
+        Image img = new Image("file:img/retour.png");
+        ImageView imgView = new ImageView(img);
+        imgView.setFitWidth(20); // Taille de l'image
+        imgView.setFitHeight(20);
+        this.btnRetour.setGraphic(imgView);
+
 
         ImageView imgAvant = new ImageView(new Image("file:./img/en-avant-Copie.png"));
         imgAvant.setFitWidth(40);
         imgAvant.setFitHeight(40);
         this.btnAvant = new Button("", imgAvant);
         this.btnAvant.setOnAction(new ControlerDeconnexion(this));
+
         vb1.getChildren().addAll(this.btnRetour);
 
         footer.setCenter(this.btnRetour);
+
+        
 
         return footer;
 
@@ -244,7 +249,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageAdminBis();
+        this.afficherPageConnexion();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
