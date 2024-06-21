@@ -1,4 +1,5 @@
 -- Suppression des tables existantes si elles existent
+DROP TABLE IF EXISTS JOMedaille;
 DROP TABLE IF EXISTS JOParticiperResultat;
 DROP TABLE IF EXISTS JOSinscrire;
 DROP TABLE IF EXISTS JOAnimer;
@@ -14,7 +15,6 @@ DROP TABLE IF EXISTS JOEquipe;
 DROP TABLE IF EXISTS JOPays;
 DROP TABLE IF EXISTS JOUtilisateur;
 
--- Création des tables
 CREATE TABLE JOUtilisateur (
     emailUser VARCHAR(50) PRIMARY KEY,
     nomUser VARCHAR(50),
@@ -22,12 +22,12 @@ CREATE TABLE JOUtilisateur (
     roleUser VARCHAR(50)
 );
 
-CREATE TABLE JOPays ( -- Traduit en JDBC
+CREATE TABLE JOPays (
     idPays INT PRIMARY KEY,
     nomPays VARCHAR(50)
 );
 
-CREATE TABLE JOSport ( -- Traduit en JDBC
+CREATE TABLE JOSport (
     idSport INT PRIMARY KEY,
     nomSport VARCHAR(50),
     unite VARCHAR(20),
@@ -36,7 +36,7 @@ CREATE TABLE JOSport ( -- Traduit en JDBC
     coefEndurance DOUBLE
 );
 
-CREATE TABLE JOEpreuve ( -- Traduit en JDBC
+CREATE TABLE JOEpreuve (
     idEpreuve INT PRIMARY KEY,
     nomEpreuve VARCHAR(50),
     sexeEpreuve CHAR(1),
@@ -94,3 +94,12 @@ CREATE TABLE JOParticiperResultat (
     FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
     CHECK ((idAthlete IS NOT NULL AND idEq IS NULL) OR (idAthlete IS NULL AND idEq IS NOT NULL))
 );
+
+CREATE TABLE JOMedaille(
+    idPays INT,
+    nbrMedaillesOr INT,
+    nbrMedaillesArgent INT,
+    nbrMedaillesBronze INT,
+    PRIMARY KEY (idPays),
+    FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
+)
