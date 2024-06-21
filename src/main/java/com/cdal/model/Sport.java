@@ -133,6 +133,18 @@ public class Sport {
         this.unite = unite;
     }
 
+    public double getCoefForce() {
+        return this.LesCoefficients.get(Caracteristique.FORCE);
+    }
+
+    public double getCoefAgilite() {
+        return this.LesCoefficients.get(Caracteristique.AGILITE);
+    }
+
+    public double getCoefEndurance() {
+        return this.LesCoefficients.get(Caracteristique.ENDURANCE);
+    }
+
     @Override
     public String toString() {
         return "Sport [lesEpreuves=" + lesEpreuves + ", nom=" + nom + ", LesCoefficients=" + LesCoefficients
@@ -149,11 +161,11 @@ public class Sport {
         if (!(obj instanceof Sport))
             return false;
         Sport tmp = (Sport) obj;
-        return this.nom.equals(tmp.nom) && this.LesCoefficients.equals(tmp.LesCoefficients) && this.unite.equals(tmp.unite);
+        return this.nom.equals(tmp.nom) && this.LesCoefficients.equals(tmp.LesCoefficients);
     }
 
     @Override
     public int hashCode() {
-        return this.nom.hashCode() + this.unite.hashCode();
+        return this.nom.hashCode();
     }
 }
