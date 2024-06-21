@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.java.com.cdal.controler.*;
 import main.java.com.cdal.model.JeuxOlympiques;
+import main.java.com.cdal.model.Utilisateur;
 import main.java.com.cdal.model.ConnexionMySQL;
 
 public class AppPrincipale extends Application {
@@ -32,6 +33,7 @@ public class AppPrincipale extends Application {
     private Button btnAvant;
     private URL url;
     private ConnexionMySQL laConnexion;
+    private Utilisateur user;
 
     @Override
     public void init() {
@@ -50,9 +52,10 @@ public class AppPrincipale extends Application {
         this.btnRetour = new Button("");
         try {
             this.laConnexion = new ConnexionMySQL();
-            this.laConnexion.connecter("servinfo-maria", "3306", "dimba", "dimba");
+            this.laConnexion.connecter("servinfo-maria", "DBdimba", "dimba", "dimba");
         } catch (Exception e) {
             System.out.println("Erreur lors de la connexion à la base de données");
+            System.out.println(e.toString());
         }
 
     }
@@ -243,12 +246,20 @@ public class AppPrincipale extends Application {
         return this.laConnexion;
     }
 
+    public BorderPane getPanelCentral() {
+        return this.panelCentral;
+    }
+
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
         fenetre.setBottom(this.footer());
         return new Scene(fenetre, 900, 600);
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
     }
 
     @Override

@@ -69,11 +69,37 @@ public class VueInscription extends GridPane {
         Tooltip infoBulle = new Tooltip("Cliquez ici pour vous inscrire");
         boutonInscription.setTooltip(infoBulle);
         this.add(boutonInscription, 1, 5);
-        boutonInscription.setOnAction(new ControlerInscriptionBD(appPrincipale, new JOUtilisateurBD(appPrincipale.getConnexion())));
+        boutonInscription
+                .setOnAction(new ControlerInscriptionBD(this, new JOUtilisateurBD(appPrincipale.getConnexion()),
+                        appPrincipale));
 
         Button boutonRetour = new Button("Retour");
         boutonRetour.setOnAction(new ControleurLienInscription(appPrincipale));
         this.add(boutonRetour, 0, 5);
 
+    }
+
+    public String getNom() {
+        return ((TextField) this.getChildren().get(2)).getText();
+    }
+
+    public String getEmail() {
+        return ((TextField) this.getChildren().get(4)).getText();
+    }
+
+    public String getMotDePasse() {
+        return ((PasswordField) this.getChildren().get(6)).getText();
+    }
+
+    public String getRole() {
+        return ((ComboBox<String>) this.getChildren().get(9)).getValue();
+    }
+
+    public void erreurEmail() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText("Email déjà utilisé");
+        alert.setContentText("L'email que vous avez entré est déjà utilisé par un autre utilisateur.");
+        alert.showAndWait();
     }
 }
