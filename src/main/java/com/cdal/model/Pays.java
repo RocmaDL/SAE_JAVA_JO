@@ -108,7 +108,7 @@ public class Pays {
         this.nom = nom;
     }
 
-    public Integer getTotalNbMedailles() {
+    public int getTotalNbMedailles() {
         int res = 0;
         for (Integer med : this.medailles.values()) {
             res += med;
@@ -117,7 +117,7 @@ public class Pays {
         return res;
     }
 
-    public Integer getNbMedaillesCouleur(String typeMedaille) throws MedailleInexistanteException {
+    public int getNbMedaillesCouleur(String typeMedaille) throws MedailleInexistanteException {
         if (!this.medailles.containsKey(typeMedaille)) {
             throw new MedailleInexistanteException();
         }
@@ -136,13 +136,10 @@ public class Pays {
             this.medailles.put(typeMedaille, 0);
             throw new MedailleInexistanteException();
         }
-       
+
         this.medailles.replace(typeMedaille, getNbMedaillesCouleur(typeMedaille), this.medailles.get(typeMedaille) + 1);
 
-            
-
     }
-
 
     /**
      * Compte le nombre d'athlètes individuels du pays

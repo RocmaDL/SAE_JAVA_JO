@@ -94,12 +94,3 @@ CREATE TABLE JOParticiperResultat (
     FOREIGN KEY (idEpreuve) REFERENCES JOEpreuve(idEpreuve),
     CHECK ((idAthlete IS NOT NULL AND idEq IS NULL) OR (idAthlete IS NULL AND idEq IS NOT NULL))
 );
-
-CREATE TABLE JOMedaille(
-    idPays INT,
-    nbrMedaillesOr INT,
-    nbrMedaillesArgent INT,
-    nbrMedaillesBronze INT,
-    PRIMARY KEY (idPays),
-    FOREIGN KEY (idPays) REFERENCES JOPays(idPays)
-)

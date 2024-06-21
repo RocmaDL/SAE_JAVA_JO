@@ -314,7 +314,7 @@ public class JeuxOlympiques {
                     eq.ajouterMembre(a);
                     p.enregistrerEquipe(eq);
                 }
-            }else{
+            } else {
                 this.lesParticipations.get(e).add(a);
             }
 
@@ -359,5 +359,11 @@ public class JeuxOlympiques {
         result = prime * result + ((lesSports == null) ? 0 : lesSports.hashCode());
         result = prime * result + ((resultats == null) ? 0 : resultats.hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "JeuxOlympiques [lesPays=" + lesPays + ", lesSports=" + lesSports + ", lesParticipations="
+                + lesParticipations + ", resultats=" + resultats + "]";
     }
 }

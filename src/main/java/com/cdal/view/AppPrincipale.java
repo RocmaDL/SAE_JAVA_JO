@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import main.java.com.cdal.controler.*;
 import main.java.com.cdal.model.JeuxOlympiques;
 import main.java.com.cdal.model.Utilisateur;
+import main.java.com.cdal.model.bd.JOJeuxOlympiquesBD;
 import main.java.com.cdal.model.ConnexionMySQL;
 
 public class AppPrincipale extends Application {
@@ -34,13 +35,11 @@ public class AppPrincipale extends Application {
     private URL url;
     private ConnexionMySQL laConnexion;
     private Utilisateur user;
-    private Boolean pConexion = false;  
+    private Boolean pConexion = false;
 
     @Override
     public void init() {
         // --- Initialisation de l'application
-
-        this.modeleJO = new JeuxOlympiques();
         // try {
         // modeleJO.chargerDonneeCSV("file:donnees.csv");
         // } catch (Exception e) {
@@ -54,12 +53,17 @@ public class AppPrincipale extends Application {
         try {
             this.laConnexion = new ConnexionMySQL();
             this.laConnexion.connecter("servinfo-maria", "DBdimba", "dimba", "dimba");
+            try {
+                this.modeleJO = new JOJeuxOlympiquesBD(laConnexion).sqlToJO();
+                System.out.println(this.modeleJO.toString());
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
         } catch (Exception e) {
             System.out.println("Erreur lors de la connexion à la base de données");
             System.out.println(e.toString());
         }
-        
-    
 
     }
 
@@ -229,7 +233,7 @@ public class AppPrincipale extends Application {
     }
 
     public void afficherPageJournaliste() {
-        this.panelCentral.setCenter(new VueJournaliste());
+        this.panelCentral.setCenter(new VueJournaliste(this.modeleJO, this));
         ActiverBouton(this.btnRetour);
         ActiverBouton(this.btnDeco);
 
@@ -259,7 +263,7 @@ public class AppPrincipale extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-        if (this.pConexion){
+        if (this.pConexion) {
             fenetre.setBottom(this.footer());
         }
         return new Scene(fenetre, 900, 600);
