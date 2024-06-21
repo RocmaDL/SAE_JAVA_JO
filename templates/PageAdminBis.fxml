@@ -10,12 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox prefHeight="483.0" prefWidth="311.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="512.0" prefWidth="311.0">
+            <AnchorPane prefHeight="483.0" prefWidth="297.0">
                <children>
                   <Text layoutX="44.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
                      <font>
@@ -42,14 +41,14 @@
                         <Font size="21.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="137.0" layoutY="69.0" prefHeight="24.0" prefWidth="132.0" />
-                  <TextField layoutX="134.0" layoutY="112.0" prefHeight="24.0" prefWidth="136.0" />
-                  <TextField layoutX="133.0" layoutY="153.0" prefHeight="24.0" prefWidth="136.0" />
-                  <TextField layoutX="131.0" layoutY="205.0" prefHeight="24.0" prefWidth="138.0" />
-                  <TextField layoutX="130.0" layoutY="249.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="insere" layoutX="40.0" layoutY="311.0" mnemonicParsing="false" text="Insérer" />
-                  <Button fx:id="modifier" layoutX="120.0" layoutY="311.0" mnemonicParsing="false" text="Modifier" />
-                  <Button fx:id="supprimer" layoutX="208.0" layoutY="311.0" mnemonicParsing="false" text="Supprimer" />
+                  <TextField id="idAthlete" layoutX="137.0" layoutY="69.0" prefHeight="24.0" prefWidth="132.0" />
+                  <TextField id="nom" layoutX="134.0" layoutY="112.0" prefHeight="24.0" prefWidth="136.0" />
+                  <TextField id="prenom" layoutX="133.0" layoutY="153.0" prefHeight="24.0" prefWidth="136.0" />
+                  <TextField id="pays" layoutX="131.0" layoutY="205.0" prefHeight="24.0" prefWidth="138.0" />
+                  <TextField id="sexe" layoutX="130.0" layoutY="249.0" prefHeight="24.0" prefWidth="140.0" />
+                  <Button id="insere" layoutX="40.0" layoutY="311.0" mnemonicParsing="false" text="Insérer" />
+                  <Button id="modifier" layoutX="120.0" layoutY="311.0" mnemonicParsing="false" text="Modifier" />
+                  <Button id="supprimer" layoutX="208.0" layoutY="311.0" mnemonicParsing="false" text="Supprimer" />
                </children>
             </AnchorPane>
          </children>
@@ -58,16 +57,32 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView prefHeight="728.0" prefWidth="378.0">
+            <TableView prefHeight="157.0" prefWidth="378.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Nom" />
-                  <TableColumn prefWidth="75.0" text="Prénom" />
-                  <TableColumn prefWidth="75.0" text="Pays" />
-                  <TableColumn prefWidth="75.0" text="sexe" />
+                <TableColumn prefWidth="23.0" text="ID" />
+                <TableColumn prefWidth="92.0" text="Nom" />
+                  <TableColumn prefWidth="90.0" text="Prénom" />
+                  <TableColumn prefWidth="83.0" text="Pays" />
+                  <TableColumn prefWidth="89.0" text="sexe" />
               </columns>
             </TableView>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caracteristiques" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+               </top>
+               <center>
+                  <TableView prefHeight="175.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn prefWidth="150.0" text="Endurance" />
+                      <TableColumn prefWidth="86.0" text="Force" />
+                        <TableColumn prefWidth="141.0" text="Agilité" />
+                    </columns>
+                  </TableView>
+               </center></BorderPane>
          </children>
       </VBox>
    </center>
