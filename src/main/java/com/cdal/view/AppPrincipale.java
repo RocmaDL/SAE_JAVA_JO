@@ -155,6 +155,7 @@ public class AppPrincipale extends Application {
             System.out.println("PageClassementEpreuve.fxml chargé" + loader);
             this.root = loader.load();
             this.panelCentral.setCenter(this.root);
+            ActiverBouton(this.btnDeco);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page PageClassementEpreuve");
 
