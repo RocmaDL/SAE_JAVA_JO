@@ -243,7 +243,7 @@ public class VueConnexion extends VBox {
         alert.setContentText("Pour vous connecter, veuillez respecter les consignes suivantes :\n"
                 + "1. Votre nom d'utilisateur doit inclure votre rôle, suivi d'un espace, puis votre nom et prénom.\n"
                 + "2. Votre mot de passe doit être votre date de naissance au format jj/mm/aaaa.");
-        alert.getDialogPane().setPrefSize(600, 400);
+        alert.getDialogPane().setPrefSize(600, 200);
 
         return alert;
     }
