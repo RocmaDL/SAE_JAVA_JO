@@ -59,7 +59,7 @@ public class AppPrincipale extends Application {
 
     }
 
-    public void afficherPageAdmin() throws Exception {
+    public void afficherPageAdminBis() throws Exception {
         // --- Chargement du fichier FXML
         try {
             this.url = new File("templates/PageAdminBis.fxml").toURI().toURL();
@@ -125,7 +125,7 @@ public class AppPrincipale extends Application {
 
     }
 
-    public void afficherPageAdminBis() throws Exception {
+    public void afficherPageAdmin() throws Exception {
         // --- Chargement du fichier FXML
         try {
             this.url = new File("templates/PageClassementEpreuve.fxml").toURI().toURL();
@@ -262,7 +262,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageConnexion();
+        this.afficherPageAdminBis();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
