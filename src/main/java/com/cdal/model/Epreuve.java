@@ -12,19 +12,21 @@ public class Epreuve {
     private String nomEpreuve; // Nom de l'épreuve.
     private char sexe; // Sexe des participants ('M' pour masculin, 'F' pour féminin).
     private Sport sport; // Sport associé à l'épreuve.
+    private int nombreAthletes;
 
     /**
      * Constructeur de la classe Epreuve.
      * Initialise une nouvelle instance d'Epreuve avec les détails spécifiés.
      * 
-     * @param nom      Le nom de l'épreuve.
-     * @param sexe     Le sexe des participants ('M' ou 'F').
-     * @param sport    Le sport associé à l'épreuve.
+     * @param nom   Le nom de l'épreuve.
+     * @param sexe  Le sexe des participants ('M' ou 'F').
+     * @param sport Le sport associé à l'épreuve.
      */
     public Epreuve(String nom, char sexe, Sport sport) {
         this.nomEpreuve = nom;
         this.sexe = sexe;
         this.sport = sport;
+        this.nombreAthletes = 0;
     }
 
     /**
@@ -79,6 +81,14 @@ public class Epreuve {
      */
     public void setSport(Sport sport) {
         this.sport = sport;
+    }
+
+    public int getNombreAthletes() {
+        return nombreAthletes;
+    }
+
+    public void setNombreAthletes(int nombreAthletes) {
+        this.nombreAthletes = nombreAthletes;
     }
 
     @Override

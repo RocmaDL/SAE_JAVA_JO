@@ -1,3 +1,6 @@
+package main.java.com.cdal.model;
+
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -5,10 +8,10 @@ import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BD {
+public class JOBD {
     private ConnexionMySQL laConnexion;
 
-    public BD(ConnexionMySQL laConnexion) {
+    public JOBD(ConnexionMySQL laConnexion) {
         this.laConnexion = laConnexion;
     }
 
@@ -56,7 +59,8 @@ public class BD {
                 }
                 String[] row = line.split(",");
                 String nom = row[0];
-                String prenom = row[1]; // Assurez-vous que cette colonne existe dans votre fichier CSV et est correctement indexée
+                String prenom = row[1]; // Assurez-vous que cette colonne existe dans votre fichier CSV et est
+                                        // correctement indexée
                 char sexe = row[2].charAt(0);
                 String pays = row[3];
                 String nomEpreuve = row[4];
@@ -127,11 +131,16 @@ public class BD {
                     e.printStackTrace();
                 }
             }
-            if (athleteStmt != null) athleteStmt.close();
-            if (epreuveStmt != null) epreuveStmt.close();
-            if (equipeStmt != null) equipeStmt.close();
-            if (sportStmt != null) sportStmt.close();
-            if (paysStmt != null) paysStmt.close();
+            if (athleteStmt != null)
+                athleteStmt.close();
+            if (epreuveStmt != null)
+                epreuveStmt.close();
+            if (equipeStmt != null)
+                equipeStmt.close();
+            if (sportStmt != null)
+                sportStmt.close();
+            if (paysStmt != null)
+                paysStmt.close();
             this.laConnexion.close();
         }
     }
@@ -228,8 +237,9 @@ public class BD {
     }
 
     private String getNomSport(String nomEpreuve) {
-        // Assumez que le sport est la première partie du nomEpreuve jusqu'au premier espace
+        // Assumez que le sport est la première partie du nomEpreuve jusqu'au premier
+        // espace
         return nomEpreuve.split("\\s+")[0];
-    
+
     }
 }

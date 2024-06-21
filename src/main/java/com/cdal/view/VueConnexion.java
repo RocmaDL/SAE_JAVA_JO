@@ -1,5 +1,7 @@
 package main.java.com.cdal.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -15,15 +17,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+<<<<<<< HEAD
+=======
+import javafx.stage.Stage;
+import javafx.scene.control.Hyperlink;
+
+>>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 import main.java.com.cdal.controler.ControleurAide;
 import main.java.com.cdal.controler.ControleurConnexion;
 import main.java.com.cdal.controler.ControleurLienInscription;
 
-public class VueConnexion extends VBox{
+public class VueConnexion extends VBox {
 
     private ControleurConnexion controleur;
-    
-    
+
     private TextField champNomUtilisateur;
     private PasswordField champMotDePasse;
     private TextField champMotDePasseVisible;
@@ -36,18 +43,20 @@ public class VueConnexion extends VBox{
 
     private boolean motDePasseVisible = false;
 
-    public VueConnexion() {
-        //primaryStage.setTitle("Connexion aux Jeux Olympiques");
-
+    public VueConnexion(EventHandler<ActionEvent> controleurInsc) {
+        // primaryStage.setTitle("Connexion aux Jeux Olympiques");
 
         Button aideBouton = new Button("Aide");
-        ImageView aideImageView = new ImageView(new Image("file:img/aide.png")); 
+        ImageView aideImageView = new ImageView(new Image("file:img/aide.png"));
         aideImageView.setFitHeight(16);
         aideImageView.setFitWidth(16);
         aideBouton.setGraphic(aideImageView);
 
         aideBouton.setOnAction(new ControleurAide(this));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 
         VBox root = new VBox(20);
         root.setPadding(new Insets(25, 25, 25, 25));
@@ -68,20 +77,20 @@ public class VueConnexion extends VBox{
 
         root.getChildren().add(imagesPane);
 
-
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER);
         hbox.setPadding(new Insets(10));
 
         Image accueil = new Image("file:img/image_accueil.jpg");
         ImageView imageView = new ImageView(accueil);
-        imageView.setFitWidth(950); 
+        imageView.setFitWidth(950);
         imageView.setPreserveRatio(true);
 
         VBox loginBox = new VBox(20);
         loginBox.setAlignment(Pos.CENTER);
         loginBox.setPadding(new Insets(20));
-        loginBox.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;");
+        loginBox.setStyle(
+                "-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;");
 
         GridPane grille = new GridPane();
         grille.setAlignment(Pos.CENTER);
@@ -136,30 +145,23 @@ public class VueConnexion extends VBox{
         imageValiderView.setFitWidth(16);
         boutonValider.setGraphic(imageValiderView);
 
-        paneBoutons.getChildren().addAll(boutonAnnuler,aideBouton, boutonValider);
-
+        paneBoutons.getChildren().addAll(boutonAnnuler, aideBouton, boutonValider);
 
         lienInscription = new Hyperlink("Pas de compte? Inscrivez-vous");
-        lienInscription.setOnAction(new ControleurLienInscription(this));
-
+        lienInscription.setOnAction(controleurInsc);
 
         loginBox.getChildren().addAll(paneBoutons, lienInscription);
-
-
 
         messageAction = new Text();
         loginBox.getChildren().add(messageAction);
 
-        root.getChildren().addAll(loginBox , hbox);
+        root.getChildren().addAll(loginBox, hbox);
         this.getChildren().add(root);
-
 
         controleur = new ControleurConnexion(this);
         controleur.initialiserActions();
 
         boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());
-        
-        
 
     }
 
@@ -249,7 +251,7 @@ public class VueConnexion extends VBox{
                 + "1. Votre nom d'utilisateur doit inclure votre rôle, suivi d'un espace, puis votre nom et prénom.\n"
                 + "2. Votre mot de passe doit être votre date de naissance au format jj/mm/aaaa.");
         alert.getDialogPane().setPrefSize(600, 400);
-    
+
         return alert;
     }
 }

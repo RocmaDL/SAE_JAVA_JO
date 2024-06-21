@@ -34,14 +34,19 @@ public class AppPrincipale extends Application {
     @Override
     public void init() {
         // --- Initialisation de l'application
+        this.barreRecherche = new TextField();
         
-    
+        // Bouton Rechercher
+        this.btnRechercher = new Button("Rechercher");
+        this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
+
+        
         this.modeleJO = new JeuxOlympiques();
-        try {
-            modeleJO.chargerDonneeCSV("file:donnees.csv");
-        } catch (Exception e) {
-            System.out.println("Erreur lors du chargement des données hargement des données");
-        }
+        //try {
+        //    modeleJO.chargerDonneeCSV("file:donnees.csv");
+        //} catch (Exception e) {
+        //    System.out.println("Erreur lors du chargement des donnéeshargement des données");
+        //}
         this.panelCentral = new BorderPane() ;
         this.btnDeco = new Button("");
         this.btnParametres = new Button("");
@@ -49,6 +54,7 @@ public class AppPrincipale extends Application {
 
             
         
+>>>>>>> 0175ebdd60ff385275cc2197a095fae856ec8bc9
 
     }
 
@@ -67,7 +73,7 @@ public class AppPrincipale extends Application {
         }
     }
 
-    public void afficherPageAjoutResultat(){
+    public void afficherPageAjoutResultat() {
         this.panelCentral.setCenter(new VueAjoutResultat());
     }
 
@@ -114,7 +120,7 @@ public class AppPrincipale extends Application {
     public void afficherPageRechercher() {
         // --- Chargement du fichier FXML
         this.panelCentral.setCenter(new AppRechercherJO());
-        
+
     }
 
     public void afficherPageAdminBis() throws Exception {
@@ -138,7 +144,7 @@ public class AppPrincipale extends Application {
         ImageView imgP = new ImageView(new Image("file:./img/param.png"));
         imgP.setFitWidth(40);
         imgP.setFitHeight(40);
-        
+
         // Bouton Déconnexion
         ImageView imgD = new ImageView(new Image("file:./img/connexion.png"));
         imgD.setFitWidth(40);
@@ -153,7 +159,6 @@ public class AppPrincipale extends Application {
 
         this.btnParametres = new Button("", imgP);
         this.btnParametres.setOnAction(new ControleurParametres(this));
-
 
         HBox hbLeft = new HBox();
         hbLeft.getChildren().add(this.utilisateur);
@@ -202,21 +207,16 @@ public class AppPrincipale extends Application {
 
     public void majAffichage() {
 
-
-        
     }
 
     public void afficherPageConnexion() {
         // Création d'une nouvelle scène
         this.panelCentral.setCenter(new VueConnexion());
-        DesactiverBouton(this.btnRetour);
-        DesactiverBouton(this.btnDeco);
-
     
     }
 
-    public void afficherPageInscription(){
-        this.panelCentral.setCenter(new VueInscription());
+    public void afficherPageInscription() {
+        this.panelCentral.setCenter(new VueInscription(new ControleurLienInscription(this)));
     }
 
     public void afficherPageJournaliste() {
@@ -226,24 +226,38 @@ public class AppPrincipale extends Application {
         
     }
 
+<<<<<<< HEAD
+    public void modeAccueil() {
+        this.afficherPageConnexion();
+
+=======
     public void DesactiverBouton(Button bouton1){
         bouton1.setDisable(true);
     }
-    public void ActiverBouton(Button bouton1){
-        bouton1.setDisable(false);
+
+    public void modeAccueil(){
+        this.afficherPageConnexion();
+        DesactiverBouton(this.btnRetour);
+        DesactiverBouton(this.btnDeco);
+
+    
     }
-
-
-
-
 
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
+<<<<<<< HEAD
+<<<<<<< HEAD
+        return new Scene(fenetre, 1200,900);
+=======
         fenetre.setBottom(this.footer());
-        return new Scene(fenetre, 800,600);
-
+        return new Scene(fenetre, 900,600);
+>>>>>>> LennyLiasonPages
+=======
+        fenetre.setBottom(this.footer());
+        return new Scene(fenetre, 900,600);
+>>>>>>> ccca0fd9990d010d61f2a97cf62419c34548d193
 
     }
 
