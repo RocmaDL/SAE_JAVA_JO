@@ -57,16 +57,18 @@ public class AppPrincipale extends Application {
             System.out.println("Erreur lors de la connexion à la base de données");
             System.out.println(e.toString());
         }
+        
+    
 
     }
 
     public void afficherPageAdmin() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            this.url = new File("templates/MainPane.fxml").toURI().toURL();
+            this.url = new File("templates/PageAdminBis.fxml").toURI().toURL();
             this.loader = new FXMLLoader(this.url);
             System.out.println("PageAdmin.fxml chargé" + loader);
-            this.root = (AnchorPane) loader.load();
+            this.root = loader.load();
             this.panelCentral.setCenter(this.root);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page Admin");
@@ -216,11 +218,13 @@ public class AppPrincipale extends Application {
         this.panelCentral.setCenter(new VueConnexion(this));
         DesactiverBouton(this.btnRetour);
         DesactiverBouton(this.btnDeco);
+        this.btnRetour = null;
 
     }
 
     public void afficherPageInscription() {
         this.panelCentral.setCenter(new VueInscription(this));
+        this.btnRetour = null;
     }
 
     public void afficherPageJournaliste() {
@@ -254,7 +258,9 @@ public class AppPrincipale extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-        fenetre.setBottom(this.footer());
+        if (this.btnRetour != null){
+            fenetre.setBottom(this.footer());
+        }
         return new Scene(fenetre, 900, 600);
     }
 
@@ -267,7 +273,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageAdminBis();
+        this.afficherPageConnexion();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
