@@ -37,22 +37,19 @@ public class AppPrincipale extends Application {
     public void init() {
         // --- Initialisation de l'application
         this.barreRecherche = new TextField();
-        
+
         // Bouton Rechercher
         this.btnRechercher = new Button("Rechercher");
         this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
 
-        
         this.modeleJO = new JeuxOlympiques();
-        //try {
-        //    modeleJO.chargerDonneeCSV("file:donnees.csv");
-        //} catch (Exception e) {
-        //    System.out.println("Erreur lors du chargement des donnéeshargement des données");
-        //}
-        this.panelCentral = new BorderPane() ;
-
-            
-        
+        // try {
+        // modeleJO.chargerDonneeCSV("file:donnees.csv");
+        // } catch (Exception e) {
+        // System.out.println("Erreur lors du chargement des donnéeshargement des
+        // données");
+        // }
+        this.panelCentral = new BorderPane();
 
     }
 
@@ -70,7 +67,7 @@ public class AppPrincipale extends Application {
         }
     }
 
-    public void afficherPageAjoutResultat(){
+    public void afficherPageAjoutResultat() {
         this.panelCentral.setCenter(new VueAjoutResultat());
     }
 
@@ -97,7 +94,7 @@ public class AppPrincipale extends Application {
     public void afficherPageRechercher() {
         // --- Chargement du fichier FXML
         this.panelCentral.setCenter(new AppRechercherJO());
-        
+
     }
 
     public void afficherPageAdminBis() throws Exception {
@@ -123,7 +120,7 @@ public class AppPrincipale extends Application {
         ImageView imgP = new ImageView(new Image("file:./img/param.png"));
         imgP.setFitWidth(40);
         imgP.setFitHeight(40);
-        
+
         // Bouton Déconnexion
         ImageView imgD = new ImageView(new Image("file:./img/connexion.png"));
         imgD.setFitWidth(40);
@@ -138,7 +135,6 @@ public class AppPrincipale extends Application {
 
         this.btnParametres = new Button("", imgP);
         this.btnParametres.setOnAction(new ControleurParametres(this));
-
 
         HBox hbLeft = new HBox();
         hbLeft.getChildren().addAll(this.utilisateur, this.barreRecherche, this.btnRechercher);
@@ -159,18 +155,16 @@ public class AppPrincipale extends Application {
 
     public void majAffichage() {
 
-
-        
     }
 
     public void afficherPageConnexion() {
         // Création d'une nouvelle scène
-        this.panelCentral.setCenter(new VueConnexion());
-    
+        this.panelCentral.setCenter(new VueConnexion(new ControleurLienInscription(this)));
+
     }
 
-    public void afficherPageInscription(){
-        this.panelCentral.setCenter(new VueInscription());
+    public void afficherPageInscription() {
+        this.panelCentral.setCenter(new VueInscription(new ControleurLienInscription(this)));
     }
 
     public void afficherPageJournaliste() {
@@ -178,16 +172,16 @@ public class AppPrincipale extends Application {
 
     }
 
-    public void modeAccueil(){
+    public void modeAccueil() {
         this.afficherPageConnexion();
-    
+
     }
 
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-        return new Scene(fenetre, 1200,900);
+        return new Scene(fenetre, 1200, 900);
 
     }
 
