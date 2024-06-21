@@ -1,12 +1,7 @@
 package main.java.com.cdal.view;
 
-<<<<<<< HEAD
-=======
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -23,24 +18,16 @@ public class VueInscription extends GridPane {
         this.setHgap(10);
         this.setVgap(10);
         this.setPadding(new Insets(25));
-
-<<<<<<< HEAD
-     
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(10);
         this.setPadding(new Insets(25));
         
-=======
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
+
         Label titreScene = new Label("Inscription");
         titreScene.setAlignment(Pos.CENTER);
         titreScene.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         this.add(titreScene, 1, 0, 2, 1);
-<<<<<<< HEAD
-        
-=======
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 
         Label nomLabel = new Label("Nom:");
         this.add(nomLabel, 0, 1);
@@ -82,14 +69,8 @@ public class VueInscription extends GridPane {
         this.add(boutonInscription, 1, 5);
 
         Button boutonRetour = new Button("Retour");
-<<<<<<< HEAD
-        this.add(boutonRetour, 0, 5);
-    
-
-=======
         boutonRetour.setOnAction(controleurInsc);
         this.add(boutonRetour, 0, 5);
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 
     }
 }

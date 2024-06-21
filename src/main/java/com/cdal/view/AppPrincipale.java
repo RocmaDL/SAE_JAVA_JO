@@ -34,12 +34,6 @@ public class AppPrincipale extends Application {
     @Override
     public void init() {
         // --- Initialisation de l'application
-        this.barreRecherche = new TextField();
-        
-        // Bouton Rechercher
-        this.btnRechercher = new Button("Rechercher");
-        this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
-
         
         this.modeleJO = new JeuxOlympiques();
         //try {
@@ -54,7 +48,6 @@ public class AppPrincipale extends Application {
 
             
         
->>>>>>> 0175ebdd60ff385275cc2197a095fae856ec8bc9
 
     }
 
@@ -211,7 +204,10 @@ public class AppPrincipale extends Application {
 
     public void afficherPageConnexion() {
         // Création d'une nouvelle scène
-        this.panelCentral.setCenter(new VueConnexion());
+        this.panelCentral.setCenter(new VueConnexion(new ControleurConnexion(this)  ));
+        DesactiverBouton(this.btnRetour);
+        DesactiverBouton(this.btnDeco);
+
     
     }
 
@@ -226,39 +222,23 @@ public class AppPrincipale extends Application {
         
     }
 
-<<<<<<< HEAD
     public void modeAccueil() {
         this.afficherPageConnexion();
-
-=======
+    }
     public void DesactiverBouton(Button bouton1){
         bouton1.setDisable(true);
     }
-
-    public void modeAccueil(){
-        this.afficherPageConnexion();
-        DesactiverBouton(this.btnRetour);
-        DesactiverBouton(this.btnDeco);
-
-    
+    public void ActiverBouton(Button bouton1){
+        bouton1.setDisable(false);
     }
 
+    
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-<<<<<<< HEAD
-<<<<<<< HEAD
-        return new Scene(fenetre, 1200,900);
-=======
         fenetre.setBottom(this.footer());
         return new Scene(fenetre, 900,600);
->>>>>>> LennyLiasonPages
-=======
-        fenetre.setBottom(this.footer());
-        return new Scene(fenetre, 900,600);
->>>>>>> ccca0fd9990d010d61f2a97cf62419c34548d193
-
     }
 
     @Override

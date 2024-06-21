@@ -17,12 +17,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-<<<<<<< HEAD
-=======
+
 import javafx.stage.Stage;
 import javafx.scene.control.Hyperlink;
 
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
 import main.java.com.cdal.controler.ControleurAide;
 import main.java.com.cdal.controler.ControleurConnexion;
 import main.java.com.cdal.controler.ControleurLienInscription;
@@ -53,11 +51,6 @@ public class VueConnexion extends VBox {
         aideBouton.setGraphic(aideImageView);
 
         aideBouton.setOnAction(new ControleurAide(this));
-<<<<<<< HEAD
-
-=======
->>>>>>> 06d8c08350ff30361c759a135c45f68b6d35f1c4
-
         VBox root = new VBox(20);
         root.setPadding(new Insets(25, 25, 25, 25));
         root.setAlignment(Pos.TOP_CENTER);

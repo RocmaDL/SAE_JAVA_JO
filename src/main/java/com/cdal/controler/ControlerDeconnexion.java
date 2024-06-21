@@ -19,7 +19,7 @@ public class ControlerDeconnexion implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
         //--- Déconnexion
         System.out.println("Déconnexion");
-        //this.vue.deconnexion();
+        this.vue.afficherPageConnexion();
     }
     
 }
