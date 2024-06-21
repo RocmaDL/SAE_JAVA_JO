@@ -21,6 +21,10 @@ import main.java.com.cdal.model.JeuxOlympiques;
 import main.java.com.cdal.model.Utilisateur;
 import main.java.com.cdal.model.bd.JOJeuxOlympiquesBD;
 import main.java.com.cdal.model.ConnexionMySQL;
+import javafx.scene.control.ChoiceDialog;
+import java.util.List;
+import java.util.Arrays;
+
 
 
 public class AppPrincipale extends Application {
