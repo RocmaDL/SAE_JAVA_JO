@@ -34,20 +34,18 @@ public class AppPrincipale extends Application {
     @Override
     public void init() {
         // --- Initialisation de l'application
-        
+
         this.modeleJO = new JeuxOlympiques();
-        //try {
-        //    modeleJO.chargerDonneeCSV("file:donnees.csv");
-        //} catch (Exception e) {
-        //    System.out.println("Erreur lors du chargement des donnéeshargement des données");
-        //}
-        this.panelCentral = new BorderPane() ;
+        // try {
+        // modeleJO.chargerDonneeCSV("file:donnees.csv");
+        // } catch (Exception e) {
+        // System.out.println("Erreur lors du chargement des donnéeshargement des
+        // données");
+        // }
+        this.panelCentral = new BorderPane();
         this.btnDeco = new Button("");
         this.btnParametres = new Button("");
         this.btnRetour = new Button("");
-
-            
-        
 
     }
 
@@ -91,7 +89,8 @@ public class AppPrincipale extends Application {
 
         }
     }
-    //PageAjouterEpreuve
+
+    // PageAjouterEpreuve
     public void afficherPageAjouterEpreuve() throws Exception {
         // --- Chargement du fichier FXML
         try {
@@ -168,19 +167,19 @@ public class AppPrincipale extends Application {
 
     }
 
-    public Pane footer(){
+    public Pane footer() {
         BorderPane footer = new BorderPane();
         VBox vb1 = new VBox();
-    
+
         Text text = new Text("Retour");
 
         text.setStyle("-fx-font: 40 arial;");
         text.setStyle("-fx-stroke-width: 1.5;");
 
-        this.btnRetour= new Button("", text);
+        this.btnRetour = new Button("", text);
         this.btnRetour.setStyle("-fx-background-color: #0095B6;");
         this.btnRetour.setOnAction(new ControlerRetour(this));
-        this.btnRetour.setPrefWidth(80);  // Largeur du bouton
+        this.btnRetour.setPrefWidth(80); // Largeur du bouton
         this.btnRetour.setPrefHeight(50); // Hauteur du bouton
         this.btnRetour.setStyle("-fx-font: 20 arial;"); // Taille de la police
 
@@ -190,13 +189,12 @@ public class AppPrincipale extends Application {
         this.btnAvant = new Button("", imgAvant);
         this.btnAvant.setOnAction(new ControlerDeconnexion(this));
         vb1.getChildren().addAll(this.btnRetour);
-    
+
         footer.setCenter(this.btnRetour);
 
         return footer;
 
     }
-
 
     public void majAffichage() {
 
@@ -204,11 +202,10 @@ public class AppPrincipale extends Application {
 
     public void afficherPageConnexion() {
         // Création d'une nouvelle scène
-        this.panelCentral.setCenter(new VueConnexion(new ControleurConnexion(this)  ));
+        this.panelCentral.setCenter(new VueConnexion(new ControleurLienInscription(this)));
         DesactiverBouton(this.btnRetour);
         DesactiverBouton(this.btnDeco);
 
-    
     }
 
     public void afficherPageInscription() {
@@ -219,32 +216,33 @@ public class AppPrincipale extends Application {
         this.panelCentral.setCenter(new VueJournaliste());
         ActiverBouton(this.btnRetour);
         ActiverBouton(this.btnDeco);
-        
+
     }
 
     public void modeAccueil() {
         this.afficherPageConnexion();
     }
-    public void DesactiverBouton(Button bouton1){
+
+    public void DesactiverBouton(Button bouton1) {
         bouton1.setDisable(true);
     }
-    public void ActiverBouton(Button bouton1){
+
+    public void ActiverBouton(Button bouton1) {
         bouton1.setDisable(false);
     }
 
-    
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
         fenetre.setBottom(this.footer());
-        return new Scene(fenetre, 900,600);
+        return new Scene(fenetre, 900, 600);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
         // --- Chargement du fichier FXML
-        
+
         stage.setScene(laScene());
         this.afficherPageAdminBis();
         stage.setTitle("Jeux IUT'Olympiques");
