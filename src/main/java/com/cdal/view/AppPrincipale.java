@@ -22,7 +22,6 @@ import main.java.com.cdal.model.Utilisateur;
 import main.java.com.cdal.model.bd.JOJeuxOlympiquesBD;
 import main.java.com.cdal.model.ConnexionMySQL;
 
-
 public class AppPrincipale extends Application {
 
     Parent root;
@@ -81,17 +80,16 @@ public class AppPrincipale extends Application {
             this.mainScene = new Scene(this.root, 900, 600);
             this.panelCentral.setCenter(this.root);
 
-            //TextField text = (TextField) this.panelCentral.lookup("#idAthlete");
-            //TextField text2 = (TextField) this.root.lookup("#nom");
-            //TextField text3 = (TextField) this.root.lookup("#prenom");
-            //TextField text4 = (TextField) this.root.lookup("#pays");
-            //TextField text5 = (TextField) this.root.lookup("#sexe");
+            // TextField text = (TextField) this.panelCentral.lookup("#idAthlete");
+            // TextField text2 = (TextField) this.root.lookup("#nom");
+            // TextField text3 = (TextField) this.root.lookup("#prenom");
+            // TextField text4 = (TextField) this.root.lookup("#pays");
+            // TextField text5 = (TextField) this.root.lookup("#sexe");
 
             Button btAjouterAthlete = (Button) this.root.lookup("#insere");
             btAjouterAthlete.setOnAction(new ControlerAdmin(this));
             System.out.println("btAjouterAthlete: " + btAjouterAthlete);
-            //System.out.println("text : " + text);
-
+            // System.out.println("text : " + text);
 
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page Admin");
@@ -261,18 +259,16 @@ public class AppPrincipale extends Application {
         this.afficherPageConnexion();
     }
 
-
     public void DesactiverBouton(Button bouton1) {
         bouton1.setDisable(true);
     }
 
     public Alert insertionAthlete() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION); 
-        alert.setTitle("Modification de la base de données"); 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Modification de la base de données");
         alert.getDialogPane().setPrefSize(400, 200);
         alert.setHeaderText("L'athlète a bien été inséré dans la base de données");
         return alert;
-
 
     }
 
@@ -307,7 +303,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageAdminBis();
+        this.afficherPageConnexion();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
