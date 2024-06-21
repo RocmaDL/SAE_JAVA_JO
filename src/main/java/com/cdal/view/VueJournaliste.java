@@ -72,9 +72,6 @@ public class VueJournaliste extends VBox {
         this.tableMedailles.setPrefHeight(500);
 
         ObservableList<Classement> listePays = this.tableMedailles.getItems();
-        Classement cl1 = new Classement(1, "Etats-Unis", 60, 30, 10, 100);
-        Classement cl2 = new Classement(2, "Chine", 40, 30, 10, 80);
-        Classement cl3 = new Classement(3, "Japon", 20, 30, 10, 60);
         ArrayList<Pays> listeP = new ArrayList<Pays>(this.modeleJO.getLesPays());
         Collections.sort(listeP, new Comparator<Pays>() {
             @Override
