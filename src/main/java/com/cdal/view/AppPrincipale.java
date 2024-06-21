@@ -34,6 +34,7 @@ public class AppPrincipale extends Application {
     private URL url;
     private ConnexionMySQL laConnexion;
     private Utilisateur user;
+    private Boolean pConexion = false;  
 
     @Override
     public void init() {
@@ -218,13 +219,13 @@ public class AppPrincipale extends Application {
         this.panelCentral.setCenter(new VueConnexion(this));
         DesactiverBouton(this.btnRetour);
         DesactiverBouton(this.btnDeco);
-        this.btnRetour = null;
+        this.pConexion = true;
 
     }
 
     public void afficherPageInscription() {
         this.panelCentral.setCenter(new VueInscription(this));
-        this.btnRetour = null;
+        this.pConexion = true;
     }
 
     public void afficherPageJournaliste() {
@@ -258,7 +259,7 @@ public class AppPrincipale extends Application {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-        if (this.btnRetour != null){
+        if (this.pConexion){
             fenetre.setBottom(this.footer());
         }
         return new Scene(fenetre, 900, 600);
@@ -273,7 +274,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageAdminBis();
+        this.afficherPageConnexion();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
