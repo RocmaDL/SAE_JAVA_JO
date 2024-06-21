@@ -48,4 +48,13 @@ public enum Unite {
     public String getNom() {
         return this.nom;
     }
+
+    public static Unite fromNom(String nom) {
+        for (Unite unite : Unite.values()) {
+            if (unite.getNom().equals(nom)) {
+                return unite;
+            }
+        }
+        throw new IllegalArgumentException("Aucune constante d'Unite avec le nom : " + nom);
+    }
 }

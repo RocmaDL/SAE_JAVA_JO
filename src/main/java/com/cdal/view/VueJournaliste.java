@@ -1,6 +1,10 @@
 package main.java.com.cdal.view;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +15,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import main.java.com.cdal.controler.*;
 import main.java.com.cdal.model.*;
+import main.java.com.cdal.model.exception.MedailleInexistanteException;
 
 public class VueJournaliste extends VBox {
 
@@ -34,7 +39,9 @@ public class VueJournaliste extends VBox {
 
     private ComboBox<String> comboBox;
 
-    public VueJournaliste() {
+    public VueJournaliste(JeuxOlympiques modeleJO, AppPrincipale vueJO) {
+        this.modeleJO = modeleJO;
+        this.vueJO = vueJO;
         this.tableMedailles = new TableView<Classement>();
 
         // ComboBox
@@ -68,7 +75,25 @@ public class VueJournaliste extends VBox {
         Classement cl1 = new Classement(1, "Etats-Unis", 60, 30, 10, 100);
         Classement cl2 = new Classement(2, "Chine", 40, 30, 10, 80);
         Classement cl3 = new Classement(3, "Japon", 20, 30, 10, 60);
-        listePays.addAll(cl1, cl2, cl3);
+        ArrayList<Pays> listeP = new ArrayList<Pays>(this.modeleJO.getLesPays());
+        Collections.sort(listeP, new Comparator<Pays>() {
+            @Override
+            public int compare(Pays p1, Pays p2) {
+                return p2.getTotalNbMedailles() - p1.getTotalNbMedailles();
+            }
+
+        });
+        int i = 1;
+        for (Pays p : listeP) {
+            try {
+                listePays.add(
+                        new Classement(i, p.getNom(), p.getNbMedaillesCouleur("Or"), p.getNbMedaillesCouleur("Argent"),
+                                p.getNbMedaillesCouleur("Bronze"), p.getTotalNbMedailles()));
+                i++;
+            } catch (MedailleInexistanteException e) {
+                e.printStackTrace();
+            }
+        }
         this.tableMedailles.setItems(listePays);
 
         // Modifier avec base de données

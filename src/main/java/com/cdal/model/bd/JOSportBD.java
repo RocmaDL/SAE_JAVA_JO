@@ -37,7 +37,7 @@ public class JOSportBD {
         ResultSet rs = st.executeQuery("select * from JOSport where idSport = " + id);
         if (rs.next()) {
             return new Sport(rs.getString("nomSport"), rs.getDouble("coefForce"),
-                    rs.getDouble("coefAgilite"), rs.getDouble("coefEndurance"), Unite.valueOf(rs.getString("unite")));
+                    rs.getDouble("coefAgilite"), rs.getDouble("coefEndurance"), Unite.fromNom(rs.getString("unite")));
         } else {
             throw new SQLException("Sport non trouvé.");
         }
@@ -66,8 +66,9 @@ public class JOSportBD {
         Statement st = this.laConnexionMySQL.createStatement();
         ResultSet rs = st.executeQuery("select * from JOSport");
         while (rs.next()) {
+            Unite unite = Unite.fromNom(rs.getString("unite"));
             Sport s = new Sport(rs.getString("nomSport"), rs.getDouble("coefForce"),
-                    rs.getDouble("coefAgilite"), rs.getDouble("coefEndurance"), Unite.valueOf(rs.getString("unite")));
+                    rs.getDouble("coefAgilite"), rs.getDouble("coefEndurance"), unite);
             listeSport.add(s);
         }
         return listeSport;

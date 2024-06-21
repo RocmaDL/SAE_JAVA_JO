@@ -91,10 +91,10 @@ public class VueConnexion extends VBox {
         grille.setHgap(10);
         grille.setVgap(10);
 
-        Label labelNomUtilisateur = new Label("Nom d'utilisateur:");
+        Label labelNomUtilisateur = new Label("Votre email:");
         labelNomUtilisateur.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
         champNomUtilisateur = new TextField();
-        champNomUtilisateur.setPromptText("Votre nom d'utilisateur ");
+        champNomUtilisateur.setPromptText("Votre email ");
         grille.add(labelNomUtilisateur, 0, 0);
         grille.add(champNomUtilisateur, 1, 0);
 

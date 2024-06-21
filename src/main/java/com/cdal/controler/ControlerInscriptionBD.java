@@ -33,8 +33,9 @@ public class ControlerInscriptionBD implements EventHandler<ActionEvent> {
             case "Journaliste":
                 this.app.afficherPageJournaliste();
                 break;
-            case "Administateur":
+            case "Administrateur":
                 try {
+                    System.out.println("Admin");
                     this.app.afficherPageAdminBis();
                 } catch (Exception e) {
                     e.printStackTrace();

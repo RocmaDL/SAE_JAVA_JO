@@ -56,7 +56,7 @@ public class ControleurConnexion implements EventHandler<ActionEvent> {
                 case "Journaliste":
                     this.appPrincipale.afficherPageJournaliste();
                     break;
-                case "Administateur":
+                case "Administrateur":
                     try {
                         this.appPrincipale.afficherPageAdminBis();
                     } catch (Exception e) {
