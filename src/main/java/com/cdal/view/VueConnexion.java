@@ -24,6 +24,7 @@ import javafx.scene.control.Hyperlink;
 import main.java.com.cdal.controler.ControleurAide;
 import main.java.com.cdal.controler.ControleurConnexion;
 import main.java.com.cdal.controler.ControleurLienInscription;
+import main.java.com.cdal.model.bd.JOUtilisateurBD;
 
 public class VueConnexion extends VBox {
 
@@ -122,7 +123,8 @@ public class VueConnexion extends VBox {
         paneBoutons.setAlignment(Pos.CENTER);
         boutonValider = new Button("Valider");
         boutonValider.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
-        boutonValider.setOnAction(new ControleurConnexion(this));
+        boutonValider.setOnAction(
+                new ControleurConnexion(this, appPrincipale, new JOUtilisateurBD(appPrincipale.getConnexion())));
         boutonAnnuler = new Button("Annuler");
         boutonAnnuler.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
 
@@ -151,7 +153,7 @@ public class VueConnexion extends VBox {
         root.getChildren().addAll(loginBox, hbox);
         this.getChildren().add(root);
 
-        controleur = new ControleurConnexion(this);
+        controleur = new ControleurConnexion(this, appPrincipale, new JOUtilisateurBD(appPrincipale.getConnexion()));
         controleur.initialiserActions();
 
         boutonAfficherMasquerMotDePasse.setOnAction(e -> afficherMasquerMotDePasse());

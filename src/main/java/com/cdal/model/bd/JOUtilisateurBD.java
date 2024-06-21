@@ -27,7 +27,7 @@ public class JOUtilisateurBD {
 
     public Utilisateur readJOUtilisateurBD(String email) throws SQLException {
         Statement st = this.laConnexion.createStatement();
-        ResultSet rs = st.executeQuery("select * from JOUtilisateur where emailUser = " + email);
+        ResultSet rs = st.executeQuery("select * from JOUtilisateur where emailUser = " + "'" + email + "'");
         if (rs.next()) {
             return new Utilisateur(rs.getString("nomUser"), rs.getString("emailUser"), rs.getString("mdpUser"),
                     rs.getString("roleUser"));
