@@ -41,7 +41,7 @@ public class VueConnexion extends VBox {
 
     private boolean motDePasseVisible = false;
 
-    public VueConnexion(EventHandler<ActionEvent> controleurInsc) {
+    public VueConnexion(AppPrincipale appPrincipale) {
         // primaryStage.setTitle("Connexion aux Jeux Olympiques");
 
         Button aideBouton = new Button("Aide");
@@ -141,7 +141,7 @@ public class VueConnexion extends VBox {
         paneBoutons.getChildren().addAll(boutonAnnuler, aideBouton, boutonValider);
 
         lienInscription = new Hyperlink("Pas de compte? Inscrivez-vous");
-        lienInscription.setOnAction(controleurInsc);
+        lienInscription.setOnAction(new ControleurLienInscription(appPrincipale));
 
         loginBox.getChildren().addAll(paneBoutons, lienInscription);
 

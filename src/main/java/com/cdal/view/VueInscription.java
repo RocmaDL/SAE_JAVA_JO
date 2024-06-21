@@ -8,10 +8,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import main.java.com.cdal.controler.ControlerInscriptionBD;
+import main.java.com.cdal.controler.ControleurLienInscription;
+import main.java.com.cdal.model.bd.JOUtilisateurBD;
 
 public class VueInscription extends GridPane {
 
-    public VueInscription(EventHandler<ActionEvent> controleurInsc) {
+    public VueInscription(AppPrincipale appPrincipale) {
         super();
         System.out.println("VueInscription");
         this.setAlignment(Pos.CENTER);
@@ -22,7 +25,6 @@ public class VueInscription extends GridPane {
         this.setHgap(10);
         this.setVgap(10);
         this.setPadding(new Insets(25));
-        
 
         Label titreScene = new Label("Inscription");
         titreScene.setAlignment(Pos.CENTER);
@@ -67,9 +69,10 @@ public class VueInscription extends GridPane {
         Tooltip infoBulle = new Tooltip("Cliquez ici pour vous inscrire");
         boutonInscription.setTooltip(infoBulle);
         this.add(boutonInscription, 1, 5);
+        boutonInscription.setOnAction(new ControlerInscriptionBD(appPrincipale, new JOUtilisateurBD(appPrincipale.getConnexion())));
 
         Button boutonRetour = new Button("Retour");
-        boutonRetour.setOnAction(controleurInsc);
+        boutonRetour.setOnAction(new ControleurLienInscription(appPrincipale));
         this.add(boutonRetour, 0, 5);
 
     }

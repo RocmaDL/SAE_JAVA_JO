@@ -16,9 +16,8 @@ DROP TABLE IF EXISTS JOUtilisateur;
 
 -- Création des tables
 CREATE TABLE JOUtilisateur (
-    idUser VARCHAR(50) PRIMARY KEY,
+    emailUser VARCHAR(50) PRIMARY KEY,
     nomUser VARCHAR(50),
-    prenomUser VARCHAR(50),
     mdpUser VARCHAR(50),
     roleUser VARCHAR(50)
 );

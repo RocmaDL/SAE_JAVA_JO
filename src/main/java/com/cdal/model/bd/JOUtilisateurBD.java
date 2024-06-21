@@ -15,65 +15,52 @@ public class JOUtilisateurBD {
         this.laConnexion = laConnexion;
     }
 
-    public void createJOUtilisateur(Utilisateur u) throws SQLException {
+    public void createJOUtilisateurBD(Utilisateur u) throws SQLException {
         PreparedStatement ps = this.laConnexion.prepareStatement(
-                "insert into JOUtilisateur(nomUser, prenomUser, mdpUser, roleUser) values(?, ?, ?, ?)");
-        ps.setString(1, u.getNom());
-        ps.setString(2, u.getPrenom());
+                "insert into JOUtilisateur(emailUser, nomUser, mdpUser, roleUser) values(?,?,?,?)");
+        ps.setString(1, u.getEmail());
+        ps.setString(2, u.getNom());
         ps.setString(3, u.getMdp());
         ps.setString(4, u.getRole());
         ps.executeUpdate();
     }
 
-    public Utilisateur readJOUtilisateur(String id) throws SQLException {
+    public Utilisateur readJOUtilisateurBD(String email) throws SQLException {
         Statement st = this.laConnexion.createStatement();
-        ResultSet rs = st.executeQuery("select * from JOUtilisateur where idUser = " + id);
+        ResultSet rs = st.executeQuery("select * from JOUtilisateur where emailUser = " + email);
         if (rs.next()) {
-            Utilisateur u = new Utilisateur();
-            u.setId(rs.getString("idUser"));
-            u.setNom(rs.getString("nomUser"));
-            u.setPrenom(rs.getString("prenomUser"));
-            u.setMdp(rs.getString("mdpUser"));
-            u.setRole(rs.getString("roleUser"));
-            return u;
+            return new Utilisateur(rs.getString("nomUser"), rs.getString("emailUser"), rs.getString("mdpUser"),
+                    rs.getString("roleUser"));
         } else {
             throw new SQLException("Utilisateur non trouvé.");
         }
     }
 
-    public void updateJOUtilisateur(Utilisateur u) throws SQLException {
+    public void updateJOUtilisateurBD(Utilisateur u) throws SQLException {
         PreparedStatement ps = this.laConnexion.prepareStatement(
-                "update JOUtilisateur set nomUser = ?, prenomUser = ?, mdpUser = ?, roleUser = ? where idUser = ?");
+                "update JOUtilisateur set nomUser = ?, mdpUser = ?, roleUser = ? where emailUser = ?");
         ps.setString(1, u.getNom());
-        ps.setString(2, u.getPrenom());
-        ps.setString(3, u.getMdp());
-        ps.setString(4, u.getRole());
-        ps.setString(5, u.getId());
+        ps.setString(2, u.getMdp());
+        ps.setString(3, u.getRole());
+        ps.setString(4, u.getEmail());
         ps.executeUpdate();
     }
 
-    public void deleteJOUtilisateur(String u) throws SQLException {
-        PreparedStatement ps = this.laConnexion.prepareStatement("delete from JOUtilisateur where idUser = ?");
-        ps.setString(1, u);
+    public void deleteJOUtilisateurBD(String email) throws SQLException {
+        PreparedStatement ps = this.laConnexion.prepareStatement("delete from JOUtilisateur where emailUser = ?");
+        ps.setString(1, email);
         ps.executeUpdate();
     }
 
-    public ArrayList<Utilisateur> listeJOUtilisateurs() throws SQLException {
-        ArrayList<Utilisateur> liste = new ArrayList<Utilisateur>();
+    public ArrayList<Utilisateur> readAllJOUtilisateurBD() throws SQLException {
+        ArrayList<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
         Statement st = this.laConnexion.createStatement();
         ResultSet rs = st.executeQuery("select * from JOUtilisateur");
         while (rs.next()) {
-            Utilisateur u = new Utilisateur();
-            u.setId(rs.getString("idUser"));
-            u.setNom(rs.getString("nomUser"));
-            u.setPrenom(rs.getString("prenomUser"));
-            u.setMdp(rs.getString("mdpUser"));
-            u.setRole(rs.getString("roleUser"));
-            liste.add(u);
+            listeUtilisateur
+                    .add(new Utilisateur(rs.getString("nomUser"), rs.getString("emailUser"), rs.getString("mdpUser"),
+                            rs.getString("roleUser")));
         }
-        if (liste.size() == 0) {
-            throw new SQLException("Aucun utilisateur trouvé.");
-        }
-        return liste;
+        return listeUtilisateur;
     }
 }
