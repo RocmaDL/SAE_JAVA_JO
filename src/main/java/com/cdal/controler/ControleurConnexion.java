@@ -8,6 +8,7 @@ import main.java.com.cdal.view.VueConnexion;
 public class ControleurConnexion implements EventHandler<ActionEvent>{
 
     private VueConnexion vue;
+    
 
     public ControleurConnexion(VueConnexion vue) {
         this.vue = vue;
@@ -43,7 +44,8 @@ public class ControleurConnexion implements EventHandler<ActionEvent>{
         // Simuler une validation de connexion
         if (nomUtilisateur.contains("administrateur") ||   nomUtilisateur.contains("journaliste") || nomUtilisateur.contains("organisateur")) {
             vue.setMessageAction("Connexion réussie !", Color.GREEN);
-
+            
+           
         } else {
             vue.setMessageAction("Échec de la connexion. Veuillez réessayer.", Color.RED);
         }

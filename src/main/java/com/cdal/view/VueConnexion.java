@@ -2,11 +2,9 @@ package main.java.com.cdal.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,15 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.scene.control.Hyperlink;
-
-
-
 import main.java.com.cdal.controler.ControleurAide;
-
 import main.java.com.cdal.controler.ControleurConnexion;
-
 import main.java.com.cdal.controler.ControleurLienInscription;
 
 public class VueConnexion extends VBox{
@@ -41,6 +32,7 @@ public class VueConnexion extends VBox{
     private Button boutonAfficherMasquerMotDePasse;
     private Text messageAction;
     private Hyperlink lienInscription;
+    private AppPrincipale appPrincipale;
 
     private boolean motDePasseVisible = false;
 
@@ -54,7 +46,7 @@ public class VueConnexion extends VBox{
         aideImageView.setFitWidth(16);
         aideBouton.setGraphic(aideImageView);
 
-       aideBouton.setOnAction(new ControleurAide(this));
+        aideBouton.setOnAction(new ControleurAide(this));
 
 
         VBox root = new VBox(20);
@@ -128,6 +120,7 @@ public class VueConnexion extends VBox{
         paneBoutons.setAlignment(Pos.CENTER);
         boutonValider = new Button("Valider");
         boutonValider.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+        boutonValider.setOnAction(new ControleurConnexion(this));
         boutonAnnuler = new Button("Annuler");
         boutonAnnuler.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
 

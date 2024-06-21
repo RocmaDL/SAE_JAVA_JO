@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -21,11 +20,7 @@ import main.java.com.cdal.model.JeuxOlympiques;
 public class AppPrincipale extends Application {
 
     Parent root;
-    // BorderPane centre;
     FXMLLoader loader;
-    private TextField barreRecherche;
-    private Button btnRechercher;
-    private Button recherche;
     private Button btnParametres;
     private Button btnDeco;
     private BorderPane panelCentral;
@@ -39,19 +34,14 @@ public class AppPrincipale extends Application {
     @Override
     public void init() {
         // --- Initialisation de l'application
-        this.barreRecherche = new TextField();
         
-        // Bouton Rechercher
-        this.btnRechercher = new Button("Rechercher");
-        this.btnRechercher.setOnAction(new ControleurRechercherBis(this, this.barreRecherche.getText()));
-
-        
+    
         this.modeleJO = new JeuxOlympiques();
-        //try {
-        //    modeleJO.chargerDonneeCSV("file:donnees.csv");
-        //} catch (Exception e) {
-        //    System.out.println("Erreur lors du chargement des donnéeshargement des données");
-        //}
+        try {
+            modeleJO.chargerDonneeCSV("file:donnees.csv");
+        } catch (Exception e) {
+            System.out.println("Erreur lors du chargement des données hargement des données");
+        }
         this.panelCentral = new BorderPane() ;
         this.btnDeco = new Button("");
         this.btnParametres = new Button("");
@@ -65,13 +55,14 @@ public class AppPrincipale extends Application {
     public void afficherPageAdmin() throws Exception {
         // --- Chargement du fichier FXML
         try {
-            this.url = new File("templates/PageAdmin.fxml").toURI().toURL();
+            this.url = new File("templates/MainPane.fxml").toURI().toURL();
             this.loader = new FXMLLoader(this.url);
             System.out.println("PageAdmin.fxml chargé" + loader);
-            this.root = loader.load();
+            this.root = (AnchorPane) loader.load();
             this.panelCentral.setCenter(this.root);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page Admin");
+            System.out.println(e.toString());
 
         }
     }
@@ -142,9 +133,7 @@ public class AppPrincipale extends Application {
 
     public Pane header() {
         BorderPane banniere = new BorderPane();
-        this.barreRecherche.setPromptText("Rechercher une information");
-        this.barreRecherche.setPrefWidth(300);
-        this.barreRecherche.setPrefHeight(20);
+
         // Bouton Paramètres
         ImageView imgP = new ImageView(new Image("file:./img/param.png"));
         imgP.setFitWidth(40);
@@ -167,9 +156,7 @@ public class AppPrincipale extends Application {
 
 
         HBox hbLeft = new HBox();
-        hbLeft.getChildren().addAll(this.utilisateur, this.barreRecherche, this.btnRechercher);
-        hbLeft.setMargin(this.barreRecherche, new Insets(35, 1, 0, 20));
-        hbLeft.setMargin(this.btnRechercher, new Insets(35, 0, 0, 0));
+        hbLeft.getChildren().add(this.utilisateur);
         banniere.setLeft(hbLeft);
 
         // Right
@@ -204,24 +191,8 @@ public class AppPrincipale extends Application {
         imgAvant.setFitHeight(40);
         this.btnAvant = new Button("", imgAvant);
         this.btnAvant.setOnAction(new ControlerDeconnexion(this));
-        vb1.getChildren().addAll(this.btnRetour, this.btnAvant);
-
-        //try{ 
-        //    Image image = new Image(("file:./img/JeuxOlympiques.png"));
-        //    BackgroundImage backgroundImage = new BackgroundImage(image,
-        //    BackgroundRepeat.NO_REPEAT,   // Répéter l'image horizontalement
-        //    BackgroundRepeat.NO_REPEAT,   // Répéter l'image verticalement
-        //    BackgroundPosition.DEFAULT,   // Position par défaut
-        //    BackgroundSize.DEFAULT);      // Taille par défaut
-        //    footer.setBackground(new Background(backgroundImage));
-//
-//
-        //}catch( Exception e){
-        //    System.out.println("ErreuRe r lors du chargement de l'image");
-        //    System.out.println(e.toString());
-    //
-        //}
-       //
+        vb1.getChildren().addAll(this.btnRetour);
+    
         footer.setCenter(this.btnRetour);
 
         return footer;
@@ -238,6 +209,9 @@ public class AppPrincipale extends Application {
     public void afficherPageConnexion() {
         // Création d'une nouvelle scène
         this.panelCentral.setCenter(new VueConnexion());
+        DesactiverBouton(this.btnRetour);
+        DesactiverBouton(this.btnDeco);
+
     
     }
 
@@ -247,36 +221,29 @@ public class AppPrincipale extends Application {
 
     public void afficherPageJournaliste() {
         this.panelCentral.setCenter(new VueJournaliste());
-
+        ActiverBouton(this.btnRetour);
+        ActiverBouton(this.btnDeco);
+        
     }
 
     public void DesactiverBouton(Button bouton1){
         bouton1.setDisable(true);
     }
-
-    public void modeAccueil(){
-        this.afficherPageConnexion();
-        DesactiverBouton(this.btnRetour);
-        DesactiverBouton(this.btnDeco);
-
-    
+    public void ActiverBouton(Button bouton1){
+        bouton1.setDisable(false);
     }
+
+
+
+
 
     private Scene laScene() {
         BorderPane fenetre = new BorderPane();
         fenetre.setCenter(this.panelCentral);
         fenetre.setTop(this.header());
-<<<<<<< HEAD
-<<<<<<< HEAD
-        return new Scene(fenetre, 1200,900);
-=======
         fenetre.setBottom(this.footer());
-        return new Scene(fenetre, 900,600);
->>>>>>> LennyLiasonPages
-=======
-        fenetre.setBottom(this.footer());
-        return new Scene(fenetre, 900,600);
->>>>>>> ccca0fd9990d010d61f2a97cf62419c34548d193
+        return new Scene(fenetre, 800,600);
+
 
     }
 
@@ -285,8 +252,8 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
         
         stage.setScene(laScene());
-        this.modeAccueil();
-        stage.setTitle("SayHello FXML");
+        this.afficherPageAdminBis();
+        stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
 
