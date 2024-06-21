@@ -157,10 +157,21 @@ public class AppPrincipale extends Application {
             System.out.println("PageClassementEpreuve.fxml chargé" + loader);
             this.root = loader.load();
             this.panelCentral.setCenter(this.root);
+            ActiverBouton(this.btnDeco);
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page PageClassementEpreuve");
 
         }
+    }
+    
+    public ChoiceDialog<String> popUpParametres(){
+        List<String> couleurs = Arrays.asList("mode clair", "mode sombre");
+        ChoiceDialog<String> choice = new ChoiceDialog<>("définir fond", couleurs );
+        choice.setTitle("Paramètres");
+        choice.setHeaderText("Fond d'écran");
+        String reponse = choice.getSelectedItem();
+        new ControleurCouleur(this, reponse);
+        return choice;
     }
 
     public Pane header() {
