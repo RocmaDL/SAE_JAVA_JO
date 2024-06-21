@@ -1,5 +1,6 @@
 package main.java.com.cdal.view;
 
+import java.awt.TextField;
 import java.io.File;
 import java.net.URL;
 import javafx.application.Application;
@@ -7,6 +8,7 @@ import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
@@ -19,6 +21,7 @@ import main.java.com.cdal.model.JeuxOlympiques;
 import main.java.com.cdal.model.Utilisateur;
 import main.java.com.cdal.model.bd.JOJeuxOlympiquesBD;
 import main.java.com.cdal.model.ConnexionMySQL;
+
 
 public class AppPrincipale extends Application {
 
@@ -33,6 +36,7 @@ public class AppPrincipale extends Application {
     private Button btnRetour;
     private Button btnAvant;
     private URL url;
+    private Scene mainScene;
     private ConnexionMySQL laConnexion;
     private Utilisateur user;
     private Boolean pConexion = false;
@@ -74,7 +78,21 @@ public class AppPrincipale extends Application {
             this.loader = new FXMLLoader(this.url);
             System.out.println("PageAdmin.fxml chargé" + loader);
             this.root = loader.load();
+            this.mainScene = new Scene(this.root, 900, 600);
             this.panelCentral.setCenter(this.root);
+
+            //TextField text = (TextField) this.panelCentral.lookup("#idAthlete");
+            //TextField text2 = (TextField) this.root.lookup("#nom");
+            //TextField text3 = (TextField) this.root.lookup("#prenom");
+            //TextField text4 = (TextField) this.root.lookup("#pays");
+            //TextField text5 = (TextField) this.root.lookup("#sexe");
+
+            Button btAjouterAthlete = (Button) this.root.lookup("#insere");
+            btAjouterAthlete.setOnAction(new ControlerAdmin(this));
+            System.out.println("btAjouterAthlete: " + btAjouterAthlete);
+            //System.out.println("text : " + text);
+
+
         } catch (Exception e) {
             System.out.println("Erreur de chargement de la page Admin");
             System.out.println(e.toString());
@@ -243,8 +261,19 @@ public class AppPrincipale extends Application {
         this.afficherPageConnexion();
     }
 
+
     public void DesactiverBouton(Button bouton1) {
         bouton1.setDisable(true);
+    }
+
+    public Alert insertionAthlete() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION); 
+        alert.setTitle("Modification de la base de données"); 
+        alert.getDialogPane().setPrefSize(400, 200);
+        alert.setHeaderText("L'athlète a bien été inséré dans la base de données");
+        return alert;
+
+
     }
 
     public void ActiverBouton(Button bouton1) {
@@ -278,7 +307,7 @@ public class AppPrincipale extends Application {
         // --- Chargement du fichier FXML
 
         stage.setScene(laScene());
-        this.afficherPageConnexion();
+        this.afficherPageAdminBis();
         stage.setTitle("Jeux IUT'Olympiques");
         stage.show();
     }
