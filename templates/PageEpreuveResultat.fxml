@@ -43,7 +43,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.cdal.controler.ControlerEpreuveResultat">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="537.0" prefWidth="744.0" VBox.vgrow="ALWAYS">
       <children>
@@ -52,8 +52,8 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Button fx:id="enregistrer_res" layoutX="422.0" layoutY="140.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="146.0" text="Enregistrer résultat" textAlignment="CENTER" />
-            <Button fx:id="lancer_epreuve" layoutX="139.0" layoutY="140.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="124.0" text="Lancer épreuve" textAlignment="CENTER" />
+            <Button id="enregistrer_res" layoutX="422.0" layoutY="140.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="146.0" text="Enregistrer résultat" textAlignment="CENTER" />
+            <Button id="lancer_epreuve" layoutX="139.0" layoutY="140.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="124.0" text="Lancer épreuve" textAlignment="CENTER" />
             <Text layoutX="224.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dernières Modifications " textAlignment="CENTER">
                <font>
                   <Font size="19.0" />

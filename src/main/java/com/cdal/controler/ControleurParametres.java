@@ -14,8 +14,6 @@ public class ControleurParametres implements EventHandler<ActionEvent> {
     }
 
 
-
-
     @Override
     public void handle(ActionEvent actionEvent) {
         // Ajouter des paramètres à modifier, ex : taille fenêtre / couleur de fond...
