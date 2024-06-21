@@ -1,3 +1,7 @@
+/**
+ * Contrôleur PageAdminController associé au fichier FXML correspondant.
+ * Ce contrôleur gère les interactions et initialise les éléments de l'interface graphique pour la page d'administration.
+ */
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -31,7 +35,11 @@ public class PageAdminController {
 
     @FXML
     private ImageView logoutIcon;
-    
+
+    /**
+     * Méthode d'initialisation appelée après le chargement du fichier FXML.
+     * Initialise les icônes avec des images spécifiques.
+     */
     @FXML
     public void initialize() {
         settingsIcon.setImage(new Image(getClass().getResourceAsStream("/images/reglage.png")));
