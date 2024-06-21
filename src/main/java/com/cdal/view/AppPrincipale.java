@@ -164,6 +164,16 @@ public class AppPrincipale extends Application {
 
         }
     }
+    
+    public ChoiceDialog<String> popUpParametres(){
+        List<String> couleurs = Arrays.asList("mode clair", "mode sombre");
+        ChoiceDialog<String> choice = new ChoiceDialog<>("définir fond", couleurs );
+        choice.setTitle("Paramètres");
+        choice.setHeaderText("Fond d'écran");
+        String reponse = choice.getSelectedItem();
+        new ControleurCouleur(this, reponse);
+        return choice;
+    }
 
     public Pane header() {
         BorderPane banniere = new BorderPane();
